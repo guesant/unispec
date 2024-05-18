@@ -2,6 +2,9 @@
   "name": "@unispec/core",
   "version": "0.0.0",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "unbuild",
     "lint:check": "eslint -c eslint.config.mjs",

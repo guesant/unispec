@@ -22,6 +22,9 @@
   "release": {
     "version": {
       "preVersionCommand": "pnpm dlx nx run-many -t build"
+    },
+    "changelog": {
+      "automaticFromRef": true
     }
   },
   "plugins": []

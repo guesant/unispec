@@ -41,6 +41,12 @@
         "cwd": "{projectRoot}",
         "command": "pnpm run test"
       }
+    },
+
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
     }
   }
 }
