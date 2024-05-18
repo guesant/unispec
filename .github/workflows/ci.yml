@@ -124,6 +124,9 @@ jobs:
         run: npx nx report
         shell: bash
 
+      - run: git config --global user.email "release-bot<>"
+      - run: git config --global user.name "guesant/unispec release bot"
+
       - run: npx nx release --specifier preminor --skip-publish
 
       - run: npx nx release publish
