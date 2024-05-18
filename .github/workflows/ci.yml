@@ -55,6 +55,8 @@ jobs:
 
       - name: Prepare NPM token
         uses: ./.github/actions/prepare-npm-token
+        with:
+          npm-token: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - run: npx nx release publish --tag ${TAG} --verbose
         env:

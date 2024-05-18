@@ -3,8 +3,7 @@ description: "Prepares the repo by setting the NPM token"
 inputs:
   npm-token:
     description: "The NPM token"
-    required: false
-    default: ${{ secrets.NPM_ACCESS_TOKEN }}
+    required: true
 
 runs:
   using: "composite"
