@@ -5,6 +5,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guesant/unispec.git"
+  },
   "scripts": {
     "build": "unbuild",
     "lint:check": "eslint -c eslint.config.mjs",
