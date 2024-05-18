@@ -1,25 +1,7 @@
 {
   "name": "@unispec/core",
-  "version": "0.0.0",
-  "sideEffects": false,
-  "type": "module",
-  "scripts": {
-    "build": "unbuild",
-    "lint": "echo not implemented yet",
-    "test": "echo not implemented yet"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "devDependencies": {
-    "unbuild": "^2.0.0"
-  }
+  "version": "0.0.1",
+  "dependencies": {},
+  "main": "./index.cjs",
+  "module": "./index.js"
 }

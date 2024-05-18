@@ -1,11 +1,22 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
     "target": "ESNext",
-    "module": "Preserve",
-    "strict": true,
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
-    "noEmit": true
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@unispec/core": ["packages/core/src/index.ts"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["dist"]
+  "exclude": ["node_modules", "tmp"]
 }
