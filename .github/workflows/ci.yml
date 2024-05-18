@@ -12,26 +12,24 @@ permissions:
   contents: write
 
 jobs:
-  main:
+  quality:
+    name: Code quality check
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [20]
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # Connect your workspace on nx.app and uncomment this to enable task distribution.
-      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
-      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 9
 
-      # Cache node_modules
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -40,6 +38,52 @@ jobs:
 
       - name: Install dependencies with pnpm
         run: pnpm install --frozen-lockfile
+
+      # Connect your workspace on nx.app and uncomment this to enable task distribution.
+      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
+      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
+
+      - uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: "development"
+
+      - name: Run Format Check
+        run: npx nx affected --base development -t format:check
+
+      - name: Run Lint Check
+        run: npx nx affected --base development -t lint:check
+
+      - name: Run Test Check
+        run: npx nx affected --base development -t test
+
+      - name: Build Project
+        run: npx nx affected --base development -t build
+
+  publish:
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies with pnpm
+        run: pnpm install --frozen-lockfile
+
+      # Connect your workspace on nx.app and uncomment this to enable task distribution.
+      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
+      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
 
       - uses: nrwl/nx-set-shas@v4
         with:

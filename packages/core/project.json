@@ -14,10 +14,16 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "cwd": "{projectRoot}",
-        "command": "pnpm run build"
+        "outputPath": "dist/{projectRoot}",
+        "main": "{projectRoot}/src/index.ts",
+        "tsConfig": "{projectRoot}/tsconfig.json",
+        "assets": [],
+        "project": "{projectRoot}/package.json",
+        "compiler": "swc",
+        "format": ["cjs", "esm"]
       }
     },
 
