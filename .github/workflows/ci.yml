@@ -56,8 +56,28 @@ jobs:
       - name: Run Test Check
         run: npx nx affected --base development -t test
 
+      - name: Run Coverage Check
+        run: npx nx affected --base development -t coverage
+
       - name: Build Project
         run: npx nx affected --base development -t build
+
+      # - name: Run Integration Tests
+      #   run: pnpm e2e -- --skip-nx-cache
+      #   shell: bash
+      #   env:
+      #     NX_CLOUD_DISTRIBUTED_EXECUTION: false
+      # - name: Stop Nx Cloud Agents
+      #   run: pnpx -y nx-cloud stop-all-agents
+      #   shell: bash
+      # - name: Debug Coverage
+      #   run: cat coverage/lcov.info
+      #   shell: bash
+      # - name: Upload Coverage
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: coverage
+      #     path: coverage/lcov.info
 
   publish:
     needs: quality

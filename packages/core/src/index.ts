@@ -1,2 +1,2 @@
-export * from "./Travel";
-export * from "./types";
+export * from "./legacy/Travel";
+export * from "./legacy/types";
