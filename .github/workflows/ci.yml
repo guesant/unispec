@@ -18,7 +18,8 @@ env:
   PRIMARY_NODE_VERSION: 20
 
 jobs:
-  tag:
+  ci-cd:
+    name: CI/CD
     runs-on: ubuntu-latest
 
     permissions:
@@ -51,6 +52,9 @@ jobs:
           SPECIFIER: ${{ github.ref == 'refs/heads/development' && 'prerelease' || 'release' }}
 
       - run: git push --follow-tags
+
+      - name: Prepare NPM token
+        uses: ./.github/actions/prepare-npm-token
 
       - run: npx nx release publish --tag ${TAG} --verbose
         env:
