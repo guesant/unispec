@@ -4,7 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "lint": "echo not implemented yet",
+    "test": "echo not implemented yet"
   },
   "exports": {
     ".": {
