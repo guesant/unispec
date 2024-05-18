@@ -49,7 +49,7 @@ jobs:
 
   build:
     name: Build All Packages
-    needs: [install]
+    needs: [quality-check]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -61,42 +61,9 @@ jobs:
       - name: Build
         uses: ./.github/actions/prepare-build
 
-  quality:
-    name: Code quality check
-
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20]
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Install
-        uses: ./.github/actions/prepare-install
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Run Format Check
-        run: npx nx affected -t format:check
-
-      - name: Run Lint Check
-        run: npx nx affected -t lint:check
-
-      - name: Run Test Check
-        run: npx nx affected -t test
-
-      - name: Run Coverage Check
-        run: npx nx affected -t coverage
-
-      - name: Build Project
-        run: npx nx affected -t build
-
   publish-prerelease:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
-    needs: quality
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       id-token: write
