@@ -77,7 +77,9 @@ jobs:
       #     name: coverage
       #     path: coverage/lcov.info
 
-  publish:
+  publish-prerelease:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
+
     needs: quality
     runs-on: ubuntu-latest
     steps:
@@ -107,8 +109,10 @@ jobs:
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
-      - run: npx nx affected --base development -t format:check lint:check test
+      - run: npx nx affected --base development -t build
 
       - name: Tag branch if all jobs succeed
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
         uses: nrwl/nx-tag-successful-ci-run@v1
+
+      - run: npx nx release --specifier preminor
