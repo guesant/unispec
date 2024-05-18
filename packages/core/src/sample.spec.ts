@@ -2,6 +2,6 @@ import { describe, expect, it } from "vitest";
 
 describe("test", () => {
   it("should test", () => {
-    expect(true).toBe(true);
+    expect(false).toBe(false);
   });
 });
