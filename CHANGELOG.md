@@ -1,3 +1,14 @@
+## 0.2.0-5 (2024-05-18)
+
+
+### 🩹 Fixes
+
+- **ci:** npm access token ([e037ccb](https://github.com/guesant/unispec/commit/e037ccb))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.2.0-4 (2024-05-18)
 
 This was a version bump only, there were no code changes.
