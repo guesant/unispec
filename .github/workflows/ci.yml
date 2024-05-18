@@ -14,9 +14,53 @@ concurrency:
 permissions:
   actions: read
   contents: write
-  id-token: write
+
+env:
+  PRIMARY_NODE_VERSION: 20
 
 jobs:
+  install:
+    name: Checkout and Install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install
+        uses: ./.github/actions/prepare-install
+        with:
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
+
+  quality-check:
+    name: Code Quality Check
+    needs: [install]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install
+        uses: ./.github/actions/prepare-install
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Quality Check
+        uses: ./.github/actions/quality-check
+
+  build:
+    name: Build All Packages
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install
+        uses: ./.github/actions/prepare-install
+        with:
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
+      - name: Build
+        uses: ./.github/actions/prepare-build
+
   quality:
     name: Code quality check
 
@@ -30,106 +74,54 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Install
+        uses: ./.github/actions/prepare-install
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-
-      - name: Install dependencies with pnpm
-        run: pnpm install --frozen-lockfile
-
-      # Connect your workspace on nx.app and uncomment this to enable task distribution.
-      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
-      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
-
-      - uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: "development"
 
       - name: Run Format Check
-        run: npx nx affected --base development -t format:check
+        run: npx nx affected -t format:check
 
       - name: Run Lint Check
-        run: npx nx affected --base development -t lint:check
+        run: npx nx affected -t lint:check
 
       - name: Run Test Check
-        run: npx nx affected --base development -t test
+        run: npx nx affected -t test
 
       - name: Run Coverage Check
-        run: npx nx affected --base development -t coverage
+        run: npx nx affected -t coverage
 
       - name: Build Project
-        run: npx nx affected --base development -t build
-
-      # - name: Run Integration Tests
-      #   run: pnpm e2e -- --skip-nx-cache
-      #   shell: bash
-      #   env:
-      #     NX_CLOUD_DISTRIBUTED_EXECUTION: false
-      # - name: Stop Nx Cloud Agents
-      #   run: pnpx -y nx-cloud stop-all-agents
-      #   shell: bash
-      # - name: Debug Coverage
-      #   run: cat coverage/lcov.info
-      #   shell: bash
-      # - name: Upload Coverage
-      #   uses: actions/upload-artifact@master
-      #   with:
-      #     name: coverage
-      #     path: coverage/lcov.info
+        run: npx nx affected -t build
 
   publish-prerelease:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
-
     needs: quality
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      - name: Install
+        uses: ./.github/actions/prepare-install
         with:
-          node-version: 20
-          cache: "pnpm"
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
 
-      - name: Install dependencies with pnpm
-        run: pnpm install --frozen-lockfile
-
-      # Connect your workspace on nx.app and uncomment this to enable task distribution.
-      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
-      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
-
-      - uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: "development"
-
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
-      - run: npx nx affected --base development -t build
+      - name: Build
+        uses: ./.github/actions/prepare-build
 
       - name: Tag branch if all jobs succeed
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
         uses: nrwl/nx-tag-successful-ci-run@v1
-
-      - name: Print Environment Info
-        run: npx nx report
-        shell: bash
 
       - run: git config --global user.email "release-bot<>"
       - run: git config --global user.name "guesant/unispec release bot"
 
       - run: npx nx release --specifier preminor --skip-publish
 
-      - run: npx nx release publish
+      - run: npx nx release publish --tag next --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true

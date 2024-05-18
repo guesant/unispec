@@ -1,0 +1,13 @@
+name: "Prepare: Build"
+description: "Prepares the repo for a job by running the build"
+# inputs:  - no inputs
+# outputs: - no outputs
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build Project
+      shell: bash
+      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
+      # - run: npx nx-cloud record -- echo Hello World
+      run: npx nx run-many --target=build --parallel
