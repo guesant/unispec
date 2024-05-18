@@ -4,7 +4,10 @@
   "scripts": {
     "format:check": "prettier --end-of-line lf --check \"packages/*/{src,test}/**/*.ts\"",
     "format:write": "prettier --end-of-line lf --write \"packages/*/{src,test}/**/*.ts\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
   },
   "private": true,
   "devDependencies": {
@@ -12,10 +15,13 @@
     "@nx/rollup": "^19.0.4",
     "@nx/workspace": "19.0.4",
     "@swc/core": "^1.5.7",
+    "@vitest/coverage-v8": "^1.6.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "nx": "19.0.4",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "vite": "^5.2.11",
+    "vitest": "^1.6.0"
   },
   "nx": {
     "includedScripts": []

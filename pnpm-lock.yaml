@@ -20,6 +20,9 @@ importers:
       '@swc/core':
         specifier: ^1.5.7
         version: 1.5.7
+      '@vitest/coverage-v8':
+        specifier: ^1.6.0
+        version: 1.6.0(vitest@1.6.0(@types/node@20.12.12))
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -32,6 +35,12 @@ importers:
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
+      vite:
+        specifier: ^5.2.11
+        version: 5.2.11(@types/node@20.12.12)
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.12.12)
 
   packages/core:
     devDependencies:
