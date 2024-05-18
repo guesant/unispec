@@ -17,9 +17,6 @@
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage"
   },
-  "files": [
-    "dist"
-  ],
   "devDependencies": {
     "@eslint/js": "^9.3.0",
     "@vitest/coverage-v8": "^1.6.0",
