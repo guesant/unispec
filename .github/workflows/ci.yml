@@ -44,10 +44,10 @@ jobs:
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - run: npx nx release --specifier minor --skip-publish
+      - run: npx nx release --specifier release --skip-publish
         if: ${{  github.ref == 'refs/heads/main' }}
 
-      - run: npx nx release --specifier preminor --skip-publish
+      - run: npx nx release --specifier prerelease --skip-publish
         if: ${{  github.ref == 'refs/heads/development' }}
 
       - run: git push --follow-tags
