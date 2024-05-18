@@ -4,6 +4,8 @@
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
+    "format:check": "prettier --end-of-line lf --check \"packages/*/{src,test}/**/*.ts\"",
+    "format:write": "prettier --end-of-line lf --write \"packages/*/{src,test}/**/*.ts\"",
     "prepare": "husky"
   },
   "private": true,
@@ -15,6 +17,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "nx": "19.0.3",
+    "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.9.0"
   },

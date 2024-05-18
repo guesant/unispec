@@ -1,5 +1,5 @@
 export type UniTypeBase = {
-  kind: 'type';
+  kind: "type";
   nullable: boolean;
   required: boolean;
   description: string;
@@ -7,9 +7,9 @@ export type UniTypeBase = {
 };
 
 export type UniTypeString = UniTypeBase & {
-  type: 'string';
+  type: "string";
 
-  format?: 'uuid' | 'date' | 'date-time' | 'time' | 'e-mail';
+  format?: "uuid" | "date" | "date-time" | "time" | "e-mail";
 
   constraints?: {
     minLength?: number | false;
@@ -19,7 +19,7 @@ export type UniTypeString = UniTypeBase & {
 };
 
 export type UniTypeInteger = UniTypeBase & {
-  type: 'integer';
+  type: "integer";
   constraints?: {
     min?: number;
     max?: number;
@@ -29,17 +29,17 @@ export type UniTypeInteger = UniTypeBase & {
 };
 
 export type UniTypeReference = UniTypeBase & {
-  type: 'reference';
+  type: "reference";
   targetsTo: string;
 };
 
 export type UniTypeObject = UniTypeBase & {
-  type: 'object';
+  type: "object";
   properties: Record<string, UniType>;
 };
 
 export type UniView = {
-  kind: 'view';
+  kind: "view";
   name: string;
   description: string;
   partialOf: string | null;
@@ -47,16 +47,16 @@ export type UniView = {
 };
 
 export type UniTypeArray = UniTypeBase & {
-  type: 'array';
+  type: "array";
   of: UniType;
 };
 
 export type UniTypeBoolean = UniTypeBase & {
-  type: 'boolean';
+  type: "boolean";
 };
 
 export type UniTypeFile = UniTypeBase & {
-  type: 'file';
+  type: "file";
   mimeTypes: string[];
 };
 
@@ -65,7 +65,7 @@ export type UniType = UniTypeString | UniTypeInteger | UniTypeReference | UniTyp
 // =================================
 
 export type UniOperation = {
-  kind: 'operation';
+  kind: "operation";
 
   name: string;
   description: string;
@@ -81,7 +81,7 @@ export type UniOperation = {
 };
 
 export type UniDeclarator = {
-  kind: 'declarator';
+  kind: "declarator";
 
   entity: string;
 
@@ -120,7 +120,7 @@ export interface UniProviderContext {
 export type UniProviderFn = (ctx: UniProviderContext) => void;
 
 export type UniProvider = {
-  kind: 'provider';
+  kind: "provider";
   fn: UniProviderFn;
 };
 
@@ -134,29 +134,25 @@ type UniTypeBaseOptions = {
 
 export const UniTypeBase = <C extends UniTypeBase, K extends UniTypeBaseOptions = UniTypeBaseOptions>(k?: K): C =>
   ({
-    kind: 'type',
+    kind: "type",
     nullable: false,
     required: true,
-    description: 'Descrição não fornecida.',
+    description: "Descrição não fornecida.",
     ...k,
   }) as unknown as C;
 
-export const UniTypeString = <K extends Partial<UniTypeString> = Partial<UniTypeString>>(k?: K): UniTypeString =>
-  UniTypeBase<UniTypeString>({ type: 'string', ...k });
+export const UniTypeString = <K extends Partial<UniTypeString> = Partial<UniTypeString>>(k?: K): UniTypeString => UniTypeBase<UniTypeString>({ type: "string", ...k });
 
-export const UniTypeInteger = <K extends Partial<UniTypeInteger> = Partial<UniTypeInteger>>(k?: K): UniTypeInteger =>
-  UniTypeBase<UniTypeInteger>({ type: 'integer', ...k });
+export const UniTypeInteger = <K extends Partial<UniTypeInteger> = Partial<UniTypeInteger>>(k?: K): UniTypeInteger => UniTypeBase<UniTypeInteger>({ type: "integer", ...k });
 
-export const UniTypeReference = <K extends Partial<UniTypeReference> = Partial<UniTypeReference>>(k?: K): UniTypeReference =>
-  UniTypeBase<UniTypeReference>({ type: 'reference', ...k });
+export const UniTypeReference = <K extends Partial<UniTypeReference> = Partial<UniTypeReference>>(k?: K): UniTypeReference => UniTypeBase<UniTypeReference>({ type: "reference", ...k });
 
-export const UniTypeObject = <K extends Partial<UniTypeObject> = Partial<UniTypeObject>>(k?: K): UniTypeObject =>
-  UniTypeBase<UniTypeObject>({ type: 'object', properties: {}, ...k });
+export const UniTypeObject = <K extends Partial<UniTypeObject> = Partial<UniTypeObject>>(k?: K): UniTypeObject => UniTypeBase<UniTypeObject>({ type: "object", properties: {}, ...k });
 
 export const UniView = <K extends Partial<UniView> = Partial<UniView>>(k?: K): UniView => ({
-  kind: 'view',
-  name: 'UnnamedView',
-  description: '',
+  kind: "view",
+  name: "UnnamedView",
+  description: "",
   partialOf: null,
   ...k,
   properties: {
@@ -164,19 +160,16 @@ export const UniView = <K extends Partial<UniView> = Partial<UniView>>(k?: K): U
   },
 });
 
-export const UniTypeArray = <K extends Partial<UniTypeArray> = Partial<UniTypeArray>>(k?: K): UniTypeArray =>
-  UniTypeBase<UniTypeArray>({ type: 'array', of: {}, ...k });
+export const UniTypeArray = <K extends Partial<UniTypeArray> = Partial<UniTypeArray>>(k?: K): UniTypeArray => UniTypeBase<UniTypeArray>({ type: "array", of: {}, ...k });
 
-export const UniTypeBoolean = <K extends Partial<UniTypeBoolean> = Partial<UniTypeBoolean>>(k?: K): UniTypeBoolean =>
-  UniTypeBase<UniTypeBoolean>({ type: 'boolean', ...k });
+export const UniTypeBoolean = <K extends Partial<UniTypeBoolean> = Partial<UniTypeBoolean>>(k?: K): UniTypeBoolean => UniTypeBase<UniTypeBoolean>({ type: "boolean", ...k });
 
-export const UniTypeFile = <K extends Partial<UniTypeFile> = Partial<UniTypeFile>>(k?: K): UniTypeFile =>
-  UniTypeBase<UniTypeFile>({ type: 'file', mimeTypes: [], ...k });
+export const UniTypeFile = <K extends Partial<UniTypeFile> = Partial<UniTypeFile>>(k?: K): UniTypeFile => UniTypeBase<UniTypeFile>({ type: "file", mimeTypes: [], ...k });
 
 //
 
 type UniTypeEntityOptions = Partial<UniTypeObject> & {
-  id?: 'numeric' | 'uuid' | false;
+  id?: "numeric" | "uuid" | false;
   dated?: boolean;
 };
 
@@ -193,40 +186,40 @@ export const UniTypeEntity = <K extends Partial<UniTypeEntityOptions> = Partial<
     Object.assign(properties, rest);
 
     if (id) {
-      const description = 'ID do Registro.';
+      const description = "ID do Registro.";
 
-      if (id === 'numeric') {
+      if (id === "numeric") {
         properties.id = UniTypeInteger({ description });
-      } else if (id === 'uuid') {
-        properties.id = UniTypeString({ description, format: 'uuid' });
+      } else if (id === "uuid") {
+        properties.id = UniTypeString({ description, format: "uuid" });
       }
     }
 
     if (dated) {
-      properties.dateCreated = UniTypeString({ description: 'Data de Criação do Registro.', format: 'date-time' });
-      properties.dateUpdated = UniTypeString({ description: 'Data de Atualização do Registro.', format: 'date-time' });
-      properties.dateDeleted = UniTypeString({ description: 'Data de Exclusão do Registro.', format: 'date-time', nullable: true });
+      properties.dateCreated = UniTypeString({ description: "Data de Criação do Registro.", format: "date-time" });
+      properties.dateUpdated = UniTypeString({ description: "Data de Atualização do Registro.", format: "date-time" });
+      properties.dateDeleted = UniTypeString({ description: "Data de Exclusão do Registro.", format: "date-time", nullable: true });
     }
   }
 
   return UniTypeObject({
-    type: 'object',
+    type: "object",
     ...k,
     properties,
   });
 };
 
-export const UniTypePick = <Obj extends UniTypeObject | UniView, Properties extends keyof Obj['properties'] = keyof Obj['properties']>(
+export const UniTypePick = <Obj extends UniTypeObject | UniView, Properties extends keyof Obj["properties"] = keyof Obj["properties"]>(
   obj: Obj,
   propertiesToPick: Properties[] | Record<Properties, boolean>,
-): UniTypeObject['properties'] => {
+): UniTypeObject["properties"] => {
   const checkProperty = (property: Properties | string) => {
     const permissivePropertiesToPick = <string[] | Record<string, boolean>>propertiesToPick;
 
     if (Array.isArray(permissivePropertiesToPick)) {
       return permissivePropertiesToPick.findIndex((i) => i === property) !== -1;
     } else {
-      if (typeof property === 'string' && property in permissivePropertiesToPick && permissivePropertiesToPick[property]) {
+      if (typeof property === "string" && property in permissivePropertiesToPick && permissivePropertiesToPick[property]) {
         return true;
       }
     }
@@ -237,7 +230,7 @@ export const UniTypePick = <Obj extends UniTypeObject | UniView, Properties exte
   return properties;
 };
 
-export const UniTypePartial = <Obj extends UniTypeObject | UniView>(obj: Obj): UniTypeObject['properties'] => {
+export const UniTypePartial = <Obj extends UniTypeObject | UniView>(obj: Obj): UniTypeObject["properties"] => {
   const properties = Object.fromEntries(Object.entries(obj.properties).map(([key, value]) => [key, { ...value, required: false }]));
 
   return properties;
@@ -256,13 +249,13 @@ export const UniTypeMerge = (objects: UniTypeObject[]): UniTypeObject => {
 };
 
 export const UniDeclarator = <K extends UniDeclarator>(declarator: Partial<K> = {}): UniDeclarator => ({
-  kind: 'declarator',
-  entity: '',
+  kind: "declarator",
+  entity: "",
   ...declarator,
 });
 
-export const UniOperation = <K extends UniOperation, Op extends Omit<K, 'kind'>>(operation: Op): UniOperation => ({
-  kind: 'operation',
+export const UniOperation = <K extends UniOperation, Op extends Omit<K, "kind">>(operation: Op): UniOperation => ({
+  kind: "operation",
   ...operation,
 });
 
@@ -272,7 +265,7 @@ export const UniTypeReferenceExtends = (ref: any, extension: Partial<UniTypeRefe
     ...extension,
   });
 
-export const UniTypeArrayExtends = (ref: any, extension: Partial<Omit<UniTypeArray, 'of'>> & { of: Partial<UniTypeArray['of']> }) =>
+export const UniTypeArrayExtends = (ref: any, extension: Partial<Omit<UniTypeArray, "of">> & { of: Partial<UniTypeArray["of"]> }) =>
   UniTypeArray({
     ...ref,
     ...extension,
@@ -283,14 +276,14 @@ export const UniTypeArrayExtends = (ref: any, extension: Partial<Omit<UniTypeArr
   });
 
 export const UniProvider = (fn: UniProviderFn): UniProvider => ({
-  kind: 'provider',
+  kind: "provider",
   fn,
 });
 
 export const IsUniType = (node: UniToken): node is UniType => {
-  return node.kind === 'type';
+  return node.kind === "type";
 };
 
 export const IsUniView = (node: UniToken): node is UniView => {
-  return node.kind === 'view';
+  return node.kind === "view";
 };

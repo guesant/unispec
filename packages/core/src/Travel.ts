@@ -1,4 +1,4 @@
-import { UniToken } from './types';
+import { UniToken } from "./types";
 
 export const TravelNode = (baseNode: UniToken) => {
   const nodesVisited = new Set<UniToken>();
@@ -9,7 +9,7 @@ export const TravelNode = (baseNode: UniToken) => {
     const node: UniToken = nodesToVisit.values().next().value;
 
     if (!nodesVisited.has(node)) {
-      if (node.kind === 'provider') {
+      if (node.kind === "provider") {
         const ctx = {
           Add(node: UniToken) {
             nodesToVisit.add(node);
