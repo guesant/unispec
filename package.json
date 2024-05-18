@@ -1,13 +1,19 @@
 {
   "name": "@unispec/source",
   "version": "0.0.0",
-  "scripts": {},
+  "scripts": {
+    "lint:check": "eslint -c eslint.config.mjs",
+    "lint:fix": "eslint -c eslint.config.mjs --fix"
+  },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@eslint/js": "^9.3.0",
     "@nx/js": "19.0.3",
     "@nx/workspace": "19.0.3",
-    "nx": "19.0.3"
+    "eslint": "^9.3.0",
+    "nx": "19.0.3",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.9.0"
   },
   "packageManager": "pnpm@9.0.1+sha256.46d50ee2afecb42b185ebbd662dc7bdd52ef5be56bf035bb615cab81a75345df"
 }
