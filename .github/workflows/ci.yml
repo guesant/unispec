@@ -10,6 +10,7 @@ on:
 permissions:
   actions: read
   contents: write
+  id-token: write
 
 jobs:
   quality:
@@ -115,4 +116,13 @@ jobs:
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
         uses: nrwl/nx-tag-successful-ci-run@v1
 
-      - run: npx nx release --specifier preminor
+      - name: Print Environment Info
+        run: npx nx report
+        shell: bash
+
+      - run: npx nx release --specifier preminor --skip-publish
+
+      - run: npx nx release publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
