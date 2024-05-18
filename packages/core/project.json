@@ -14,28 +14,26 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/packages/core",
-        "main": "packages/core/src/index.ts",
-        "tsConfig": "packages/core/tsconfig.lib.json",
-        "assets": [],
-        "project": "packages/core/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
+        "cwd": "{projectRoot}",
+        "command": "pnpm run build"
       }
     },
-    "nx-release-publish": {
+
+    "publish": {
+      "executor": "nx:run-commands",
       "options": {
-        "packageRoot": "dist/{projectRoot}"
+        "cwd": "{projectRoot}",
+        "command": "pnpm publish"
       }
     },
+
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "executor": "nx:run-commands",
       "options": {
-        "reportsDirectory": "../../coverage/packages/core"
+        "cwd": "{projectRoot}",
+        "command": "pnpm run test"
       }
     }
   }

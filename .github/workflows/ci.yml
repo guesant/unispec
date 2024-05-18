@@ -9,7 +9,7 @@ on:
 
 permissions:
   actions: read
-  contents: read
+  contents: write
 
 jobs:
   main:
@@ -42,7 +42,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: "development"
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
-      - run: npx nx affected --base development -t lint test build
+      - run: npx nx affected --base development -t format:check lint:check test
+
+      - name: Tag branch if all jobs succeed
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
+        uses: nrwl/nx-tag-successful-ci-run@v1

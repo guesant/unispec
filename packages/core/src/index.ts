@@ -1,2 +1,2 @@
-export * from "./legacy";
-export * from "./lib/core";
+export * from "./Travel";
+export * from "./types";
