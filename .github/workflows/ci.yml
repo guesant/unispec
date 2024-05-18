@@ -18,7 +18,7 @@ env:
   PRIMARY_NODE_VERSION: 20
 
 jobs:
-  tag-prerelease:
+  tag:
     runs-on: ubuntu-latest
 
     permissions:
@@ -41,8 +41,8 @@ jobs:
       - name: Tag branch if all jobs succeed
         uses: nrwl/nx-tag-successful-ci-run@v1
 
-      - run: git config --global user.email "release-bot<>"
-      - run: git config --global user.name "guesant/unispec release bot"
+      - run: git config user.name 'github-actions[bot]'
+      - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
 
       - run: npx nx release --specifier minor --skip-publish
         if: ${{  github.ref == 'refs/heads/main' }}
