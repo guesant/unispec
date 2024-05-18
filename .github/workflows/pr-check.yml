@@ -15,6 +15,7 @@ on:
 permissions:
   actions: read
   contents: read
+  pull-requests: write
 
 env:
   PRIMARY_NODE_VERSION: 20
@@ -55,5 +56,5 @@ jobs:
       - name: "Report Coverage"
         # Set if: always() to also generate the report if tests are failing
         # Only works if you set `reportOnFailure: true` in your vite config as specified above
-        if: always()
+        if: always() && env.PRIMARY_NODE_VERSION == matrix.node-version
         uses: davelosert/vitest-coverage-report-action@v2
