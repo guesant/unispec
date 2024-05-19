@@ -23,6 +23,7 @@ import {
   type IUniNode,
   type IUniNodeBase,
   type IUniNodeDeclarator,
+  type IUniNodeObjectLike,
   type IUniNodeOperation,
   type IUniNodeProvider,
   type IUniNodeProviderContext,
@@ -38,6 +39,7 @@ import {
   type IUniNodeTypeReference,
   type IUniNodeTypeString,
   type IUniNodeView,
+  type IsUniNodeObjectLike,
 } from "./Nodes";
 
 export {
@@ -55,6 +57,7 @@ export {
   IUniNodeTypeInteger as IInteger,
   IUniNode as INode,
   IUniNodeTypeObject as IObject,
+  IUniNodeObjectLike as IObjectLike,
   IUniNodeOperation as IOperation,
   IUniNodeProvider as IProvider,
   IUniNodeProviderContext as IProviderContext,
@@ -67,6 +70,7 @@ export {
   UniNodeTypeInteger as Integer,
   IsUniNodeType as IsNodeType,
   IsUniNodeView as IsNodeView,
+  IsUniNodeObjectLike as IsObjectLike,
   UniNodeTypeObject as Object,
   UniNodeTypeObjectEntity as ObjectEntity,
   IUniNodeTypeObjectEntityOptions as ObjectEntityOptions,

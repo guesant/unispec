@@ -25,8 +25,6 @@ export const UniNodeView = <Target extends IUniNodeView, Options extends Partial
   } as Output;
 };
 
-export const IsUniNodeView = (node: IUniNode): node is IUniNodeView => {
-  return node.kind === "view";
-};
+export const IsUniNodeView = (node: IUniNode | any): node is IUniNodeView => node.kind === "view";
 
 // ===========================================================

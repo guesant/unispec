@@ -1,3 +1,5 @@
+import { IsNodeType, IsNodeView } from "../../U";
+import { IUniNodeBase } from "../Kinds";
 import { IUniNodeType, IUniNodeTypeObject, UniNodeTypeInteger, UniNodeTypeObject, UniNodeTypeString } from "../Kinds/Type";
 import { IUniNodeView } from "../Kinds/View";
 
@@ -81,4 +83,22 @@ export const UniNodeTypeObjectMerge = (objects: IUniNodeTypeObject[]): IUniNodeT
   }
 
   return obj;
+};
+
+export type IUniNodeObjectLike = IUniNodeBase & Pick<IUniNodeTypeObject, "properties">;
+
+export const IsUniNodeObjectLike = (obj: IUniNodeTypeObject | IUniNodeView | IUniNodeBase): obj is IUniNodeObjectLike => {
+  if (IsNodeView(obj)) {
+    return true;
+  }
+
+  if (IsNodeType(obj)) {
+    return obj.type === "object";
+  }
+
+  if (Object.hasOwn(obj, "properties")) {
+    return true;
+  }
+
+  return false;
 };

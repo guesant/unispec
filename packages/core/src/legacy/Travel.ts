@@ -1,4 +1,4 @@
-import { IUniNode } from "../Nodes";
+import { IUniNode, IsUniNodeObjectLike } from "../Nodes";
 
 export const TravelNode = (baseNode: IUniNode) => {
   const nodesVisited = new Set<IUniNode>();
@@ -18,6 +18,12 @@ export const TravelNode = (baseNode: IUniNode) => {
         };
 
         node.fn(ctx);
+      }
+
+      if (IsUniNodeObjectLike(node)) {
+        for (const [, propertyNode] of Object.entries(node.properties)) {
+          nodesToVisit.add(propertyNode);
+        }
       }
 
       nodesVisited.add(node);
