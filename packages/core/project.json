@@ -22,8 +22,9 @@
         "tsConfig": "{projectRoot}/tsconfig.json",
         "assets": [],
         "project": "{projectRoot}/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
+        "compiler": "tsc",
+        "format": ["cjs", "esm"],
+        "generateExportsField": true
       }
     },
 
