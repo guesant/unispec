@@ -23,8 +23,7 @@
         "assets": [],
         "project": "{projectRoot}/package.json",
         "compiler": "tsc",
-        "format": ["cjs", "esm"],
-        "generateExportsField": true
+        "format": ["cjs", "esm"]
       }
     },
 
