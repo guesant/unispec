@@ -1,3 +1,14 @@
+## 0.3.0 (2024-05-19)
+
+
+### 🚀 Features
+
+- **core/Generators:** TypeScriptGenerator ([0063dd8](https://github.com/guesant/unispec/commit/0063dd8))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.2.0 (2024-05-19)
 
 
