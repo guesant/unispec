@@ -10,7 +10,6 @@
     "url": "https://github.com/guesant/unispec.git"
   },
   "scripts": {
-    "build": "unbuild",
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
     "test": "vitest run",
