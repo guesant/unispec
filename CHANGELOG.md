@@ -1,3 +1,14 @@
+## 0.2.0-10 (2024-05-19)
+
+
+### 🚀 Features
+
+- **core/Nodes:** init nodes ([c03b516](https://github.com/guesant/unispec/commit/c03b516))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.2.0-9 (2024-05-18)
 
 This was a version bump only, there were no code changes.
