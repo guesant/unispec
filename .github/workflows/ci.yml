@@ -47,22 +47,14 @@ jobs:
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - run: npx nx release --skip-publish
-
-      - run: npx nx release --specifier ${SPECIFIER} --skip-publish
-        if: ${{ false && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development') }}
-        env:
-          SPECIFIER: ${{ github.ref == 'refs/heads/development' && 'prerelease' || 'release' }}
-
-      - run: git push --follow-tags
-
       - name: Prepare NPM token
         uses: ./.github/actions/prepare-npm-token
         with:
           npm-token: ${{ secrets.NPM_ACCESS_TOKEN }}
 
-      - run: npx nx release publish --tag ${TAG} --verbose
+      - run: npx nx release --yes
         env:
-          TAG: ${{ github.ref == 'refs/heads/development' && 'next' || 'latest' }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - run: git push --follow-tags
