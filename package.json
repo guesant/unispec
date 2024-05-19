@@ -1,6 +1,6 @@
 {
   "name": "@unispec/source",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "format:check": "prettier --end-of-line lf --check \"packages/*/{src,test}/**/*.ts\"",
     "format:write": "prettier --end-of-line lf --write \"packages/*/{src,test}/**/*.ts\"",
