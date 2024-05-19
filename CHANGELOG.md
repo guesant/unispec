@@ -1,3 +1,14 @@
+## 0.2.0-12 (2024-05-19)
+
+
+### 🩹 Fixes
+
+- **core/Utils/Object:** do not import U alias ([5387cd6](https://github.com/guesant/unispec/commit/5387cd6))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.2.0-11 (2024-05-19)
 
 
