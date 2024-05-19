@@ -1,3 +1,15 @@
+## 0.2.0-11 (2024-05-19)
+
+
+### 🚀 Features
+
+- **core:** U namespace ([2fe4646](https://github.com/guesant/unispec/commit/2fe4646))
+- **core:** IsUniNodeObjectLike ([b725d1d](https://github.com/guesant/unispec/commit/b725d1d))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.2.0-10 (2024-05-19)
 
 
