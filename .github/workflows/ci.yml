@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -46,11 +47,12 @@ jobs:
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      # - run: npx nx release --specifier ${SPECIFIER} --skip-publish
       - run: npx nx release --skip-publish
-        if: ${{ github.ref == 'refs/heads/development' }}
-        # env:
-        #   SPECIFIER: ${{ github.ref == 'refs/heads/development' && 'prerelease' || 'release' }}
+
+      - run: npx nx release --specifier ${SPECIFIER} --skip-publish
+        if: ${{ false && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development') }}
+        env:
+          SPECIFIER: ${{ github.ref == 'refs/heads/development' && 'prerelease' || 'release' }}
 
       - run: git push --follow-tags
 
