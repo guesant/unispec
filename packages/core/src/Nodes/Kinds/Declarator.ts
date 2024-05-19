@@ -1,6 +1,6 @@
-import { IOperation } from "../Operation/Operation";
+import { IUniNodeOperation } from "./Operation";
 
-export type IDeclarator = {
+export type IUniNodeDeclarator = {
   kind: "declarator";
 
   entity: string;
@@ -22,12 +22,12 @@ export type IDeclarator = {
     };
 
     extra?: {
-      [key: string]: IOperation;
+      [key: string]: IUniNodeOperation;
     };
   };
 };
 
-export const Declarator = <Target extends IDeclarator, Options extends Partial<Target>, Output extends Target & Options>(options: Partial<Options> = {}) => {
+export const UniNodeDeclarator = <Target extends IUniNodeDeclarator, Options extends Partial<Target>, Output extends Target & Options>(options: Partial<Options> = {}) => {
   return {
     kind: "declarator",
     entity: "UnknownEntity",
