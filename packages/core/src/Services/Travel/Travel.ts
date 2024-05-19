@@ -1,4 +1,4 @@
-import { IUniNode, IsUniNodeObjectLike } from "../Nodes";
+import { IUniNode, IUniNodeProviderContext, IsUniNodeObjectLike } from "../../Nodes";
 
 export const TravelNode = (baseNode: IUniNode) => {
   const nodesVisited = new Set<IUniNode>();
@@ -10,7 +10,7 @@ export const TravelNode = (baseNode: IUniNode) => {
 
     if (!nodesVisited.has(node)) {
       if (node.kind === "provider") {
-        const ctx = {
+        const ctx: IUniNodeProviderContext = {
           Add(node: IUniNode) {
             nodesToVisit.add(node);
             return ctx;
