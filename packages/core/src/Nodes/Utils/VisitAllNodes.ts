@@ -1,9 +1,11 @@
-import { IUniNode, IUniNodeProviderContext, IsUniNodeObjectLike } from "../../Nodes";
+import { IUniNodeProviderContext } from "../Kinds";
+import { IUniNode } from "../Node";
+import { IsUniNodeObjectLike } from "./TypeObjectUtils";
 
-export const TravelNode = (baseNode: IUniNode) => {
+export const VisitAllNodes = function* (entrypoint: IUniNode | Iterable<IUniNode>) {
   const nodesVisited = new Set<IUniNode>();
 
-  const nodesToVisit = new Set<IUniNode>([baseNode]);
+  const nodesToVisit = new Set<IUniNode>(Symbol.iterator in entrypoint ? entrypoint : [entrypoint]);
 
   while (nodesToVisit.size > 0) {
     const node: IUniNode = nodesToVisit.values().next().value;
@@ -32,5 +34,5 @@ export const TravelNode = (baseNode: IUniNode) => {
     nodesToVisit.delete(node);
   }
 
-  return { nodesVisited: Array.from(nodesVisited) };
+  yield* nodesVisited;
 };
