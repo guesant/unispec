@@ -12,7 +12,7 @@
   "private": true,
   "devDependencies": {
     "@nx/js": "^19.0.4",
-    "@nx/rollup": "^19.0.4",
+    "@nx/rollup": "^19.0.5",
     "@nx/workspace": "19.0.4",
     "@vitest/coverage-v8": "^1.6.0",
     "husky": "^9.0.11",
