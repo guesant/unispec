@@ -1,10 +1,20 @@
 # unispec
 
-> Specify once, reuse it everywhere.
-
 [![CI](https://github.com/guesant/unispec/actions/workflows/ci.yml/badge.svg)](https://github.com/guesant/unispec/actions/workflows/ci.yml)
 
+> Specify once, reuse it everywhere.
+
 The objective of **Uni**fied **Spec**ification is to provide the simplest way to declare, deploy and integrate every action of your project and make it easier to work with OpenAPI/Swagger, GraphQl, NestJS, C#/DotNet and the maximum platforms available.
+
+## Ecosystem
+
+| Project             | Badges                                                                                                                                                                                                                                                                                                                                           |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `@unispec/core`     | [![Static Badge](https://img.shields.io/badge/Source_Code-GitHub-blue?style=flat&logo=git)](https://github.com/guesant/unispec/tree/main/packages/core) [![NPM Version](https://img.shields.io/npm/v/%40unispec%2Fcore?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40unispec%2Fcore)](https://www.npmjs.com/package/@unispec/core)             |
+| `@unispec/compiler` | [![Static Badge](https://img.shields.io/badge/Source_Code-GitHub-blue?style=flat&logo=git)](https://github.com/guesant/unispec/tree/main/packages/core) [![NPM Version](https://img.shields.io/npm/v/%40unispec%2Fcompiler?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40unispec%2Fcompiler)](https://www.npmjs.com/package/@unispec/compiler) |
+
+
+
 
 Unispec not the first and not the last project that tries to do this purpose, and probably doesn't fit your needs.
 
@@ -26,14 +36,6 @@ Before we talk about this project, thanks to the following comunities arround th
 - Corvus.JsonSchema - <https://github.com/corvus-dotnet/Corvus.JsonSchema>
 - JsonEverything - <https://github.com/gregsdennis/json-everything>
 - typespec - <https://github.com/microsoft/typespec>
-
-
-## Ecosystem
-
-| Project             | Badges                                                                                                                                                                                                                                                                                                                                           |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `@unispec/core`     | [![Static Badge](https://img.shields.io/badge/Source_Code-GitHub-blue?style=flat&logo=git)](https://github.com/guesant/unispec/tree/main/packages/core) [![NPM Version](https://img.shields.io/npm/v/%40unispec%2Fcore?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40unispec%2Fcore)](https://www.npmjs.com/package/@unispec/core)             |
-| `@unispec/compiler` | [![Static Badge](https://img.shields.io/badge/Source_Code-GitHub-blue?style=flat&logo=git)](https://github.com/guesant/unispec/tree/main/packages/core) [![NPM Version](https://img.shields.io/npm/v/%40unispec%2Fcompiler?link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40unispec%2Fcompiler)](https://www.npmjs.com/package/@unispec/compiler) |
 
 ## @unispec/core
 
