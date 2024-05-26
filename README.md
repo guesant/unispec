@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/guesant/unispec/actions/workflows/ci.yml/badge.svg)](https://github.com/guesant/unispec/actions/workflows/ci.yml)
 
-The objective of *Uni*fied *Spec*ification is to provide the simplest way to declare every action of your project and make it easier to integrate with OpenAPI/Swagger, GraphQl, NestJS, C#/DotNet and the maximum platforms available.
+The objective of *Uni*fied *Spec*ification is to provide the simplest way to declare, deploy and integrate every action of your project and make it easier to work with OpenAPI/Swagger, GraphQl, NestJS, C#/DotNet and the maximum platforms available.
 
 ## @unispec/core
 
