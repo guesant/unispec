@@ -90,6 +90,9 @@ importers:
 
   packages/driver-nestjs:
     dependencies:
+      '@unispec/compiler':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@unispec/core':
         specifier: 0.4.0
         version: 0.4.0
@@ -1571,6 +1574,9 @@ packages:
   '@typescript-eslint/visitor-keys@8.0.0-alpha.16':
     resolution: {integrity: sha512-vSmfkS6FVBW1lhuf700XjcbQXtoXg3Aqbi+axsFYPNr/6oEkpLRonbKMxBzj4cGTnL/3sJl+gDVQSS7fVHWz3A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@unispec/compiler@0.1.0':
+    resolution: {integrity: sha512-BMVIw2Ef2+iDFIS4eSjkflNwOIzgQq+P+gp9eY3wuqNqCISjpWw8D4KiIDLBcwnkBbzVqZGkImAUgMB+dNGokw==}
 
   '@unispec/core@0.4.0':
     resolution: {integrity: sha512-YF8mfFz0UkzfpnbzD7oTnp3fBXwsTYDo7HBbAvE2dpmeBa5ej1H1wFZK1lQIwiGrSVCPrIjxsMiU92w53gjRoQ==}
@@ -5279,6 +5285,10 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.0.0-alpha.16
       eslint-visitor-keys: 3.4.3
+
+  '@unispec/compiler@0.1.0':
+    dependencies:
+      '@unispec/core': 0.4.0
 
   '@unispec/core@0.4.0': {}
 
