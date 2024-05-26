@@ -1,10 +1,10 @@
 # unispec
 
-> Declare once, reuse it everywhere.
-
-The objective of Unified Specification is to provide the simplest way to declare every action of your project and make it easier to integrate with OPEN API/Swagger, GraphQl, NestJS, C#/DotNet and the maximum platforms available.
+> Specify once, reuse it everywhere.
 
 [![CI](https://github.com/guesant/unispec/actions/workflows/ci.yml/badge.svg)](https://github.com/guesant/unispec/actions/workflows/ci.yml)
+
+The objective of *Uni*fied *Spec*ification is to provide the simplest way to declare every action of your project and make it easier to integrate with OpenAPI/Swagger, GraphQl, NestJS, C#/DotNet and the maximum platforms available.
 
 ## @unispec/core
 
