@@ -16,7 +16,7 @@ import { CompileClass } from "../Class";
 export class CompileNode {
   constructor(
     readonly repository: UniRepository,
-    readonly compileClass: CompileClass = new CompileClass(),
+    readonly classCompiler: CompileClass = new CompileClass(),
   ) {}
 
   HandleTypeString(node: IUniNodeTypeString): unknown {
