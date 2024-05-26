@@ -7,15 +7,18 @@ export type IUniNodeDeclarator = {
 
   operations?: {
     crud?: {
-      findById?: false | { input: string; output: string };
+      findById?: false | {
+        input: string; output: string
+      };
+
       deleteById?: false | string;
 
       list?:
         | false
         | {
-            view: string;
-            filters?: [string, string[]][];
-          };
+        view: string;
+        filters?: [string, string[]][];
+      };
 
       create?: false | string;
       updateById?: false | string;

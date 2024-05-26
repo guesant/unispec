@@ -8,6 +8,7 @@ export type IUniNodeOperation = {
 
   input?: {
     body?: string | IUniNodeType;
+    params?: Record<any, IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
     queries?: Record<any, IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
   };
 
