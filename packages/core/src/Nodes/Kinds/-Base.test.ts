@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { IUniNodeBase, UniNodeBase } from "./-Base";
+import { IUniNodeBase, IUniNodeTypeBase, UniNodeBase, UniNodeTypeBase } from "./-Base";
 
 const fixtures = {
   UniNodeTypeBase: {
