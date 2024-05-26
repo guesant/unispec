@@ -52,7 +52,7 @@ jobs:
         with:
           npm-token: ${{ secrets.NPM_ACCESS_TOKEN }}
 
-      - run: npx nx release --yes
+      - run: npx nx release --yes --git-commit
         env:
           NPM_CONFIG_PROVENANCE: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
