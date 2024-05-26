@@ -1,3 +1,15 @@
+## 0.3.0 (2024-05-26)
+
+
+### 🚀 Features
+
+- **compiler/CompileClass:** repository
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.2.0 (2024-05-26)
 
 
