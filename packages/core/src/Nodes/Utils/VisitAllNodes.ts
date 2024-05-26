@@ -2,10 +2,12 @@ import { IUniNodeProviderContext } from "../Kinds";
 import { IUniNode } from "../Node";
 import { IsUniNodeObjectLike } from "./TypeObjectUtils";
 
+const castIterable = <T extends object>(v: T | Iterable<T>) => (Symbol.iterator in v ? v : [v]);
+
 export const VisitAllNodes = function* (entrypoint: IUniNode | Iterable<IUniNode>) {
   const nodesVisited = new Set<IUniNode>();
 
-  const nodesToVisit = new Set<IUniNode>(Symbol.iterator in entrypoint ? entrypoint : [entrypoint]);
+  const nodesToVisit = new Set<IUniNode>(castIterable(entrypoint));
 
   while (nodesToVisit.size > 0) {
     const node: IUniNode = nodesToVisit.values().next().value;
