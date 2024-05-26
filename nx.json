@@ -31,7 +31,9 @@
       "commitMessage": "chore(release): {version} [skip ci]"
     },
     "changelog": {
-      "automaticFromRef": true
+      "createRelease": "github",
+      "automaticFromRef": true,
+      "projectChangelogs": true
     }
   },
   "plugins": [],
