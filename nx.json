@@ -20,7 +20,8 @@
     }
   },
   "release": {
-    "projects": ["*", "!private"],
+    "projectsRelationship": "independent",
+    "projects": ["*", "!@unispec/source"],
     "version": {
       "conventionalCommits": true
     },
