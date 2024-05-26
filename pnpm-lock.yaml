@@ -42,8 +42,8 @@ importers:
   packages/compiler:
     dependencies:
       '@unispec/core':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.3.0
@@ -1415,8 +1415,8 @@ packages:
     resolution: {integrity: sha512-vSmfkS6FVBW1lhuf700XjcbQXtoXg3Aqbi+axsFYPNr/6oEkpLRonbKMxBzj4cGTnL/3sJl+gDVQSS7fVHWz3A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@unispec/core@0.3.0':
-    resolution: {integrity: sha512-dS+SZiXw0Pnv09AZ3qgIfgYo4Pptl5oi+b79YP4SLugEb3ln5qNxrxTKrD8JBSDx62t/DMOgflKR1Z+lpRe4GQ==}
+  '@unispec/core@0.4.0':
+    resolution: {integrity: sha512-YF8mfFz0UkzfpnbzD7oTnp3fBXwsTYDo7HBbAvE2dpmeBa5ej1H1wFZK1lQIwiGrSVCPrIjxsMiU92w53gjRoQ==}
 
   '@vitest/coverage-v8@1.6.0':
     resolution: {integrity: sha512-KvapcbMY/8GYIG0rlwwOKCVNRc0OL20rrhFkg/CHNzncV03TE2XWvO5w9uZYoxNiMEBacAJt3unSOiZ7svePew==}
@@ -4861,7 +4861,7 @@ snapshots:
       '@typescript-eslint/types': 8.0.0-alpha.16
       eslint-visitor-keys: 3.4.3
 
-  '@unispec/core@0.3.0': {}
+  '@unispec/core@0.4.0': {}
 
   '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.12.12))':
     dependencies:
