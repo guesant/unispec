@@ -26,4 +26,8 @@ export class UniRepository {
 
     return this;
   }
+
+  GetRealTarget(cursor: IUniNode | string): IUniNode | null {
+    throw new Error("Not implemented");
+  }
 }

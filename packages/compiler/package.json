@@ -25,6 +25,8 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
-    "@unispec/core": "0.4.0"
+    "@unispec/core": "0.4.0",
+    "change-case": "^5.4.4",
+    "tslib": "^2.6.2"
   }
 }
