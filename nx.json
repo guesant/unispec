@@ -34,5 +34,6 @@
       "automaticFromRef": true
     }
   },
-  "plugins": []
+  "plugins": [],
+  "packageManager": "pnpm"
 }
