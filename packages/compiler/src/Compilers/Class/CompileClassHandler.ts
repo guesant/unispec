@@ -23,7 +23,7 @@ export abstract class CompileClassHandler implements ICompileClassHandler {
     return null;
   }
 
-  compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): null | any[];
+  compilePropertyDecorators(context: ICompileClassHandlerPropertyContext, parent?: string | null): null | any[];
 
   compilePropertyDecorators(): null | any[] {
     return null;

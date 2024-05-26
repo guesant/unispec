@@ -1,17 +1,22 @@
 import { IsUniNodeObjectLike, IsUniNodeView, type IUniNode } from "@unispec/core";
 import { __decorate, __metadata } from "tslib";
-import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "./CompileClassHandler";
+import { UniRepository } from "../../Repository";
+import { CompileClassHandler, type ICompileClassHandlerPropertyContext } from "./CompileClassHandler";
 
 export interface ICompileClassContext {
   node: IUniNode;
-  dtoClassesMap: Map<string, any>;
+
+  host: CompileClass;
+
   meta?: Record<string, any>;
+  dtoClassesMap: Map<string, any>;
 }
 
 export class CompileClass {
   #handlers = new Set<CompileClassHandler>();
 
   constructor(
+    public repository: UniRepository = new UniRepository(),
     handlers?: Iterable<CompileClassHandler>,
     public dtoClassesMap = new Map<string, object>(),
   ) {
@@ -41,10 +46,10 @@ export class CompileClass {
   }
 
   CompileCtor(node: IUniNode, parent?: string | null) {
-    function CompiledClassCtor() {}
-
-    const context = <ICompileClassContext>{
+    const context = {
       node,
+      host: this,
+      repository: this.repository,
       dtoClassesMap: this.dtoClassesMap,
     };
 
@@ -58,9 +63,11 @@ export class CompileClass {
       return context.dtoClassesMap.get(dtoClassName);
     }
 
+    function CompiledClassCtor() {}
+
     const classDecorators = [];
 
-    const handleContext = Object.freeze(<ICompileClassHandlerCtorContext>{
+    const handleContext = Object.freeze({
       ...context,
       className: dtoClassName,
     });
@@ -79,7 +86,7 @@ export class CompileClass {
       for (const propertyKey in node.properties) {
         const propertyNode = node.properties[propertyKey];
 
-        const propertyContext = Object.freeze(<ICompileClassHandlerPropertyContext>{
+        const propertyContext = Object.freeze({
           ...context,
           parent,
           propertyKey,
@@ -87,12 +94,18 @@ export class CompileClass {
           className: dtoClassName,
         });
 
-        const compiledProperty = this.CompileProperty(propertyContext);
+        const compiledProperty = this.CompileProperty(propertyContext, parent);
 
         if (compiledProperty !== null) {
           const name = compiledProperty.name;
 
-          __decorate([...compiledProperty.propertyDecorators, __metadata("design:type", compiledProperty.designType)], CompiledClassCtor.prototype, name, void 0);
+          const propertyDecorators = [
+            //
+            ...compiledProperty.propertyDecorators,
+            __metadata("design:type", compiledProperty.designType),
+          ];
+
+          __decorate(propertyDecorators, CompiledClassCtor.prototype, name, void 0);
         }
       }
     }
@@ -104,15 +117,13 @@ export class CompileClass {
     return decoratedClass;
   }
 
-  CompileProperty(context: ICompileClassHandlerPropertyContext) {
+  CompileProperty(context: ICompileClassHandlerPropertyContext, parent?: string | null) {
     const propertyDecorators = [];
 
-    const propertyContext = Object.freeze(<ICompileClassHandlerPropertyContext>{
-      ...context,
-    });
+    const propertyContext = Object.freeze({ ...context });
 
     for (const handle of this.#handlers) {
-      const handlePropertyDecorators = handle.compilePropertyDecorators(propertyContext);
+      const handlePropertyDecorators = handle.compilePropertyDecorators(propertyContext, parent ? `${parent}.${propertyContext.propertyKey}` : parent);
 
       if (handlePropertyDecorators) {
         for (const handlerClassDecorator of handlePropertyDecorators) {
