@@ -20,7 +20,6 @@
     }
   },
   "release": {
-    "projectsRelationship": "independent",
     "projects": ["*", "!private"],
     "version": {
       "conventionalCommits": true
