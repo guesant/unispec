@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/core",
+  "name": "@unispec/compiler",
   "version": "0.0.0",
   "sideEffects": false,
   "publishConfig": {
@@ -23,5 +23,8 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "8.0.0-alpha.16",
     "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@unispec/core": "link:../core"
   }
 }
