@@ -1,0 +1,36 @@
+{
+  "name": "@unispec/driver-nestjs",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guesant/unispec.git"
+  },
+  "scripts": {
+    "lint:check": "eslint -c eslint.config.mjs",
+    "lint:fix": "eslint -c eslint.config.mjs --fix",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "eslint": "~9.3.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "8.0.0-alpha.16",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@unispec/core": "0.4.0",
+    "tslib": "^2.6.2"
+  },
+  "optionalDependencies": {
+    "@nestjs/graphql": "^12.1.1",
+    "@nestjs/swagger": "^7.3.1",
+    "change-case": "^5.4.4"
+  }
+}
