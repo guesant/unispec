@@ -1,5 +1,4 @@
-import * as U from "@unispec/core";
-import { IUniNode } from "@unispec/core";
+import { IUniNode, U } from "@unispec/core";
 
 export type IBuildTypeOptions = {
   resolveTokenName: (node: IUniNode) => string;

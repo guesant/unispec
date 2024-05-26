@@ -1,5 +1,4 @@
-import * as U from "@unispec/core";
-import { IUniNode } from "@unispec/core";
+import { IUniNode, U } from "@unispec/core";
 import { BuildType, IBuildTypeOptions } from "../BuildType";
 
 export type IBuildAliasedTypeOptions = {
