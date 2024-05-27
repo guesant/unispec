@@ -5,6 +5,7 @@
     "strict": true,
     "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": false,
+    "verbatimModuleSyntax": true,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": false
   }
