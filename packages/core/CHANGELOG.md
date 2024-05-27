@@ -1,3 +1,21 @@
+## 0.5.0 (2024-05-27)
+
+
+### 🚀 Features
+
+- **core:** build with vite
+
+
+### 🧱 Updated Dependencies
+
+- Updated driver-nestjs to 0.4.0
+- Updated compiler to 0.4.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.4.0 (2024-05-26)
 
 ### 🚀 Features

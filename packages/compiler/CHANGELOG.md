@@ -1,3 +1,15 @@
+## 0.4.0 (2024-05-27)
+
+
+### 🚀 Features
+
+- **compiler:** build with vite
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.3.0 (2024-05-26)
 
 
