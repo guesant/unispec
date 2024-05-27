@@ -1,3 +1,21 @@
+## 0.6.0 (2024-05-27)
+
+
+### 🚀 Features
+
+- **core:** add license and keywords do package
+
+
+### 🧱 Updated Dependencies
+
+- Updated driver-nestjs to 0.5.0
+- Updated compiler to 0.5.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.5.0 (2024-05-27)
 
 

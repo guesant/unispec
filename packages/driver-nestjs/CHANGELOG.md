@@ -1,3 +1,15 @@
+## 0.5.0 (2024-05-27)
+
+
+### 🚀 Features
+
+- **driver-nestjs:** add license and keywords do package
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.4.0 (2024-05-27)
 
 
