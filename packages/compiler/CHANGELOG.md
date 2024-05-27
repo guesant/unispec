@@ -1,3 +1,15 @@
+## 0.6.0 (2024-05-27)
+
+
+### 🚀 Features
+
+- **compiler:** JsonSchemaGenerator
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.5.0 (2024-05-27)
 
 
