@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/guesant/unispec.git"
   },
+  "license": "LGPL-2.1 license",
+  "keywords": [
+    "unispec"
+  ],
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
