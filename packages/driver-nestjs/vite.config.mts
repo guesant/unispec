@@ -6,9 +6,11 @@ import dts from "vite-plugin-dts";
 import { externalizeDeps } from "vite-plugin-externalize-deps";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
+const pkg = "driver-nestjs";
+
 export default defineConfig({
   root: __dirname,
-  cacheDir: "../../node_modules/.vite/packages/driver-nestjs",
+  cacheDir: `../../node_modules/.vite/packages/${pkg}`,
 
   plugins: [
     nxViteTsPaths(),
@@ -29,7 +31,7 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    outDir: "../../dist/packages/driver-nestjs",
+    outDir: `../../dist/packages/${pkg}`,
     emptyOutDir: true,
     minify: false,
     reportCompressedSize: true,
@@ -39,7 +41,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: "src/index.ts",
-      name: "driver-nestjs",
+      name: `${pkg}`,
       fileName: "index",
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -51,14 +53,14 @@ export default defineConfig({
   test: {
     globals: true,
     cache: {
-      dir: "../../node_modules/.vitest/packages/driver-nestjs",
+      dir: `../../node_modules/.vitest/packages/${pkg}`,
     },
     environment: "node",
     include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
 
     reporters: ["default"],
     coverage: {
-      reportsDirectory: "../../coverage/packages/driver-nestjs",
+      reportsDirectory: `../../coverage/packages/${pkg}`,
       provider: "v8",
     },
   },
