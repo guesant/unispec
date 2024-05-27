@@ -9,7 +9,9 @@
     }
   },
   "namedInputs": {
-    "noMarkdown": ["!{projectRoot}/**/*.md"]
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "noMarkdown": ["!{projectRoot}/**/*.md"],
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "targetDefaults": {
     "build": {
