@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "rootDir": ".",
-    "baseUrl": "./src"
+    "noImplicitOverride": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "verbatimModuleSyntax": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false
   }
 }
