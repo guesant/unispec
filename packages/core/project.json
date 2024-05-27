@@ -14,19 +14,21 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
+      "executor": "@nx/vite:build",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/{projectRoot}",
-        "main": "{projectRoot}/src/index.ts",
-        "tsConfig": "{projectRoot}/tsconfig.json",
-        "assets": [],
-        "project": "{projectRoot}/package.json",
-        "compiler": "tsc",
-        "format": ["cjs", "esm"]
+        "outputPath": "dist/packages/core"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
       }
     },
-
     "test": {
       "executor": "nx:run-commands",
       "options": {
@@ -34,7 +36,6 @@
         "command": "pnpm run test"
       }
     },
-
     "nx-release-publish": {
       "options": {
         "packageRoot": "dist/{projectRoot}"

@@ -11,8 +11,6 @@
   },
   "private": true,
   "devDependencies": {
-    "@nx/js": "^19.1.0",
-    "@nx/rollup": "^19.1.0",
     "@nx/vite": "19.1.0",
     "@nx/web": "19.1.0",
     "@nx/workspace": "19.1.0",
