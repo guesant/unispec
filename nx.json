@@ -17,6 +17,15 @@
     },
     "dev": {
       "dependsOn": ["^build"]
+    },
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["default", "^default"]
+    },
+    "@nx/vite:build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"]
     }
   },
   "release": {
@@ -39,6 +48,17 @@
       "projectChangelogs": true
     }
   },
-  "plugins": [],
+  "plugins": [
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "vite:test",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ],
   "packageManager": "pnpm"
 }
