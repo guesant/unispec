@@ -1,6 +1,6 @@
-import { type SchemaObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
+import type { SchemaObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 import { CompileNode } from "@unispec/compiler";
-import { type IUniNode, type IUniNodeTypeArray, type IUniNodeTypeString } from "@unispec/core";
+import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeString } from "@unispec/core";
 
 export type ICompiledNodeSwaggerType =
   | SchemaObject
