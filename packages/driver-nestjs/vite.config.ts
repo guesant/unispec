@@ -4,6 +4,7 @@ import * as path from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import { externalizeDeps } from "vite-plugin-externalize-deps";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
   root: __dirname,
@@ -15,12 +16,15 @@ export default defineConfig({
     externalizeDeps({
       useFile: path.join(__dirname, "package.json"),
     }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "../../README.md",
+          dest: ".",
+        },
+      ],
+    }),
   ],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
 
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
@@ -41,9 +45,7 @@ export default defineConfig({
       // Don't forget to update your package.json as well.
       formats: ["es", "cjs"],
     },
-    rollupOptions: {
-      
-    },
+    rollupOptions: {},
   },
 
   test: {
