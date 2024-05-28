@@ -1,3 +1,15 @@
+## 0.8.0 (2024-05-28)
+
+
+### 🚀 Features
+
+- **compiler:** update to `@unispec/core@0.8.0`
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.7.0 (2024-05-28)
 
 
