@@ -1,5 +1,5 @@
 import { UniNodeTypeInteger, UniNodeTypeObject, UniNodeTypeString, type IUniNodeType, type IUniNodeTypeObject } from "../Kinds";
-import { type IUniNodeView } from "../Kinds/View";
+import type { IUniNodeView } from "../Kinds/View";
 
 export type IUniNodeTypeObjectEntityOptions = Partial<IUniNodeTypeObject> & {
   id?: "numeric" | "uuid" | false;

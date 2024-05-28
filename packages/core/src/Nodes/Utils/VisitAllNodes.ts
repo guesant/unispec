@@ -1,6 +1,6 @@
-import { IUniNodeProviderContext } from "../Kinds";
-import { IUniNode } from "../Node";
-import { IsUniNodeObjectLike } from "./TypeObjectUtils";
+import type { IUniNodeProviderContext} from "../Kinds";
+import { IsUniNodeObjectLike } from "../Kinds";
+import type { IUniNode } from "../Node";
 
 const castIterable = <T extends object>(v: T | Iterable<T>) => (Symbol.iterator in v ? v : [v]);
 
