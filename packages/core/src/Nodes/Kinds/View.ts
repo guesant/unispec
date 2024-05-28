@@ -1,27 +1,24 @@
 import type { IUniNode } from "../Node";
-import type { IUniNodeBase } from "./-Base";
-import type { IUniNodeType } from "./Type";
+import { UniNodeNull, type IUniNodeBase } from "./-Base";
 
 // ===========================================================
 
 export type IUniNodeView = IUniNodeBase & {
   kind: "view";
+  //
   name: string;
   description: string;
-  partialOf: string | null;
-  properties: Record<string, IUniNodeType>;
+  //
+  type: IUniNode;
 };
 
 export const UniNodeView = <Target extends IUniNodeView, Options extends Partial<Target>, Output extends Target & Options>(options?: Options) => {
   return {
     kind: "view",
     name: "UnnamedView",
-    description: "",
-    partialOf: null,
+    description: "Unnamed View",
+    type: UniNodeNull(),
     ...options,
-    properties: {
-      ...options?.properties,
-    },
   } as Output;
 };
 

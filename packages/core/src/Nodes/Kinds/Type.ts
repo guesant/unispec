@@ -68,12 +68,14 @@ export const UniNodeTypeReferenceExtends = (ref: any, extension: Partial<IUniNod
 
 export type IUniNodeTypeObject = IUniNodeTypeBase & {
   type: "object";
+  partialOf: string | null;
   properties: Record<string, IUniNodeType>;
 };
 
 export const UniNodeTypeObject = <Target extends IUniNodeTypeObject, Options extends Partial<IUniNodeTypeObject>, Output extends Target & Options>(options?: Options) => {
   return UniNodeTypeBase({
     type: "object",
+    partialOf: null,
     properties: {},
     ...options,
   }) as Output;
