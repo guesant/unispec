@@ -28,7 +28,7 @@
     "@vitest/coverage-v8": "^1.6.0",
     "eslint": "~9.3.0",
     "typescript": "^5.4.5",
-    "typescript-eslint": "8.0.0-alpha.16",
+    "typescript-eslint": "8.0.0-alpha.20",
     "vitest": "^1.6.0"
   },
   "dependencies": {
