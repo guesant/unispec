@@ -1,8 +1,7 @@
-import { IsUniNodeObjectLike, IsUniNodeView, type IUniNode } from "@unispec/core";
+import { IsUniNodeView, type IUniNode } from "@unispec/core";
 import { __decorate, __metadata } from "tslib";
 import { UniRepository } from "../../Repository";
-import type { CompileClassHandler} from "./CompileClassHandler";
-import type { ICompileClassHandlerPropertyContext } from "./CompileClassHandler";
+import type { CompileClassHandler, ICompileClassHandlerPropertyContext } from "./CompileClassHandler";
 
 export interface ICompileClassContext {
   node: IUniNode;
@@ -83,7 +82,7 @@ export class CompileClass {
       }
     }
 
-    if (IsUniNodeObjectLike(node)) {
+    if (node.kind === "type" && node.type === "object") {
       for (const propertyKey in node.properties) {
         const propertyNode = node.properties[propertyKey];
 

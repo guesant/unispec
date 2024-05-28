@@ -2,7 +2,6 @@ import {
   IsUniNodeType,
   IsUniNodeView,
   type IUniNode,
-  type IUniNodeObjectLike,
   type IUniNodeTypeArray,
   type IUniNodeTypeBoolean,
   type IUniNodeTypeInteger,
@@ -58,7 +57,7 @@ export class JsonSchemaCompiler extends CompileNode {
     });
   }
 
-  HandleTypeObjectLike(node: IUniNodeObjectLike) {
+  HandleTypeObject(node: IUniNodeTypeObject) {
     const jsonSchemaType = {
       type: "object",
       required: [] as string[],
@@ -74,10 +73,6 @@ export class JsonSchemaCompiler extends CompileNode {
     }
 
     return jsonSchemaType;
-  }
-
-  HandleTypeObject(node: IUniNodeTypeObject) {
-    return this.HandleJsonSchemaNode(node, this.HandleTypeObjectLike(node));
   }
 
   HandleTypeString(node: IUniNodeTypeString) {
@@ -104,6 +99,6 @@ export class JsonSchemaCompiler extends CompileNode {
   }
 
   HandleView(node: IUniNodeView) {
-    return this.HandleJsonSchemaNode(node, this.HandleTypeObjectLike(node));
+    return this.HandleJsonSchemaNode(node, this.Handle(node.type));
   }
 }
