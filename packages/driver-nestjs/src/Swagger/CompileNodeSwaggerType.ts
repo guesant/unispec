@@ -5,13 +5,14 @@ import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeString } from "@unispec/c
 export type ICompiledNodeSwaggerType =
   | SchemaObject
   | {
-      type?: any | Function | [Function] | string;
+      // eslint-disable @typescript-eslint/ban-types
+      type?: any | [any] | string;
       isArray?: boolean;
     };
 
 export class CompileNodeSwaggerType extends CompileNode {
   HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerType {
-    let type = "string";
+    const type = "string";
 
     switch (node.format) {
       case "date-time":
