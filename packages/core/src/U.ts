@@ -1,6 +1,7 @@
 import {
   IsUniNodeType,
   IsUniNodeView,
+  UniExtends,
   UniNodeBase,
   UniNodeDeclarator,
   UniNodeOperation,
@@ -48,6 +49,7 @@ export {
   UniNodeBase as Base,
   UniNodeTypeBoolean as Boolean,
   UniNodeDeclarator as Declarator,
+  UniExtends as Extends,
   UniNodeTypeFile as File,
   UniNodeTypeInteger as Integer,
   IsUniNodeType as IsNodeType,
