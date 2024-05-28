@@ -1,5 +1,4 @@
 import { UniNodeTypeInteger, UniNodeTypeObject, UniNodeTypeString, type IUniNodeType, type IUniNodeTypeObject } from "../Kinds";
-import type { IUniNodeView } from "../Kinds/View";
 
 export type IUniNodeTypeObjectEntityOptions = Partial<IUniNodeTypeObject> & {
   id?: "numeric" | "uuid" | false;
@@ -42,7 +41,7 @@ export const UniNodeTypeObjectEntity = <K extends Partial<IUniNodeTypeObjectEnti
   });
 };
 
-export const UniNodeTypeObjectPick = <Obj extends IUniNodeTypeObject | IUniNodeView, Properties extends keyof Obj["properties"] = keyof Obj["properties"]>(
+export const UniNodeTypeObjectPick = <Obj extends IUniNodeTypeObject, Properties extends keyof Obj["properties"] = keyof Obj["properties"]>(
   obj: Obj,
   propertiesToPick: Properties[] | Record<Properties, boolean>,
 ): IUniNodeTypeObject["properties"] => {
@@ -65,7 +64,7 @@ export const UniNodeTypeObjectPick = <Obj extends IUniNodeTypeObject | IUniNodeV
   return properties;
 };
 
-export const UniNodeTypeObjectPartial = <Obj extends IUniNodeTypeObject | IUniNodeView>(obj: Obj): IUniNodeTypeObject["properties"] => {
+export const UniNodeTypeObjectPartial = <Obj extends IUniNodeTypeObject>(obj: Obj): IUniNodeTypeObject["properties"] => {
   const properties = Object.fromEntries(Object.entries(obj.properties).map(([key, value]) => [key, { ...value, required: false }]));
 
   return properties;
