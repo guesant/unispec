@@ -10,21 +10,38 @@ export type IUniNodeDeclarator = {
       findById?:
         | false
         | {
+            name: string;
             input: string;
             output: string;
           };
 
-      deleteById?: false | string;
+      deleteById?:
+        | false
+        | {
+            name: string;
+          };
 
       list?:
         | false
         | {
+            name: string;
             view: string;
             filters?: [string, string[]][];
           };
 
-      create?: false | string;
-      updateById?: false | string;
+      create?:
+        | false
+        | {
+            name: string;
+            input: string;
+          };
+
+      updateById?:
+        | false
+        | {
+            name: string;
+            input: string;
+          };
     };
 
     extra?: {
