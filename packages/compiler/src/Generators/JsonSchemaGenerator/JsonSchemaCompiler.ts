@@ -99,8 +99,6 @@ export class JsonSchemaCompiler extends CompileNode {
   }
 
   HandleView(node: IUniNodeView) {
-    // return this.HandleJsonSchemaNode(node, this.Handle(node.type));
-
-    throw new Error("Waiting for the next release of @unispec/core");
+    return this.HandleJsonSchemaNode(node, this.Handle(node.type));
   }
 }

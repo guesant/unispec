@@ -1,4 +1,4 @@
-import type { IUniNodeTypeString, IUniNodeView } from "@unispec/core";
+import type { IUniNodeTypeObject, IUniNodeTypeString, IUniNodeView } from "@unispec/core";
 import { CompileNode } from "../Node/CompileNode";
 
 export class CompileNodeDesignType extends CompileNode {
@@ -26,9 +26,9 @@ export class CompileNodeDesignType extends CompileNode {
     return Boolean;
   }
 
-  HandleView(node: IUniNodeView) {
+  HandleTypeObject(node: IUniNodeTypeObject) {
     if (node.partialOf) {
-      const dereferenced = this.repository.GetRealTarget(node);
+      const dereferenced = this.repository.GetRealTarget(node.partialOf);
 
       if (dereferenced) {
         return this.Handle(dereferenced);
@@ -37,5 +37,9 @@ export class CompileNodeDesignType extends CompileNode {
 
     const ctor = this.classCompiler.CompileCtor(node);
     return ctor;
+  }
+
+  HandleView(node: IUniNodeView) {
+    return this.Handle(node.type);
   }
 }

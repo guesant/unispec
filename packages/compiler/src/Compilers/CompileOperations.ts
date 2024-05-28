@@ -41,13 +41,13 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
 
           if (create) {
             const CreateOperation = U.Operation({
-              name: `${node.entity}Create`,
+              name: create.name,
 
               description: "",
 
               input: {
                 body: U.Reference({
-                  targetsTo: create,
+                  targetsTo: create.input,
                   description: "",
                 }),
               },
@@ -65,14 +65,14 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
 
           if (updateById) {
             const UpdateOperation = U.Operation({
-              name: `${node.entity}UpdateById`,
+              name: updateById.name,
 
               description: "",
 
               input: {
                 params: {},
                 body: U.Reference({
-                  targetsTo: updateById,
+                  targetsTo: updateById.input,
                   description: "",
                 }),
               },
@@ -90,23 +90,20 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
 
           if (deleteById) {
             const DeleteByIdOperation = U.Operation({
-              name: `${node.entity}DeleteById`,
+              name: deleteById.name,
 
               description: "",
 
               input: {
                 params: {},
                 body: U.Reference({
-                  targetsTo: deleteById,
+                  targetsTo: findById.input,
                   description: "",
                 }),
               },
 
               output: {
-                success: U.Reference({
-                  targetsTo: findById.output,
-                  description: "",
-                }),
+                success: U.Boolean(),
               },
             });
 
@@ -115,7 +112,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
 
           if (list) {
             const ListOperation = U.Operation({
-              name: `${node.entity}List`,
+              name: list.name,
 
               description: "",
 

@@ -1,4 +1,4 @@
-import type { IUniNode} from "@unispec/core";
+import type { IUniNode } from "@unispec/core";
 import { U } from "@unispec/core";
 
 export type IBuildTypeOptions = {
@@ -8,16 +8,8 @@ export type IBuildTypeOptions = {
 export const BuildType = (options: IBuildTypeOptions) => (node: IUniNode) => {
   let primitiveType = "never";
 
-  let castedNode = node;
-
-  if (U.IsNodeView(castedNode)) {
-    castedNode = U.Object({
-      properties: castedNode.properties,
-    });
-  }
-
-  if (U.IsNodeType(castedNode)) {
-    switch (castedNode.type) {
+  if (U.IsNodeType(node)) {
+    switch (node.type) {
       case "boolean": {
         primitiveType = "boolean";
         break;
@@ -31,7 +23,7 @@ export const BuildType = (options: IBuildTypeOptions) => (node: IUniNode) => {
       case "string": {
         primitiveType = "string";
 
-        if (castedNode.format === "date" || castedNode.format == "date-time") {
+        if (node.format === "date" || node.format == "date-time") {
           primitiveType += " | number | Date";
         }
 
@@ -41,7 +33,7 @@ export const BuildType = (options: IBuildTypeOptions) => (node: IUniNode) => {
       case "object": {
         let base = "{\n";
 
-        const properties = { ...castedNode.properties };
+        const properties = { ...node.properties };
 
         const propertiesEntries = Object.entries(properties).sort((a, b) => {
           const a_key = a[0];
@@ -89,14 +81,14 @@ export const BuildType = (options: IBuildTypeOptions) => (node: IUniNode) => {
       }
 
       case "array": {
-        const propertyType = BuildType(options)(castedNode.items);
+        const propertyType = BuildType(options)(node.items);
 
         primitiveType = `Array<${propertyType}>`;
         break;
       }
 
       case "reference": {
-        const referenceAlias = options.resolveTokenName(castedNode);
+        const referenceAlias = options.resolveTokenName(node);
         primitiveType = `${referenceAlias}`;
         break;
       }
@@ -110,11 +102,11 @@ export const BuildType = (options: IBuildTypeOptions) => (node: IUniNode) => {
       return primitiveType;
     }
 
-    if (castedNode.nullable) {
+    if (node.nullable) {
       primitiveType = `${primitiveType} | null`;
     }
 
-    if (!castedNode.required) {
+    if (!node.required) {
       primitiveType = `${primitiveType} | undefined`;
     }
 
