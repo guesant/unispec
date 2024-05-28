@@ -1,5 +1,5 @@
-import { IUniNodeBase, IUniNodeType, IUniNodeTypeObject, IsUniNodeType, UniNodeTypeInteger, UniNodeTypeObject, UniNodeTypeString } from "../Kinds";
-import { IUniNodeView, IsUniNodeView } from "../Kinds/View";
+import { UniNodeTypeInteger, UniNodeTypeObject, UniNodeTypeString, type IUniNodeType, type IUniNodeTypeObject } from "../Kinds";
+import { type IUniNodeView } from "../Kinds/View";
 
 export type IUniNodeTypeObjectEntityOptions = Partial<IUniNodeTypeObject> & {
   id?: "numeric" | "uuid" | false;
@@ -81,22 +81,4 @@ export const UniNodeTypeObjectMerge = (objects: IUniNodeTypeObject[]): IUniNodeT
   }
 
   return obj;
-};
-
-export type IUniNodeObjectLike = IUniNodeBase & Pick<IUniNodeTypeObject, "properties">;
-
-export const IsUniNodeObjectLike = (obj: IUniNodeTypeObject | IUniNodeView | IUniNodeBase): obj is IUniNodeObjectLike => {
-  if (IsUniNodeView(obj)) {
-    return true;
-  }
-
-  if (IsUniNodeType(obj)) {
-    return obj.type === "object";
-  }
-
-  if (Object.hasOwn(obj, "properties")) {
-    return true;
-  }
-
-  return false;
 };

@@ -92,6 +92,10 @@ importers:
         version: 1.6.0(@types/node@20.12.12)(@vitest/ui@1.6.0)
 
   packages/core:
+    dependencies:
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
     devDependencies:
       '@eslint/js':
         specifier: ^9.3.0
@@ -102,6 +106,9 @@ importers:
       eslint:
         specifier: ~9.3.0
         version: 9.3.0
+      type-fest:
+        specifier: ^4.18.3
+        version: 4.18.3
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -1925,6 +1932,9 @@ packages:
     resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
     engines: {node: '>=8'}
 
+  defu@6.1.4:
+    resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
@@ -3154,6 +3164,10 @@ packages:
   type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
     engines: {node: '>=4'}
+
+  type-fest@4.18.3:
+    resolution: {integrity: sha512-Q08/0IrpvM+NMY9PA2rti9Jb+JejTddwmwmVQGskAlhtcrw1wsRzoR6ode6mR+OAabNa75w/dxedSUY2mlphaQ==}
+    engines: {node: '>=16'}
 
   typescript-eslint@8.0.0-alpha.20:
     resolution: {integrity: sha512-/cx37A2S+AOne5uFpD8GzHzV5b/7wncAh4agmIRieAZWXJWbRcue7e8RI6LnpQ7CHy9IHPmALcHcXPXogM6jcQ==}
@@ -5450,6 +5464,8 @@ snapshots:
 
   define-lazy-prop@2.0.0: {}
 
+  defu@6.1.4: {}
+
   delayed-stream@1.0.0: {}
 
   detect-port@1.6.1:
@@ -6720,6 +6736,8 @@ snapshots:
       prelude-ls: 1.2.1
 
   type-detect@4.0.8: {}
+
+  type-fest@4.18.3: {}
 
   typescript-eslint@8.0.0-alpha.20(eslint@9.3.0)(typescript@5.4.5):
     dependencies:
