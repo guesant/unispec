@@ -5,9 +5,9 @@
     "format:check": "prettier --end-of-line lf --check \"packages/*/{src,test}/**/*.ts\"",
     "format:write": "prettier --end-of-line lf --write \"packages/*/{src,test}/**/*.ts\"",
     "prepare": "husky",
-    "test": "nx vite:test run",
-    "test:watch": "nx vite:test watch",
-    "coverage": "nx vite:test run --coverage"
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
   },
   "private": true,
   "devDependencies": {
