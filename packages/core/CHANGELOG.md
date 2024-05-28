@@ -1,3 +1,20 @@
+## 0.7.0 (2024-05-28)
+
+
+### 🚀 Features
+
+- **core:** UniExtends
+
+
+### 🩹 Fixes
+
+- **core:** `export type`
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.6.0 (2024-05-27)
 
 
