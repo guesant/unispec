@@ -1,15 +1,24 @@
+import { IsUniNodeType, type IUniNodeTypeObject } from "./Type";
+import { IsUniNodeView, type IUniNodeView } from "./View";
+
 // ===========================================================
 
-import { IsUniNodeType, type IUniNodeTypeObject } from "./Type";
-import { type IUniNodeView, IsUniNodeView } from "./View";
-
-export type IUniNodeBase = {
-  kind: string;
-};
+export type IUniNodeBase = { kind: string };
 
 export const UniNodeBase = <Target extends IUniNodeBase, Options extends Partial<Target>, Output extends Target & Options>(options?: Options) => {
   return {
     kind: "base",
+    ...options,
+  } as Output;
+};
+
+// ===========================================================
+
+export type IUniNodeNull = { kind: string };
+
+export const UniNodeNull = <Target extends IUniNodeNull, Options extends Partial<Target>, Output extends Target & Options>(options?: Options) => {
+  return {
+    kind: "null",
     ...options,
   } as Output;
 };

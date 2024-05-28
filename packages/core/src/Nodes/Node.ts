@@ -1,3 +1,3 @@
-import type { IUniNodeDeclarator, IUniNodeOperation, IUniNodeProvider, IUniNodeType, IUniNodeView } from "./Kinds";
+import type { IUniNodeDeclarator, IUniNodeNull, IUniNodeOperation, IUniNodeProvider, IUniNodeType, IUniNodeView } from "./Kinds";
 
-export type IUniNode = IUniNodeType | IUniNodeOperation | IUniNodeDeclarator | IUniNodeProvider | IUniNodeView;
+export type IUniNode = IUniNodeNull | IUniNodeType | IUniNodeOperation | IUniNodeDeclarator | IUniNodeProvider | IUniNodeView;
