@@ -1,4 +1,4 @@
-import { IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeString } from "./Type";
+import type { IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeString } from "./Type";
 
 export type IUniNodeOperation = {
   kind: "operation";

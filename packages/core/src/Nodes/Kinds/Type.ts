@@ -1,5 +1,6 @@
-import { IUniNode } from "../Node";
-import { IUniNodeTypeBase, UniNodeTypeBase } from "./-Base";
+import type { IUniNode } from "../Node";
+import type { IUniNodeTypeBase } from "./-Base";
+import { UniNodeTypeBase } from "./-Base";
 
 // ===========================================================
 
