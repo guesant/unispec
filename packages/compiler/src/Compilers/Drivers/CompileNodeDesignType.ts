@@ -1,4 +1,4 @@
-import { IUniNodeTypeString, IUniNodeView } from "@unispec/core";
+import type { IUniNodeTypeString, IUniNodeView } from "@unispec/core";
 import { CompileNode } from "../Node/CompileNode";
 
 export class CompileNodeDesignType extends CompileNode {

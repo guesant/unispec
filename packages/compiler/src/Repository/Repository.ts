@@ -1,4 +1,4 @@
-import { IUniNode, VisitAllNodes } from "@unispec/core";
+import { type IUniNode, VisitAllNodes } from "@unispec/core";
 import { CastIterable } from "../-Helpers/CastIterable";
 
 type IRepositoryEntrypoint = IUniNode | Iterable<IUniNode> | undefined | null;

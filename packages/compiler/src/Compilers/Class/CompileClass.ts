@@ -1,7 +1,8 @@
 import { IsUniNodeObjectLike, IsUniNodeView, type IUniNode } from "@unispec/core";
 import { __decorate, __metadata } from "tslib";
 import { UniRepository } from "../../Repository";
-import { CompileClassHandler, type ICompileClassHandlerPropertyContext } from "./CompileClassHandler";
+import type { CompileClassHandler} from "./CompileClassHandler";
+import type { ICompileClassHandlerPropertyContext } from "./CompileClassHandler";
 
 export interface ICompileClassContext {
   node: IUniNode;

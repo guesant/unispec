@@ -10,7 +10,7 @@ import type {
   IUniNodeTypeString,
   IUniNodeView,
 } from "@unispec/core";
-import { UniRepository } from "../../Repository";
+import type { UniRepository } from "../../Repository";
 import { CompileClass } from "../Class";
 
 export class CompileNode {
@@ -19,27 +19,27 @@ export class CompileNode {
     readonly classCompiler: CompileClass = new CompileClass(),
   ) {}
 
-  HandleTypeString(node: IUniNodeTypeString): unknown {
+  HandleTypeString(_: IUniNodeTypeString): unknown {
     return null;
   }
 
-  HandleTypeInteger(node: IUniNodeTypeInteger): unknown {
+  HandleTypeInteger(_: IUniNodeTypeInteger): unknown {
     return null;
   }
 
-  HandleTypeBoolean(node: IUniNodeTypeBoolean): unknown {
+  HandleTypeBoolean(_: IUniNodeTypeBoolean): unknown {
     return null;
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray): unknown {
+  HandleTypeArray(_: IUniNodeTypeArray): unknown {
     return null;
   }
 
-  HandleTypeFile(node: IUniNodeTypeFile): unknown {
+  HandleTypeFile(_: IUniNodeTypeFile): unknown {
     return null;
   }
 
-  HandleTypeObject(node: IUniNodeTypeObject): unknown {
+  HandleTypeObject(_: IUniNodeTypeObject): unknown {
     return null;
   }
 
@@ -79,7 +79,7 @@ export class CompileNode {
     }
   }
 
-  HandleView(node: IUniNodeView): unknown {
+  HandleView(_: IUniNodeView): unknown {
     return null;
   }
 
@@ -93,15 +93,15 @@ export class CompileNode {
     return null;
   }
 
-  HandleProvider(node: IUniNodeProvider) {
+  HandleProvider(_: IUniNodeProvider) {
     return null;
   }
 
-  HandleDeclarator(node: IUniNode): unknown {
+  HandleDeclarator(_: IUniNode): unknown {
     return null;
   }
 
-  HandleOperation(node: IUniNode): unknown {
+  HandleOperation(_: IUniNode): unknown {
     return null;
   }
 

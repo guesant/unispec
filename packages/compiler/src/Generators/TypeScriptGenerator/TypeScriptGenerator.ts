@@ -1,7 +1,11 @@
-import { IUniNode, IsUniNodeView } from "@unispec/core";
-import { CreateResolveTokenName, IResolveTokenName } from "../ResolveTokenName";
-import { BuildAliasedType, IBuildAliasedTypeOptions } from "./BuildAliasedType";
-import { BuildType, IBuildTypeOptions } from "./BuildType";
+import type { IUniNode} from "@unispec/core";
+import { IsUniNodeView } from "@unispec/core";
+import type { IResolveTokenName } from "../ResolveTokenName";
+import { CreateResolveTokenName } from "../ResolveTokenName";
+import type { IBuildAliasedTypeOptions } from "./BuildAliasedType";
+import { BuildAliasedType } from "./BuildAliasedType";
+import type { IBuildTypeOptions } from "./BuildType";
+import { BuildType } from "./BuildType";
 
 export type ITypeScriptGeneratorBuildAliasedTypeOptions = Pick<IBuildAliasedTypeOptions, "mod" | "export">;
 

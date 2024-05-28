@@ -1,4 +1,5 @@
-import { IUniNode, U } from "@unispec/core";
+import type { IUniNode} from "@unispec/core";
+import { U } from "@unispec/core";
 
 export type IResolveTokenName = (node: IUniNode) => string;
 

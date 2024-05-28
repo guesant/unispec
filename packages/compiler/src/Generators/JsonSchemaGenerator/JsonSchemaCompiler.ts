@@ -59,7 +59,7 @@ export class JsonSchemaCompiler extends CompileNode {
   }
 
   HandleTypeObjectLike(node: IUniNodeObjectLike) {
-    let jsonSchemaType = {
+    const jsonSchemaType = {
       type: "object",
       required: [] as string[],
       properties: {} as Record<string, any>,
@@ -81,7 +81,7 @@ export class JsonSchemaCompiler extends CompileNode {
   }
 
   HandleTypeString(node: IUniNodeTypeString) {
-    let jsonSchemaType: any = {
+    const jsonSchemaType: any = {
       type: "string",
     };
 

@@ -1,5 +1,7 @@
-import { IUniNode, U } from "@unispec/core";
-import { BuildType, IBuildTypeOptions } from "../BuildType";
+import type { IUniNode} from "@unispec/core";
+import { U } from "@unispec/core";
+import type { IBuildTypeOptions } from "../BuildType";
+import { BuildType } from "../BuildType";
 
 export type IBuildAliasedTypeOptions = {
   mod: "type" | "interface";
