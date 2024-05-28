@@ -1,3 +1,27 @@
+## 0.8.0 (2024-05-28)
+
+
+### 🚀 Features
+
+- **core:** U.Extends
+
+- **core:** UniNodeNull
+
+
+### 🩹 Fixes
+
+- **core:** Type.Object.Utils: remove legacy view object type
+
+
+### 🧱 Updated Dependencies
+
+- Updated compiler to 0.7.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.7.0 (2024-05-28)
 
 
