@@ -41,10 +41,14 @@ export const UniNodeTypeObjectEntity = <K extends Partial<IUniNodeTypeObjectEnti
   });
 };
 
-export const UniNodeTypeObjectPick = <Obj extends IUniNodeTypeObject, Properties extends keyof Obj["properties"] = keyof Obj["properties"]>(
-  obj: Obj,
+export type IUniNodeTypeObjectPickedProperties<Node extends IUniNodeTypeObject, Properties extends keyof Node["properties"]> = Omit<Node, "properties"> & {
+  properties: Pick<Node["properties"], Properties>;
+};
+
+export const UniNodeTypeObjectPick = <ObjectNode extends IUniNodeTypeObject, Properties extends keyof ObjectNode["properties"] = keyof ObjectNode["properties"]>(
+  obj: ObjectNode,
   propertiesToPick: Properties[] | Record<Properties, boolean>,
-): IUniNodeTypeObject["properties"] => {
+): IUniNodeTypeObjectPickedProperties<ObjectNode, Properties> => {
   const checkProperty = (property: Properties | string) => {
     const permissivePropertiesToPick = <string[] | Record<string, boolean>>propertiesToPick;
 
@@ -61,16 +65,30 @@ export const UniNodeTypeObjectPick = <Obj extends IUniNodeTypeObject, Properties
 
   const properties = Object.fromEntries(Object.entries(obj.properties).filter(([key]) => checkProperty(key)));
 
-  return properties;
+  return UniNodeTypeObject({ ...obj, properties }) as IUniNodeTypeObjectPickedProperties<ObjectNode, Properties>;
 };
 
-export const UniNodeTypeObjectPartial = <Obj extends IUniNodeTypeObject>(obj: Obj): IUniNodeTypeObject["properties"] => {
-  const properties = Object.fromEntries(Object.entries(obj.properties).map(([key, value]) => [key, { ...value, required: false }]));
-
-  return properties;
+export type IUniNodeTypeObjectPartialProperties<Node extends IUniNodeTypeObject> = Omit<Node, "properties"> & {
+  properties: {
+    [P in keyof Node["properties"]]: Node["properties"][P] & { required: false };
+  };
 };
 
-export const UniNodeTypeObjectMerge = (objects: IUniNodeTypeObject[]): IUniNodeTypeObject => {
+export const UniNodeTypeObjectPartial = <ObjectNode extends IUniNodeTypeObject>(node: ObjectNode): IUniNodeTypeObjectPartialProperties<ObjectNode> => {
+  const properties = Object.fromEntries(
+    Object.entries(node.properties).map(([key, value]) => [
+      key,
+      {
+        ...value,
+        required: false,
+      },
+    ]),
+  );
+
+  return UniNodeTypeObject({ ...node, properties }) as IUniNodeTypeObjectPartialProperties<ObjectNode>;
+};
+
+export const UniNodeTypeObjectMerge = (objects: IUniNodeTypeObject[]) => {
   const obj = UniNodeTypeObject();
 
   for (const object of objects) {
