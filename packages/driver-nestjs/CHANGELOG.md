@@ -1,3 +1,15 @@
+## 0.6.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **driver-nestjs:** update core and compiler
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.5.0 (2024-05-27)
 
 
