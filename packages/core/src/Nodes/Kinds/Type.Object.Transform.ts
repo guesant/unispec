@@ -45,7 +45,7 @@ export class UniNodeObjectTransformer<Current extends IUniNodeTypeObject> {
     return this.Pipe((current) => defu(current, otherNode));
   }
 
-  Extends(...otherNodes: PartialDeep<Current>[]) {
+  Extends(...otherNodes: PartialDeep<Current | IUniNodeTypeObject>[]) {
     return this.Pipe((current) => UniExtends(current, ...otherNodes));
   }
 
