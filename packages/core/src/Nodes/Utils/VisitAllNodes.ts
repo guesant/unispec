@@ -3,7 +3,7 @@ import type { IUniNode } from "../Node";
 
 const castIterable = <T extends object>(v: T | Iterable<T>) => (Symbol.iterator in v ? v : [v]);
 
-export const VisitAllNodes = function* (entrypoint: IUniNode | Iterable<IUniNode>) {
+export const VisitAllNodes = function* (entrypoint: IUniNode | Iterable<IUniNode>): Iterable<IUniNode> {
   const nodesVisited = new Set<IUniNode>();
 
   const nodesToVisit = new Set<IUniNode>(castIterable(entrypoint));
