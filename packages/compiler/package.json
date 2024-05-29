@@ -13,6 +13,8 @@
   "keywords": [
     "unispec"
   ],
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",

@@ -13,12 +13,15 @@
   "keywords": [
     "unispec"
   ],
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
     "test": "nx vite:test run",
     "test:watch": "nx vite:test watch",
-    "coverage": "nx vite:test run --coverage"
+    "coverage": "nx vite:test run --coverage",
+    "build": "vite build"
   },
   "devDependencies": {
     "@eslint/js": "^9.3.0",

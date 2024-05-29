@@ -10,12 +10,12 @@
     "type": "git",
     "url": "https://github.com/guesant/unispec.git"
   },
-  "module": "./index.mjs",
-  "main": "./index.js",
   "license": "LGPL-2.1 license",
   "keywords": [
     "unispec"
   ],
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
