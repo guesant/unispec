@@ -1,3 +1,15 @@
+## 0.10.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **core/Nodes/Reference:** add objectProperty
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.9.0 (2024-05-29)
 
 
