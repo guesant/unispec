@@ -1,4 +1,4 @@
-import type { IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeString } from "./Type";
+import type { IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeReference, IUniNodeTypeString } from "./Type";
 
 export type IUniNodeOperation = {
   kind: "operation";
@@ -8,8 +8,8 @@ export type IUniNodeOperation = {
 
   input?: {
     body?: string | IUniNodeType;
-    params?: Record<any, IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
-    queries?: Record<any, IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
+    params?: Record<any, IUniNodeTypeReference | IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
+    queries?: Record<any, IUniNodeTypeReference | IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
   };
 
   output?: {

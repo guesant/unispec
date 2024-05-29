@@ -47,12 +47,14 @@ export const UniNodeTypeInteger = <Target extends IUniNodeTypeInteger, Options e
 export type IUniNodeTypeReference = IUniNodeTypeBase & {
   type: "reference";
   targetsTo: string;
+  objectProperty: string | null;
 };
 
 export const UniNodeTypeReference = <Target extends IUniNodeTypeReference, Options extends Partial<IUniNodeTypeReference>, Output extends Target & Options>(options?: Options) => {
   return UniNodeTypeBase({
     type: "reference",
     targetsTo: "unknown",
+    objectProperty: null,
     ...options,
   }) as Output;
 };
