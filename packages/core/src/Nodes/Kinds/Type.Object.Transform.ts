@@ -1,0 +1,55 @@
+import defu from "defu";
+import type { PartialDeep } from "type-fest";
+import { UniExtends } from "./Extends";
+import { type IUniNodeTypeObject } from "./Type";
+import { UniNodeTypeObjectPartial, UniNodeTypeObjectPick } from "./Type.Object.Utils";
+
+export class UniNodeObjectTransformer<Current extends IUniNodeTypeObject> {
+  #current: Current | null = null;
+
+  static From<K extends IUniNodeTypeObject>(node: K) {
+    return new UniNodeObjectTransformer().With(node);
+  }
+
+  get current() {
+    if (this.#current === null) {
+      throw new Error("ObjectTransformer is not initialized.");
+    }
+
+    return this.#current;
+  }
+
+  constructor(current?: Current) {
+    if (current) {
+      this.#current = current;
+    }
+  }
+
+  With<K extends IUniNodeTypeObject>(node: K) {
+    return new UniNodeObjectTransformer(node);
+  }
+
+  Pipe<Next extends IUniNodeTypeObject>(transformer: (current: Current) => Next) {
+    return new UniNodeObjectTransformer(transformer(this.current));
+  }
+
+  Pick<Properties extends keyof Current["properties"]>(propertiesToPick: Properties[] | Record<Properties, boolean>) {
+    return this.Pipe((current) => UniNodeTypeObjectPick(current, propertiesToPick));
+  }
+
+  Partial() {
+    return this.Pipe((current) => UniNodeTypeObjectPartial(current));
+  }
+
+  Merge<Other extends IUniNodeTypeObject>(otherNode: Other) {
+    return this.Pipe((current) => defu(current, otherNode));
+  }
+
+  Extends(...otherNodes: PartialDeep<Current>[]) {
+    return this.Pipe((current) => UniExtends(current, ...otherNodes));
+  }
+
+  Node() {
+    return this.current;
+  }
+}
