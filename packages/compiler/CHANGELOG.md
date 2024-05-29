@@ -1,3 +1,15 @@
+## 0.9.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **compiler:** update core
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.8.0 (2024-05-28)
 
 
