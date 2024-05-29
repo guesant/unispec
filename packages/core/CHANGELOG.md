@@ -1,3 +1,15 @@
+## 0.11.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **core:** ObjectTransform: Extends: accept other object shapes
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.10.0 (2024-05-29)
 
 
