@@ -17,7 +17,7 @@
     "@nx/web": "19.1.1",
     "@nx/workspace": "19.1.0",
     "@swc-node/register": "~1.9.1",
-    "@swc/core": "~1.5.7",
+    "@swc/core": "~1.5.22",
     "@swc/helpers": "~0.5.2",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.3.1",
