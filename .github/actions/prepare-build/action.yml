@@ -6,6 +6,10 @@ description: "Prepares the repo for a job by running the build"
 runs:
   using: "composite"
   steps:
-    - name: Build Project
+    - name: Build Project Locally
+      shell: bash
+      run: pnpm run build:locally
+
+    - name: Build Project for Production
       shell: bash
       run: npx nx run-many --target=build --parallel
