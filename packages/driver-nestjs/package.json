@@ -23,19 +23,18 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
-    "build:locally": "PKG_LOCALLY=true vite build"
+    "build:locally": "PKG_LOCALLY=true vite build",
+    "dev:locally": "PKG_LOCALLY=true vite build -w"
   },
   "devDependencies": {
     "@eslint/js": "^9.3.0",
-    "@vitest/coverage-v8": "^1.6.0",
     "eslint": "~9.3.0",
     "typescript": "^5.4.5",
-    "typescript-eslint": "8.0.0-alpha.22",
-    "vitest": "^1.6.0"
+    "typescript-eslint": "8.0.0-alpha.22"
   },
   "dependencies": {
-    "@unispec/core": "workspace:*",
     "@unispec/compiler": "workspace:*",
+    "@unispec/core": "workspace:*",
     "tslib": "^2.6.2"
   },
   "optionalDependencies": {
