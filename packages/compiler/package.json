@@ -19,9 +19,9 @@
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
-    "test": "nx vite:test run",
-    "test:watch": "nx vite:test watch",
-    "coverage": "nx vite:test run --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage",
     "build:locally": "PKG_LOCALLY=true vite build",
     "dev:locally": "PKG_LOCALLY=true vite build -w"
   },

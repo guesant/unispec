@@ -6,6 +6,7 @@ import {
   type IUniNodeTypeBoolean,
   type IUniNodeTypeInteger,
   type IUniNodeTypeObject,
+  type IUniNodeTypeReference,
   type IUniNodeTypeString,
   type IUniNodeView,
 } from "@unispec/core";
@@ -45,9 +46,12 @@ export class JsonSchemaCompiler extends CompileNode {
   }
 
   HandleTypeArray(node: IUniNodeTypeArray) {
+    return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items) });
+  }
+
+  HandleTypeReference(node: IUniNodeTypeReference) {
     return this.HandleJsonSchemaNode(node, {
-      type: "array",
-      items: this.Handle(node),
+      $ref: node.targetsTo,
     });
   }
 
