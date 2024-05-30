@@ -1,3 +1,15 @@
+## 0.7.0 (2024-05-30)
+
+
+### 🚀 Features
+
+- build:locally
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.6.0 (2024-05-29)
 
 

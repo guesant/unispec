@@ -1,3 +1,20 @@
+## 0.11.0 (2024-05-30)
+
+
+### 🚀 Features
+
+- build:locally
+
+
+### 🧱 Updated Dependencies
+
+- Updated driver-nestjs to 0.7.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.10.0 (2024-05-29)
 
 
