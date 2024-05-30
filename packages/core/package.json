@@ -30,7 +30,7 @@
     "eslint": "~9.3.0",
     "type-fest": "^4.18.3",
     "typescript": "^5.4.5",
-    "typescript-eslint": "8.0.0-alpha.20",
+    "typescript-eslint": "8.0.0-alpha.22",
     "vitest": "^1.6.0"
   },
   "dependencies": {
