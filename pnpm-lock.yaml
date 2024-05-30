@@ -32,6 +32,9 @@ importers:
       '@vitest/ui':
         specifier: ^1.3.1
         version: 1.6.0(vitest@1.6.0)
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -66,8 +69,8 @@ importers:
   packages/compiler:
     dependencies:
       '@unispec/core':
-        specifier: 0.11.0
-        version: 0.11.0
+        specifier: link:../core
+        version: link:../core
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -1532,9 +1535,6 @@ packages:
 
   '@unispec/compiler@0.8.0':
     resolution: {integrity: sha512-cfs3ES3R4eKTcKY1Yc0TrwlAWDx8fejSytbmORfgCssFYGgKI8SUEj3HeVt8mhHn9XYiwjXEDji02g3/JMgcww==}
-
-  '@unispec/core@0.11.0':
-    resolution: {integrity: sha512-fdnUzUgwxbTwz1j3QWKsCXXepRccWfsWiSfAoka4/WouDRhwqlFau/V/45lHVZFy+g/3koN1zXpJBQcnR9DkTw==}
 
   '@unispec/core@0.8.0':
     resolution: {integrity: sha512-z4sio3NZy0b+U56rtxVA8bgNzLLXC3jQn5gJv4H7p4QxF03nmIfpfpBDqwYXuCbbfTWIoKba2+MTvexZiFKelA==}
@@ -5018,10 +5018,6 @@ snapshots:
     dependencies:
       '@unispec/core': 0.8.0
       tslib: 2.6.2
-
-  '@unispec/core@0.11.0':
-    dependencies:
-      defu: 6.1.4
 
   '@unispec/core@0.8.0':
     dependencies:
