@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/driver-nestjs",
+  "name": "driver-nestjs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/driver-nestjs/src",
   "projectType": "library",
