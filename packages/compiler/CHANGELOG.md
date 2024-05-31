@@ -1,3 +1,15 @@
+## 0.18.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler/CompileOperations:** FindById params
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.17.0 (2024-05-31)
 
 
