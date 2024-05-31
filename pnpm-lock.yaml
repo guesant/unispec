@@ -69,7 +69,7 @@ importers:
   packages/compiler:
     dependencies:
       '@unispec/core':
-        specifier: link:../core
+        specifier: workspace:*
         version: link:../core
       tslib:
         specifier: ^2.6.2
@@ -116,10 +116,10 @@ importers:
   packages/driver-nestjs:
     dependencies:
       '@unispec/compiler':
-        specifier: link:../compiler
+        specifier: workspace:*
         version: link:../compiler
       '@unispec/core':
-        specifier: link:../core
+        specifier: workspace:*
         version: link:../core
       tslib:
         specifier: ^2.6.2
