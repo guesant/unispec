@@ -20,6 +20,4 @@ sync_pkg_version core;
 sync_pkg_version driver-nestjs;
 sync_pkg_version compiler;
 
-git add -A;
-
-git commit -m "chore(release): update package.json versions [skip ci]";
+git add -A && git commit -m "chore(release): update package.json versions [skip ci]" || exit 0;
