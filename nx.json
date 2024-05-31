@@ -35,7 +35,10 @@
     "projects": ["*", "!@unispec/source"],
     "version": {
       "conventionalCommits": true,
-      "generatorOptions": {}
+      "generatorOptions": {
+        "updateDependents": "auto",
+        "fallbackCurrentVersionResolver": "disk"
+      }
     },
     "git": {
       "commit": true,
