@@ -69,8 +69,8 @@ importers:
   packages/compiler:
     dependencies:
       '@unispec/core':
-        specifier: ^0.15.0
-        version: 0.15.0
+        specifier: link:../core
+        version: link:../core
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -116,11 +116,11 @@ importers:
   packages/driver-nestjs:
     dependencies:
       '@unispec/compiler':
-        specifier: ^0.15.0
-        version: 0.15.0
+        specifier: link:../compiler
+        version: link:../compiler
       '@unispec/core':
-        specifier: ^0.15.0
-        version: 0.15.0
+        specifier: link:../core
+        version: link:../core
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -1520,12 +1520,6 @@ packages:
   '@typescript-eslint/visitor-keys@8.0.0-alpha.24':
     resolution: {integrity: sha512-9gu8YsifuPFXC1ZDPEXroGon1/IbSXD5bYFs6mmE8GwVo++Z1UTaO3tjTp+k/b85d8MBRkhetgBSFKKsIWetTw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@unispec/compiler@0.15.0':
-    resolution: {integrity: sha512-p1vN/y1BZ+CnhZvPk4G3dY2nJfI3JhqU79LZ9apHrbkWdZwIdgzWXyleD7xwYPDY3tw4MTPi2sLREyFq0x3QVA==}
-
-  '@unispec/core@0.15.0':
-    resolution: {integrity: sha512-FBV2nv8HJz61ICumToMmUwadB+8gUv9+hyETK7bIp65qMu5MswV8H0enXn2kZvjZjMI3y+IfEmT8eVcxOLeEJA==}
 
   '@vitest/coverage-v8@1.6.0':
     resolution: {integrity: sha512-KvapcbMY/8GYIG0rlwwOKCVNRc0OL20rrhFkg/CHNzncV03TE2XWvO5w9uZYoxNiMEBacAJt3unSOiZ7svePew==}
@@ -4992,15 +4986,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.0.0-alpha.24
       eslint-visitor-keys: 3.4.3
-
-  '@unispec/compiler@0.15.0':
-    dependencies:
-      '@unispec/core': link:packages/core
-      tslib: 2.6.2
-
-  '@unispec/core@0.15.0':
-    dependencies:
-      defu: 6.1.4
 
   '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.12.13)(@vitest/ui@1.6.0))':
     dependencies:
