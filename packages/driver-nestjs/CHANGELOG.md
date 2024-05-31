@@ -1,3 +1,15 @@
+## 0.8.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **nx:** remove fallbackCurrentVersionResolver
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.7.0 (2024-05-30)
 
 

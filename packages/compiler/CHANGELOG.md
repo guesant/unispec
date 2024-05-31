@@ -1,3 +1,20 @@
+## 0.17.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **nx:** remove fallbackCurrentVersionResolver
+
+
+### 🧱 Updated Dependencies
+
+- Updated driver-nestjs to 0.8.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.16.0 (2024-05-31)
 
 
