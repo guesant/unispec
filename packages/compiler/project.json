@@ -1,5 +1,5 @@
 {
-  "name": "compiler",
+  "name": "@unispec/compiler",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/compiler/src",
   "projectType": "library",
