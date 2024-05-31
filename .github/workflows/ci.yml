@@ -61,4 +61,8 @@ jobs:
           NPM_CONFIG_PROVENANCE: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
+      - name: Update versions of package.json
+        run: ./updeps.sh
+        shell: bash
+
       - run: git push --follow-tags
