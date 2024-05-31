@@ -1,3 +1,20 @@
+## 0.19.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler:** link unispec deps with link:..
+
+
+### 🧱 Updated Dependencies
+
+- Updated driver-nestjs to 0.9.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.18.1 (2024-05-31)
 
 

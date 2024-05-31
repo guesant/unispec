@@ -1,3 +1,15 @@
+## 0.9.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **driver-nestjs:** link unispec deps with link:..
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.8.0 (2024-05-31)
 
 
