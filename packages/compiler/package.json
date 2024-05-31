@@ -11,7 +11,9 @@
   },
   "license": "LGPL-2.1 license",
   "keywords": [
-    "unispec"
+    "unispec",
+    "unispec-compiler",
+    "ast"
   ],
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
