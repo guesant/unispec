@@ -1,3 +1,15 @@
+## 0.20.1 (2024-05-31)
+
+
+### 🩹 Fixes
+
+- **compiler:** drop CompileNodeDesignType
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.19.0 (2024-05-31)
 
 

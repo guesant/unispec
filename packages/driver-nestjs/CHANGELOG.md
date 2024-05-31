@@ -1,3 +1,7 @@
+## 0.20.1 (2024-05-31)
+
+This was a version bump only for driver-nestjs to align it with other projects, there were no code changes.
+
 ## 0.9.0 (2024-05-31)
 
 
