@@ -47,10 +47,6 @@ jobs:
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Update versions of package.json
-        run: ./updeps.sh
-        shell: bash
-
       - name: Prepare NPM token
         uses: ./.github/actions/prepare-npm-token
         with:
@@ -60,9 +56,5 @@ jobs:
         env:
           NPM_CONFIG_PROVENANCE: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-
-      - name: Update versions of package.json
-        run: ./updeps.sh
-        shell: bash
 
       - run: git push --follow-tags
