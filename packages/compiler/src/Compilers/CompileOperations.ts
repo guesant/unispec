@@ -23,7 +23,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
           const FindByIdOperation = U.Operation({
             name: findById.name,
 
-            description: "",
+            description: "Find by id.",
 
             input: {
               params: {
@@ -34,7 +34,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             output: {
               success: U.Reference({
                 targetsTo: findById.output,
-                description: "",
+                description: "Output success.",
               }),
             },
           });
@@ -45,7 +45,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const CreateOperation = U.Operation({
               name: create.name,
 
-              description: "",
+              description: "Create.",
 
               input: {
                 body: U.Reference({
@@ -57,7 +57,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
               output: {
                 success: U.Reference({
                   targetsTo: findById.output,
-                  description: "",
+                  description: "Created data.",
                 }),
               },
             });
@@ -69,7 +69,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const UpdateOperation = U.Operation({
               name: updateById.name,
 
-              description: "",
+              description: "Update operation",
 
               input: {
                 params: {
@@ -77,14 +77,14 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
                 },
                 body: U.Reference({
                   targetsTo: updateById.input,
-                  description: "",
+                  description: "Data to update",
                 }),
               },
 
               output: {
                 success: U.Reference({
                   targetsTo: findById.output,
-                  description: "",
+                  description: "Updated data",
                 }),
               },
             });
@@ -96,16 +96,12 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const DeleteByIdOperation = U.Operation({
               name: deleteById.name,
 
-              description: "",
+              description: "Delete by ID",
 
               input: {
                 params: {
                   ...FindByIdOperation.input.params,
                 },
-                body: U.Reference({
-                  targetsTo: findById.input,
-                  description: "",
-                }),
               },
 
               output: {
@@ -120,7 +116,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const ListOperation = U.Operation({
               name: list.name,
 
-              description: "",
+              description: "List",
 
               input: {
                 params: {},
@@ -129,7 +125,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
               output: {
                 success: U.Reference({
                   targetsTo: list.view,
-                  description: "",
+                  description: "List result",
                 }),
               },
             });
