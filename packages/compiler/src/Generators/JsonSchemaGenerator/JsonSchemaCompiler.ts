@@ -19,11 +19,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     super();
   }
 
-  OnUnhandled() {
-    return null;
-  }
-
-  private HandleJsonSchemaNode(node: IUniNode, type: JSONSchema7): JSONSchema7 {
+  protected HandleJsonSchemaNode(node: IUniNode, type: JSONSchema7): JSONSchema7 {
     let jsonSchemaType = type;
 
     if (IsUniNodeView(node)) {
@@ -49,25 +45,24 @@ export class JsonSchemaCompiler extends NodeVisitor {
     return jsonSchemaType;
   }
 
-  HandleTypeBoolean(node: IUniNodeTypeBoolean): JSONSchema7 {
+  override HandleTypeBoolean(node: IUniNodeTypeBoolean): JSONSchema7 {
     return this.HandleJsonSchemaNode(node, { type: "boolean" });
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray): JSONSchema7 {
+  override HandleTypeArray(node: IUniNodeTypeArray): JSONSchema7 {
     return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items) });
   }
 
-  HandleTypeReference(node: IUniNodeTypeReference): JSONSchema7 {
+  override HandleTypeReference(node: IUniNodeTypeReference): JSONSchema7 {
     const token = this.resolveTokenName(node);
-
     return this.HandleJsonSchemaNode(node, { $ref: token });
   }
 
-  HandleTypeInteger(node: IUniNodeTypeInteger): JSONSchema7 {
+  override HandleTypeInteger(node: IUniNodeTypeInteger): JSONSchema7 {
     return this.HandleJsonSchemaNode(node, { type: "integer" });
   }
 
-  HandleTypeObject(node: IUniNodeTypeObject): JSONSchema7 {
+  override HandleTypeObject(node: IUniNodeTypeObject): JSONSchema7 {
     const jsonSchemaType: JSONSchema7 = {
       type: "object",
       required: [],
@@ -88,7 +83,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     return jsonSchemaType;
   }
 
-  HandleTypeString(node: IUniNodeTypeString): JSONSchema7 {
+  override HandleTypeString(node: IUniNodeTypeString): JSONSchema7 {
     const jsonSchemaType: JSONSchema7 = {
       type: "string",
     };
@@ -111,7 +106,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     return this.HandleJsonSchemaNode(node, jsonSchemaType);
   }
 
-  HandleView(node: IUniNodeView): JSONSchema7 {
+  override HandleView(node: IUniNodeView): JSONSchema7 {
     const nodeMeta = {
       description: node.description,
     };
@@ -125,7 +120,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     });
   }
 
-  Handle(node: IUniNode, ctx?: undefined): JSONSchema7 {
+  override Handle(node: IUniNode, ctx?: undefined): JSONSchema7 {
     return super.Handle(node, ctx);
   }
 }
