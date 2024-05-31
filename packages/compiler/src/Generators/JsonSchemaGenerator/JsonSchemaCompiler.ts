@@ -10,10 +10,20 @@ import {
   type IUniNodeTypeString,
   type IUniNodeView,
 } from "@unispec/core";
-import { CompileNode } from "../../Compilers";
+import type { JSONSchema7 } from "json-schema";
+import { NodeVisitor } from "../../Visitors";
+import { CreateResolveTokenName, type IResolveTokenName } from "../ResolveTokenName";
 
-export class JsonSchemaCompiler extends CompileNode {
-  private HandleJsonSchemaNode(node: IUniNode, type: any) {
+export class JsonSchemaCompiler extends NodeVisitor {
+  constructor(public resolveTokenName: IResolveTokenName = CreateResolveTokenName()) {
+    super();
+  }
+
+  OnUnhandled() {
+    return null;
+  }
+
+  private HandleJsonSchemaNode(node: IUniNode, type: JSONSchema7): JSONSchema7 {
     let jsonSchemaType = type;
 
     if (IsUniNodeView(node)) {
@@ -39,34 +49,33 @@ export class JsonSchemaCompiler extends CompileNode {
     return jsonSchemaType;
   }
 
-  HandleTypeBoolean(node: IUniNodeTypeBoolean): unknown {
-    return this.HandleJsonSchemaNode(node, {
-      type: "boolean",
-    });
+  HandleTypeBoolean(node: IUniNodeTypeBoolean): JSONSchema7 {
+    return this.HandleJsonSchemaNode(node, { type: "boolean" });
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray) {
+  HandleTypeArray(node: IUniNodeTypeArray): JSONSchema7 {
     return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items) });
   }
 
-  HandleTypeReference(node: IUniNodeTypeReference) {
-    return this.HandleJsonSchemaNode(node, {
-      $ref: node.targetsTo,
-    });
+  HandleTypeReference(node: IUniNodeTypeReference): JSONSchema7 {
+    const token = this.resolveTokenName(node);
+
+    return this.HandleJsonSchemaNode(node, { $ref: token });
   }
 
-  HandleTypeInteger(node: IUniNodeTypeInteger) {
-    return this.HandleJsonSchemaNode(node, {
-      type: "integer",
-    });
+  HandleTypeInteger(node: IUniNodeTypeInteger): JSONSchema7 {
+    return this.HandleJsonSchemaNode(node, { type: "integer" });
   }
 
-  HandleTypeObject(node: IUniNodeTypeObject) {
-    const jsonSchemaType = {
+  HandleTypeObject(node: IUniNodeTypeObject): JSONSchema7 {
+    const jsonSchemaType: JSONSchema7 = {
       type: "object",
-      required: [] as string[],
-      properties: {} as Record<string, any>,
+      required: [],
+      properties: {},
     };
+
+    jsonSchemaType.required ??= [];
+    jsonSchemaType.properties ??= {};
 
     for (const [propertyKey, propertyNode] of Object.entries(node.properties)) {
       jsonSchemaType.properties[propertyKey] = this.Handle(propertyNode);
@@ -79,8 +88,8 @@ export class JsonSchemaCompiler extends CompileNode {
     return jsonSchemaType;
   }
 
-  HandleTypeString(node: IUniNodeTypeString) {
-    const jsonSchemaType: any = {
+  HandleTypeString(node: IUniNodeTypeString): JSONSchema7 {
+    const jsonSchemaType: JSONSchema7 = {
       type: "string",
     };
 
@@ -102,7 +111,21 @@ export class JsonSchemaCompiler extends CompileNode {
     return this.HandleJsonSchemaNode(node, jsonSchemaType);
   }
 
-  HandleView(node: IUniNodeView) {
-    return this.HandleJsonSchemaNode(node, this.Handle(node.type));
+  HandleView(node: IUniNodeView): JSONSchema7 {
+    const nodeMeta = {
+      description: node.description,
+    };
+
+    const token = this.resolveTokenName(node);
+
+    return this.HandleJsonSchemaNode(node, {
+      $id: token,
+      ...this.Handle(node.type),
+      ...nodeMeta,
+    });
+  }
+
+  Handle(node: IUniNode, ctx?: undefined): JSONSchema7 {
+    return super.Handle(node, ctx);
   }
 }

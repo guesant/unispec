@@ -1,5 +1,6 @@
-import { type IUniNode, VisitAllNodes } from "@unispec/core";
+import { type IUniNode } from "@unispec/core";
 import { CastIterable } from "../-Helpers/CastIterable";
+import { AllNodesVisitor } from "../Visitors";
 
 type IRepositoryEntrypoint = IUniNode | Iterable<IUniNode> | undefined | null;
 
@@ -23,7 +24,7 @@ export class UniRepository {
 
   Add(entrypoint: IRepositoryEntrypoint, visitAll = this.visitAll): this {
     if (entrypoint) {
-      const nodesIterable = visitAll ? VisitAllNodes(entrypoint) : CastIterable(entrypoint);
+      const nodesIterable = visitAll ? AllNodesVisitor.VisitAll(entrypoint) : CastIterable(entrypoint);
 
       for (const node of nodesIterable) {
         this.#nodes.add(node);

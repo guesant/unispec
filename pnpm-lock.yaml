@@ -78,6 +78,9 @@ importers:
       '@eslint/js':
         specifier: ^9.3.0
         version: 9.3.0
+      '@types/json-schema':
+        specifier: ^7.0.15
+        version: 7.0.15
       eslint:
         specifier: ~9.3.0
         version: 9.3.0
@@ -1451,6 +1454,9 @@ packages:
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  '@types/json-schema@7.0.15':
+    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
   '@types/node@20.12.13':
     resolution: {integrity: sha512-gBGeanV41c1L171rR7wjbMiEpEI/l5XFQdLLfhr/REwpgDy/4U8y89+i8kRiLzDyZdOkXh+cRaTetUnCYutoXA==}
@@ -4891,6 +4897,8 @@ snapshots:
   '@types/argparse@1.0.38': {}
 
   '@types/estree@1.0.5': {}
+
+  '@types/json-schema@7.0.15': {}
 
   '@types/node@20.12.13':
     dependencies:
