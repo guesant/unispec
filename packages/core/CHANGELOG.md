@@ -1,3 +1,20 @@
+## 0.14.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **core/Nodes:** remove VisitAllNodes in favor of compiler/NodesVisitor
+
+
+### 🧱 Updated Dependencies
+
+- Updated compiler to 0.12.0
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.13.0 (2024-05-30)
 
 

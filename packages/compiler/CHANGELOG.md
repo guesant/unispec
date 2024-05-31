@@ -1,3 +1,19 @@
+## 0.12.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler/Visitors:** init NodesVisitor
+
+- **compiler:** AllNodesVisitor
+
+- **compiler/JsonSchemaCompiler:** extends NodeVisitor
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.11.0 (2024-05-30)
 
 
