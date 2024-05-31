@@ -1,3 +1,15 @@
+## 0.14.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler:** drop TypeScriptGenerator
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.13.0 (2024-05-31)
 
 
