@@ -24,7 +24,7 @@
     "defu": "^6.1.4",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
-    "nx": "19.2.0-beta.4",
+    "nx": "19.1.1",
     "prettier": "^3.2.5",
     "typescript": "~5.4.2",
     "vite": "^5.2.12",
@@ -36,5 +36,5 @@
   "nx": {
     "includedScripts": []
   },
-  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
+  "packageManager": "pnpm@8.15.8+sha512.d1a029e1a447ad90bc96cd58b0fad486d2993d531856396f7babf2d83eb1823bb83c5a3d0fc18f675b2d10321d49eb161fece36fe8134aa5823ecd215feed392"
 }
