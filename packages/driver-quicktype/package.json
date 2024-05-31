@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@unispec/compiler": "workspace:^",
-    "@unispec/core": "workspace:^"
+    "@unispec/core": "workspace:^",
+    "quicktype-core": "^23.0.170"
   }
 }
