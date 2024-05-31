@@ -1,5 +1,5 @@
-import defu from "defu";
 import type { PartialDeep } from "type-fest";
+import { DeepAssign } from "../../Fixtures";
 import { UniExtends } from "./Extends";
 import { type IUniNodeTypeObject } from "./Type";
 import { UniNodeTypeObjectPartial, UniNodeTypeObjectPick } from "./Type.Object.Utils";
@@ -42,7 +42,7 @@ export class UniNodeObjectTransformer<Current extends IUniNodeTypeObject> {
   }
 
   Merge<Other extends IUniNodeTypeObject>(otherNode: Other) {
-    return this.Pipe((current) => defu(current, otherNode));
+    return this.Pipe((current) => DeepAssign(current, otherNode));
   }
 
   Extends(...otherNodes: PartialDeep<Current | IUniNodeTypeObject>[]) {
