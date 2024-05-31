@@ -1,3 +1,15 @@
+## 0.16.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler/CompileNode:** extends NodeVisitor
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.15.0 (2024-05-31)
 
 
