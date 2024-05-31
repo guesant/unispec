@@ -1,4 +1,4 @@
-import { U } from "@unispec/core";
+import { U, UniNodeTypeReference } from "@unispec/core";
 
 type ICompiledSpecification = {
   operations: U.IOperation[];
@@ -21,12 +21,14 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
 
         if (findById) {
           const FindByIdOperation = U.Operation({
-            name: `${node.entity}UpdateById`,
+            name: findById.name,
 
             description: "",
 
             input: {
-              params: {},
+              params: {
+                id: UniNodeTypeReference({ targetsTo: findById.input, objectProperty: "id" }),
+              },
             },
 
             output: {
@@ -70,7 +72,9 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
               description: "",
 
               input: {
-                params: {},
+                params: {
+                  ...FindByIdOperation.input.params,
+                },
                 body: U.Reference({
                   targetsTo: updateById.input,
                   description: "",
@@ -95,7 +99,9 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
               description: "",
 
               input: {
-                params: {},
+                params: {
+                  ...FindByIdOperation.input.params,
+                },
                 body: U.Reference({
                   targetsTo: findById.input,
                   description: "",
