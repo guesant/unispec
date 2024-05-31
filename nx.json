@@ -31,7 +31,6 @@
     }
   },
   "release": {
-    "projectsRelationship": "independent",
     "projects": ["*", "!@unispec/source"],
     "version": {
       "conventionalCommits": true,

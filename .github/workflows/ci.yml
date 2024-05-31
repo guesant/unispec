@@ -41,8 +41,8 @@ jobs:
       - name: Build
         uses: ./.github/actions/prepare-build
 
-      - name: Tag branch if all jobs succeed
-        uses: nrwl/nx-tag-successful-ci-run@v1
+      # - name: Tag branch if all jobs succeed
+      #   uses: nrwl/nx-tag-successful-ci-run@v1
 
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
