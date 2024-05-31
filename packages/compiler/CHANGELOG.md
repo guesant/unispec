@@ -1,3 +1,15 @@
+## 0.13.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler/JsonSchemaCompiler:** use override modifier
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.12.0 (2024-05-31)
 
 
