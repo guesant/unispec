@@ -35,7 +35,7 @@
     "typescript-eslint": "8.0.0-alpha.24"
   },
   "dependencies": {
-    "@unispec/core": "link:../core",
+    "@unispec/core": "workspace:*",
     "tslib": "^2.6.2"
   }
 }
