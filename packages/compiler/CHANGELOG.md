@@ -1,3 +1,15 @@
+## 0.15.0 (2024-05-31)
+
+
+### 🚀 Features
+
+- **compiler:** add more keywords to package.json
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.14.0 (2024-05-31)
 
 
