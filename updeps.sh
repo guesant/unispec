@@ -16,8 +16,6 @@ sync_pkg_version() {
 
 }
 
-git stash || exit 0;
-
 sync_pkg_version core;
 sync_pkg_version driver-nestjs;
 sync_pkg_version compiler;
@@ -25,5 +23,3 @@ sync_pkg_version compiler;
 git add -A;
 
 git commit -m "chore(release): update package.json versions [skip ci]";
-
-git stash pop || exit 0;
