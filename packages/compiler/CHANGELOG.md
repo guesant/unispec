@@ -1,3 +1,15 @@
+## 0.18.1 (2024-05-31)
+
+
+### 🩹 Fixes
+
+- **compiler/CompileOperations:** remove body from delete
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.18.0 (2024-05-31)
 
 
