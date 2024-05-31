@@ -24,8 +24,6 @@ sync_pkg_version compiler;
 
 git add -A;
 
-git commit -m "chore: update package.json versions";
-
-git push origin;
+git commit -m "chore(release): update package.json versions [skip ci]";
 
 git stash pop || exit 0;
