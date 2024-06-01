@@ -1,8 +1,24 @@
 import { type IUniNode } from "@unispec/core";
 import { CastIterable } from "../-Helpers/CastIterable";
-import { AllNodesVisitor } from "../Visitors";
+import { AllNodesVisitor, type INodesEntrypoint } from "../Visitors";
 
-type IRepositoryEntrypoint = IUniNode | Iterable<IUniNode> | undefined | null;
+export type IUniRepositoryLike = {
+  Nodes: Iterable<IUniNode>;
+};
+
+export type IUniRepositoryEntrypoint = INodesEntrypoint | IUniRepositoryLike;
+
+export const IsUniRepositoryLike = (node: unknown): node is IUniRepositoryLike => {
+  if (node instanceof UniRepository) {
+    return true;
+  }
+
+  if (Symbol.iterator in (<any>node)?.Nodes) {
+    return true;
+  }
+
+  return false;
+};
 
 export class UniRepository {
   #nodes = new Set<IUniNode>();
@@ -16,18 +32,30 @@ export class UniRepository {
   }
 
   constructor(
-    entrypoint?: IRepositoryEntrypoint,
+    entrypoint?: IUniRepositoryEntrypoint,
     public visitAll = true,
   ) {
     this.Add(entrypoint, visitAll);
   }
 
-  Add(entrypoint: IRepositoryEntrypoint, visitAll = this.visitAll): this {
-    if (entrypoint) {
-      const nodesIterable = visitAll ? AllNodesVisitor.VisitAll(entrypoint) : CastIterable(entrypoint);
+  Add(entrypoints: IUniRepositoryEntrypoint, visitAll = this.visitAll): this {
+    if (entrypoints) {
+      const entrypointIterable = CastIterable(entrypoints);
 
-      for (const node of nodesIterable) {
-        this.#nodes.add(node);
+      for (const entrypointNode of entrypointIterable) {
+        let nodesIterable;
+
+        if (IsUniRepositoryLike(entrypointNode)) {
+          nodesIterable = entrypointNode.Nodes;
+        } else {
+          nodesIterable = visitAll ? AllNodesVisitor.VisitAll(entrypointNode) : CastIterable(entrypointNode);
+        }
+
+        for (const node of nodesIterable) {
+          if (node) {
+            this.#nodes.add(node);
+          }
+        }
       }
     }
 

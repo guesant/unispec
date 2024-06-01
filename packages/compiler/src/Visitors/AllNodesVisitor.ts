@@ -1,8 +1,10 @@
 import type { IUniNode, IUniNodeProvider, IUniNodeProviderContext, IUniNodeTypeArray, IUniNodeTypeObject } from "@unispec/core";
-import { CastIterable } from "../-Helpers";
+import { CastIterable, type MayBeIterable } from "../-Helpers";
 import { NodeVisitor } from "./NodesVisitor";
 
-type IExtractAllNodesContext = {
+export type INodesEntrypoint = MayBeIterable<IUniNode | undefined | null>;
+
+export type IExtractAllNodesContext = {
   nodesVisited: Set<IUniNode>;
   nodesToVisit: Set<IUniNode>;
 };
@@ -38,11 +40,15 @@ export class AllNodesVisitor extends NodeVisitor<IExtractAllNodesContext> {
     };
   }
 
-  static *VisitAll(entrypoint: IUniNode | Iterable<IUniNode>, visitor = new AllNodesVisitor()): Iterable<IUniNode> {
+  static *VisitAll(entrypoint: INodesEntrypoint, visitor = new AllNodesVisitor()): Iterable<IUniNode> {
     const ctx = this.createExtractAllNodesContext();
 
-    for (const node of CastIterable(entrypoint)) {
-      ctx.nodesToVisit.add(node);
+    const entrypointIterable = CastIterable(entrypoint) as Iterable<IUniNode | void>;
+
+    for (const node of entrypointIterable) {
+      if (node) {
+        ctx.nodesToVisit.add(node);
+      }
     }
 
     while (ctx.nodesToVisit.size > 0) {
