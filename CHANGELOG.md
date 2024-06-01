@@ -1,3 +1,14 @@
+## 0.22.0 (2024-06-01)
+
+
+### 🚀 Features
+
+- **driver-quicktype:** UnispecStore ([ad535b3](https://github.com/guesant/unispec/commit/ad535b3))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.21.0 (2024-05-31)
 
 
