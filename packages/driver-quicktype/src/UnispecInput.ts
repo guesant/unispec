@@ -1,23 +1,20 @@
 import { AllNodesVisitor, JsonSchemaGenerator } from "@unispec/compiler";
 import { IsUniNodeView, type IUniNode } from "@unispec/core";
-import { FetchingJSONSchemaStore, InputData, JSONSchemaInput } from "quicktype-core";
+import { InputData, JSONSchemaInput } from "quicktype-core";
+import { UnispecStore } from "./UnispecStore";
 
-export class UnispecInput {
-  constructor(
-    public generator = new JsonSchemaGenerator(),
-    public jsonSchemaInput = new JSONSchemaInput(new FetchingJSONSchemaStore()),
-  ) {}
+export class UnispecInput extends JSONSchemaInput {
+  constructor(public store: UnispecStore) {
+    super(store);
+  }
 
   async AddNode(node: IUniNode): Promise<void> {
     if (IsUniNodeView(node)) {
-      const jsonSchemaType = this.generator.Compile(node);
+      const jsonSchemaType = this.store.generator.Compile(node);
 
       const jsonSchemaTypeAsString = JSON.stringify(jsonSchemaType, null, 2);
 
-      await this.jsonSchemaInput.addSource({
-        name: node.name,
-        schema: jsonSchemaTypeAsString,
-      });
+      await this.addSource({ name: node.name, schema: jsonSchemaTypeAsString });
     }
   }
 
@@ -31,23 +28,12 @@ export class UnispecInput {
 
   GetInputData() {
     const inputData = new InputData();
-    inputData.addInput(this.jsonSchemaInput);
+    inputData.addInput(this);
     return inputData;
   }
 
-  static async GetFromEntryPoint(entrypoint: IUniNode | Iterable<IUniNode>) {
-    const unispecInput = new UnispecInput();
-    await unispecInput.AddFromEntryPoint(entrypoint);
-    return unispecInput;
-  }
-
-  static async GetJsonSchemaInputFromEntryPoint(entrypoint: IUniNode | Iterable<IUniNode>) {
-    const unispecInput = await UnispecInput.GetFromEntryPoint(entrypoint);
-    return unispecInput.jsonSchemaInput;
-  }
-
-  static async GetInputDataFromEntryPoint(entrypoint: IUniNode | Iterable<IUniNode>) {
-    const unispecInput = await UnispecInput.GetFromEntryPoint(entrypoint);
-    return unispecInput.GetInputData();
+  static async FromEntrypoint(entrypoint: IUniNode | Iterable<IUniNode>, visitAll?: boolean, generator?: JsonSchemaGenerator) {
+    const store = await UnispecStore.FromEntrypoint(entrypoint, visitAll, generator);
+    return new UnispecInput(store);
   }
 }
