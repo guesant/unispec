@@ -1,3 +1,7 @@
+## 0.23.0 (2024-06-01)
+
+This was a version bump only for driver-quicktype to align it with other projects, there were no code changes.
+
 ## 0.22.0 (2024-06-01)
 
 

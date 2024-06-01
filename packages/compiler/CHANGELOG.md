@@ -1,3 +1,15 @@
+## 0.23.0 (2024-06-01)
+
+
+### 🚀 Features
+
+- **compiler/Repository:** accept UniRepository as entrypoint
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.22.0 (2024-06-01)
 
 This was a version bump only for compiler to align it with other projects, there were no code changes.

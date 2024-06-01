@@ -1,3 +1,14 @@
+## 0.23.0 (2024-06-01)
+
+
+### 🚀 Features
+
+- **compiler/Repository:** accept UniRepository as entrypoint ([c6f3252](https://github.com/guesant/unispec/commit/c6f3252))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.22.0 (2024-06-01)
 
 
