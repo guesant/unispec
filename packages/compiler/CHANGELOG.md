@@ -1,3 +1,15 @@
+## 0.25.1 (2024-06-02)
+
+
+### 🩹 Fixes
+
+- **compiler/Repository/IsUniRepositoryLike:** check if node.Nodes is not null before verify if is iterable
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.25.0 (2024-06-02)
 
 

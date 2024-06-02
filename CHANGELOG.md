@@ -1,3 +1,14 @@
+## 0.25.1 (2024-06-02)
+
+
+### 🩹 Fixes
+
+- **compiler/Repository/IsUniRepositoryLike:** check if node.Nodes is not null before verify if is iterable ([df74a1c](https://github.com/guesant/unispec/commit/df74a1c))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.25.0 (2024-06-02)
 
 
