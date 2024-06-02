@@ -1,3 +1,17 @@
+## 0.24.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **compiler/Repository:** Contains
+
+- **compiler/Repository:** FindByName
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.23.0 (2024-06-01)
 
 

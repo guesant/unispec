@@ -1,3 +1,15 @@
+## 0.24.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **compiler/Repository:** Contains ([2a4ffe9](https://github.com/guesant/unispec/commit/2a4ffe9))
+- **compiler/Repository:** FindByName ([1ab7312](https://github.com/guesant/unispec/commit/1ab7312))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.23.0 (2024-06-01)
 
 
