@@ -72,29 +72,49 @@ export class UniRepository {
     return false;
   }
 
-  GetRealTarget(cursor: IUniNode | string): IUniNode | null {
-    if (typeof cursor === "string" || (cursor.kind === "type" && cursor.type === "reference")) {
-      let targetsTo: string | null = null;
-
-      if (typeof cursor === "string") {
-        targetsTo = cursor;
-      } else {
-        targetsTo = cursor.targetsTo;
+  FindByName(name: string) {
+    for (const node of this.Nodes) {
+      if (node.kind === "view" && node.name === name) {
+        return node;
       }
-
-      if (typeof targetsTo !== "string") {
-        throw new Error("Invalid target for cursor " + cursor);
-      }
-
-      for (const node of this.Nodes) {
-        if (node.kind === "view" && node.name === targetsTo) {
-          return node;
-        }
-      }
-
-      throw new Error("Cannot find target for " + targetsTo);
     }
 
-    return cursor;
+    return null;
+  }
+
+  protected GetReferenceTargetsTo(cursor: IUniNode | string) {
+    if (typeof cursor === "string") {
+      return cursor;
+    }
+
+    if (cursor.kind === "type" && cursor.type === "reference") {
+      return cursor.targetsTo;
+    }
+
+    return null;
+  }
+
+  GetRealTarget(cursor: IUniNode | string): IUniNode | null {
+    let targetNode: IUniNode | null = null;
+
+    const referenceTargetsTo = this.GetReferenceTargetsTo(cursor);
+
+    if (referenceTargetsTo) {
+      targetNode = this.FindByName(referenceTargetsTo);
+
+      if (!targetNode) {
+        throw new Error(`Can't find target for cursor '${cursor}' that targets to '${referenceTargetsTo}'.`);
+      }
+    } else {
+      if (typeof cursor !== "string") {
+        targetNode = cursor;
+      }
+    }
+
+    if (!targetNode) {
+      throw new Error("Invalid target for cursor " + cursor);
+    }
+
+    return targetNode;
   }
 }
