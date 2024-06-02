@@ -62,6 +62,16 @@ export class UniRepository {
     return this;
   }
 
+  Contains(node: IUniNode) {
+    for (const iterateNode of this.Nodes) {
+      if (node === iterateNode) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   GetRealTarget(cursor: IUniNode | string): IUniNode | null {
     if (typeof cursor === "string" || (cursor.kind === "type" && cursor.type === "reference")) {
       let targetsTo: string | null = null;
