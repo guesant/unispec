@@ -1,3 +1,17 @@
+## 0.25.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **driver-quicktype/UnispecStore:** remove static FromEntrypoint
+
+- **driver-quicktype/UnispecInput:** accept IUniRepositoryEntrypoint
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.24.0 (2024-06-02)
 
 This was a version bump only for driver-quicktype to align it with other projects, there were no code changes.

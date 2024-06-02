@@ -1,3 +1,15 @@
+## 0.25.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **core/View:** opaqueType
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.24.0 (2024-06-02)
 
 This was a version bump only for core to align it with other projects, there were no code changes.

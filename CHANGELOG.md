@@ -1,3 +1,17 @@
+## 0.25.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **compiler/Repository:** mark GetReferenceTargetsTo as public ([c8796db](https://github.com/guesant/unispec/commit/c8796db))
+- **core/View:** opaqueType ([3d43875](https://github.com/guesant/unispec/commit/3d43875))
+- **driver-quicktype/UnispecInput:** accept IUniRepositoryEntrypoint ([df4e189](https://github.com/guesant/unispec/commit/df4e189))
+- **driver-quicktype/UnispecStore:** remove static FromEntrypoint ([36803b2](https://github.com/guesant/unispec/commit/36803b2))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.24.0 (2024-06-02)
 
 

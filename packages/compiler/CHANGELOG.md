@@ -1,3 +1,15 @@
+## 0.25.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **compiler/Repository:** mark GetReferenceTargetsTo as public
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.24.0 (2024-06-02)
 
 
