@@ -13,8 +13,12 @@ export const IsUniRepositoryLike = (node: unknown): node is IUniRepositoryLike =
     return true;
   }
 
-  if (Symbol.iterator in (<any>node)?.Nodes) {
-    return true;
+  const nodesIterable = node && Object.hasOwn(node, "Nodes") ? (<any>node).Nodes : null;
+
+  if (nodesIterable) {
+    if (Symbol.iterator in nodesIterable) {
+      return true;
+    }
   }
 
   return false;
