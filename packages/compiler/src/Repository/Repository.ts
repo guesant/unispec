@@ -82,7 +82,7 @@ export class UniRepository {
     return null;
   }
 
-  protected GetReferenceTargetsTo(cursor: IUniNode | string) {
+  GetReferenceTargetsTo(cursor: IUniNode | string) {
     if (typeof cursor === "string") {
       return cursor;
     }
