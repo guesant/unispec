@@ -1,4 +1,4 @@
-import { AllNodesVisitor, JsonSchemaGenerator } from "@unispec/compiler";
+import { UniRepository, type IUniRepositoryEntrypoint } from "@unispec/compiler";
 import { IsUniNodeView, type IUniNode } from "@unispec/core";
 import { InputData, JSONSchemaInput } from "quicktype-core";
 import { UnispecStore } from "./UnispecStore";
@@ -18,10 +18,10 @@ export class UnispecInput extends JSONSchemaInput {
     }
   }
 
-  async AddFromEntryPoint(entrypoint: IUniNode | Iterable<IUniNode>) {
-    const nodes = AllNodesVisitor.VisitAll(entrypoint);
+  async AddFromEntryPoint(entrypoint: IUniRepositoryEntrypoint, visitAll: boolean = true) {
+    const repository = new UniRepository(entrypoint, visitAll);
 
-    for (const node of nodes) {
+    for (const node of repository.Nodes) {
       await this.AddNode(node);
     }
   }
@@ -30,10 +30,5 @@ export class UnispecInput extends JSONSchemaInput {
     const inputData = new InputData();
     inputData.addInput(this);
     return inputData;
-  }
-
-  static async FromEntrypoint(entrypoint: IUniNode | Iterable<IUniNode>, visitAll?: boolean, generator?: JsonSchemaGenerator) {
-    const store = await UnispecStore.FromEntrypoint(entrypoint, visitAll, generator);
-    return new UnispecInput(store);
   }
 }
