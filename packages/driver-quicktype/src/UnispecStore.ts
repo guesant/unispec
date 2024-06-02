@@ -20,12 +20,4 @@ export class UnispecStore extends JSONSchemaStore {
 
     return undefined;
   }
-
-  static async FromEntrypoint(entrypoint: IUniNode | Iterable<IUniNode>, visitAll?: boolean, generator?: JsonSchemaGenerator) {
-    const repository = new UniRepository(entrypoint, visitAll);
-
-    const store = new UnispecStore(repository, generator);
-
-    return store;
-  }
 }
