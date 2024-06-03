@@ -30,7 +30,7 @@
     "eslint": "~9.3.0",
     "type-fest": "^4.18.3",
     "typescript": "^5.4.5",
-    "typescript-eslint": "8.0.0-alpha.24"
+    "typescript-eslint": "8.0.0-alpha.25"
   },
   "dependencies": {
     "@unispec/compiler": "workspace:^",
