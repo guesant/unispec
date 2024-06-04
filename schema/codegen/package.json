@@ -11,5 +11,6 @@
     "fs-jetpack": "^5.1.0",
     "schema2typebox": "^1.7.4",
     "tsx": "^4.11.2"
-  }
+  },
+  "version": "0.26.0"
 }

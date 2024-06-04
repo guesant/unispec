@@ -1,3 +1,14 @@
+## 0.26.0 (2024-06-04)
+
+
+### 🚀 Features
+
+- init schema [WIP] [skip ci] ([e301a52](https://github.com/guesant/unispec/commit/e301a52))
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes @guesant
+
 ## 0.25.1 (2024-06-02)
 
 
