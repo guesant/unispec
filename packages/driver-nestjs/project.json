@@ -1,48 +1,19 @@
 {
-  "name": "driver-nestjs",
+  "name": "@unispec/driver-nestjs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/driver-nestjs/src",
   "projectType": "library",
-  "release": {
-    "version": {
-      "generatorOptions": {
-        "packageRoot": "dist/{projectRoot}",
-        "currentVersionResolver": "git-tag"
-      }
-    }
-  },
-  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "outputPath": "dist/packages/driver-nestjs",
-        "tsConfig": "{projectRoot}/tsconfig.lib.json"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "locally": {
-          "mode": "locally"
-        },
-        "production": {
-          "mode": "production"
-        }
-      }
+      "cwd": "{projectRoot}",
+      "command": "pnpm run -r --filter @unispec/driver-nestjs build",
+      "outputs": ["{projectRoot}/dist"]
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
         "command": "pnpm run test"
-      }
-    },
-    "nx-release-publish": {
-      "options": {
-        "packageRoot": "dist/{projectRoot}"
       }
     }
   }

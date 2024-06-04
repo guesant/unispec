@@ -1,10 +1,45 @@
 {
   "name": "@unispec/compiler",
-  "version": "0.20.0",
+  "version": "0.26.0",
+  "type": "module",
   "sideEffects": false,
   "publishConfig": {
+    "provenance": true,
     "access": "public"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "release:base": "release-it -c .release-it.json",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage",
+    "build": "unbuild"
+  },
+  "files": [
+    "*.md",
+    "dist/**/*.*",
+    "!**/*.tsbuildinfo",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "@unispec/core": "workspace:^",
+    "tslib": "^2.6.2"
+  },
+  "unbuild": {
+    "externals": [
+      "@types/json-schema",
+      "json-schema"
+    ]
+  },
+  "description": "Unispec AST Nodes Compiler.",
   "repository": {
     "type": "git",
     "url": "https://github.com/guesant/unispec.git"
@@ -15,27 +50,12 @@
     "unispec-compiler",
     "ast"
   ],
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "typings": "./dist/index.d.ts",
-  "scripts": {
-    "lint:check": "eslint -c eslint.config.mjs",
-    "lint:fix": "eslint -c eslint.config.mjs --fix",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "coverage": "vitest run --coverage",
-    "build:locally": "PKG_LOCALLY=true vite build",
-    "dev:locally": "PKG_LOCALLY=true vite build -w"
+  "author": "Gabriel R. Antunes <gabrielrodantunes@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/guesant/unispec/issues"
   },
+  "homepage": "https://github.com/guesant/unispec/tree/next/packages/compiler#readme",
   "devDependencies": {
-    "@eslint/js": "^9.3.0",
-    "@types/json-schema": "^7.0.15",
-    "eslint": "~9.3.0",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "8.0.0-alpha.26"
-  },
-  "dependencies": {
-    "@unispec/core": "workspace:^",
-    "tslib": "^2.6.2"
+    "@types/json-schema": "^7.0.15"
   }
 }

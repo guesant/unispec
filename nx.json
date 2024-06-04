@@ -16,51 +16,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"]
-    },
-    "dev": {
-      "dependsOn": ["^build"]
-    },
-    "@nx/vite:test": {
-      "cache": true,
-      "inputs": ["default", "^default"]
-    },
-    "@nx/vite:build": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["default", "^default"]
     }
   },
-  "release": {
-    "projects": ["*", "!@unispec/source"],
-    "version": {
-      "conventionalCommits": true,
-      "generatorOptions": {
-        "updateDependents": "auto",
-        "fallbackCurrentVersionResolver": "disk"
-      }
-    },
-    "git": {
-      "commit": true,
-      "tag": true,
-      "commitMessage": "chore(release): {version} [skip ci]"
-    },
-    "changelog": {
-      "createRelease": "github",
-      "automaticFromRef": true,
-      "projectChangelogs": true
-    }
-  },
-  "plugins": [
-    {
-      "plugin": "@nx/vite/plugin",
-      "options": {
-        "buildTargetName": "build",
-        "testTargetName": "vite:test",
-        "serveTargetName": "serve",
-        "previewTargetName": "preview",
-        "serveStaticTargetName": "serve-static"
-      }
-    }
-  ],
   "packageManager": "pnpm"
 }

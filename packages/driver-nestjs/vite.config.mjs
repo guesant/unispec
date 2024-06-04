@@ -1,6 +1,16 @@
 /// <reference types='vitest' />
-import { getViteCommonConfig } from "../-shared/vite.config.mjs";
 
-const root = __dirname;
+import { defineConfig } from "vite";
 
-export default getViteCommonConfig({ root });
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: "node",
+    include: [`./**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
+    reporters: ["default"],
+    coverage: {
+      reportsDirectory: `../../coverage/packages/driver-nestjs`,
+      provider: "v8",
+    },
+  },
+});

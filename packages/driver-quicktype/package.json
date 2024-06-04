@@ -1,10 +1,54 @@
 {
-  "name": "@unispec/driver-quicktype",
-  "version": "0.20.1",
+  "name": "@unispec/driver-nestjs",
+  "type": "module",
+  "version": "0.26.0",
   "sideEffects": false,
   "publishConfig": {
+    "provenance": true,
     "access": "public"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "release:base": "release-it -c .release-it.json",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage",
+    "build": "unbuild"
+  },
+  "files": [
+    "*.md",
+    "dist/**/*.*",
+    "!**/*.tsbuildinfo",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "type-fest": "^4.18.3"
+  },
+  "dependencies": {
+    "@unispec/compiler": "link:../compiler",
+    "@unispec/core": "link:../core",
+    "quicktype-core": "^23.0.170"
+  },
+  "nx": {
+    "implicitDependencies": [
+      "@unispec/compiler",
+      "@unispec/core"
+    ]
+  },
+  "optionalDependencies": {
+    "@nestjs/graphql": "^12.1.1",
+    "@nestjs/swagger": "^7.3.1",
+    "change-case": "^5.4.4"
+  },
+  "description": "Unispec Driver for QuickType.",
   "repository": {
     "type": "git",
     "url": "https://github.com/guesant/unispec.git"
@@ -13,28 +57,9 @@
   "keywords": [
     "unispec"
   ],
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "typings": "./dist/index.d.ts",
-  "scripts": {
-    "lint:check": "eslint -c eslint.config.mjs",
-    "lint:fix": "eslint -c eslint.config.mjs --fix",
-    "test": "nx vite:test run",
-    "test:watch": "nx vite:test watch",
-    "coverage": "nx vite:test run --coverage",
-    "build:locally": "PKG_LOCALLY=true vite build",
-    "dev:locally": "PKG_LOCALLY=true vite build -w"
+  "author": "Gabriel R. Antunes <gabrielrodantunes@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/guesant/unispec/issues"
   },
-  "devDependencies": {
-    "@eslint/js": "^9.3.0",
-    "eslint": "~9.3.0",
-    "type-fest": "^4.18.3",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "8.0.0-alpha.26"
-  },
-  "dependencies": {
-    "@unispec/compiler": "workspace:^",
-    "@unispec/core": "workspace:^",
-    "quicktype-core": "^23.0.170"
-  }
+  "homepage": "https://github.com/guesant/unispec/tree/next/packages/driver-quicktype#readme"
 }

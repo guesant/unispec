@@ -2,7 +2,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 
 const sharedEslintConfig = tseslint.config({
-  files: ["{src,test}/**/*.ts"],
+  files: ["{packages}/{src,test}/**/*.ts"],
 
   extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
 

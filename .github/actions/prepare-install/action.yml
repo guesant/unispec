@@ -35,7 +35,7 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: pnpm install --frozen-lockfile
       env:
-        HUSKY: "0" # By default do not run HUSKY install
+        HUSKY: "0"
 
     - uses: nrwl/nx-set-shas@v4
       with:
