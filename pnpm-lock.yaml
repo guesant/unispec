@@ -36,8 +36,8 @@ importers:
         specifier: 19.1.2
         version: 19.1.2(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
       prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
+        specifier: ^3.3.0
+        version: 3.3.0
       typescript:
         specifier: ~5.4.5
         version: 5.4.5
@@ -58,7 +58,7 @@ importers:
     dependencies:
       '@unispec/core':
         specifier: workspace:^
-        version: 0.20.0
+        version: link:../core
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -1182,9 +1182,6 @@ packages:
   '@typescript-eslint/visitor-keys@8.0.0-alpha.26':
     resolution: {integrity: sha512-5QLzjFiNqkFV5AuQRCc1Q4OA3AdhcFjMTz9/9+FgrFI6L0vuEmm+V9dOOZocMeD0+SwajUqodTKyhSJ89YleOA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@unispec/core@0.20.0':
-    resolution: {integrity: sha512-StndILgjLGjugClMxxajYikw6LuvIQIl1/HAxPRrnvs8Jeq+kYYlmS/qbRzD4Ys+QKNG6GHQg/guiwFLCySsIg==}
 
   '@vitest/coverage-v8@1.6.0':
     resolution: {integrity: sha512-KvapcbMY/8GYIG0rlwwOKCVNRc0OL20rrhFkg/CHNzncV03TE2XWvO5w9uZYoxNiMEBacAJt3unSOiZ7svePew==}
@@ -2638,8 +2635,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  prettier@3.3.0:
+    resolution: {integrity: sha512-J9odKxERhCQ10OC2yb93583f6UnYutOeiV5i0zEDS7UGTdUt0u+y8erxl3lBKvwo/JHyyoEdXjwp4dke9oyZ/g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4075,10 +4072,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.0.0-alpha.26
       eslint-visitor-keys: 3.4.3
-
-  '@unispec/core@0.20.0':
-    dependencies:
-      defu: 6.1.4
 
   '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.14.1)(@vitest/ui@1.6.0))':
     dependencies:
@@ -5649,7 +5642,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.2.5: {}
+  prettier@3.3.0: {}
 
   pretty-bytes@6.1.1: {}
 
