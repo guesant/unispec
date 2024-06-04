@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "name": "UniNodeTypeString",
+
+  "$id": "UniNodeTypeString",
+
+  "allOf": [
+    { "$ref": "./node-type-base.json" },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "string",
+          "type": "string"
+        }
+      },
+      "required": ["type"]
+    }
+  ]
+}

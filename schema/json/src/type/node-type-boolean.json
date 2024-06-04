@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "name": "UniNodeTypeBoolean",
+
+  "$id": "UniNodeTypeBoolean",
+
+  "allOf": [
+    { "$ref": "./node-type-base.json" },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "boolean",
+          "type": "string"
+        }
+      },
+      "required": ["type"]
+    }
+  ]
+}
