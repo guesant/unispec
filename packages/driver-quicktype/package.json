@@ -30,7 +30,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "type-fest": "^4.18.3"
+    "type-fest": "^4.19.0"
   },
   "dependencies": {
     "@unispec/compiler": "link:../compiler",
