@@ -1,3 +1,15 @@
+## 0.26.1 (2024-06-04)
+
+
+### 🩹 Fixes
+
+- **driver-nestjs:** remove impl.d.ts
+
+
+### ❤️  Thank You
+
+- Gabriel R. Antunes
+
 ## 0.25.1 (2024-06-02)
 
 This was a version bump only for driver-nestjs to align it with other projects, there were no code changes.
