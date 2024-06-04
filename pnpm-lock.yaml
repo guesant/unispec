@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@eslint/js':
-        specifier: ^9.3.0
-        version: 9.3.0
+        specifier: ^9.4.0
+        version: 9.4.0
       '@nx/workspace':
         specifier: 19.1.1
         version: 19.1.1(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24)
@@ -58,7 +58,7 @@ importers:
     dependencies:
       '@unispec/core':
         specifier: workspace:^
-        version: 0.20.0
+        version: link:../core
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -550,6 +550,10 @@ packages:
 
   '@eslint/js@9.3.0':
     resolution: {integrity: sha512-niBqk8iwv96+yuTwjM6bWg8ovzAPF9qkICsGtcoa5/dmqcEMfdwNAX7+/OHcJHc7wj7XqPxH98oAHytFYlw6Sw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@9.4.0':
+    resolution: {integrity: sha512-fdI7VJjP3Rvc70lC4xkFXHB0fiPeojiL1PxVG6t1ZvXQrarj893PweuBTujxDUFk0Fxj4R7PIIAZ/aiiyZPZcg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@glideapps/ts-necessities@2.2.3':
@@ -1182,9 +1186,6 @@ packages:
   '@typescript-eslint/visitor-keys@8.0.0-alpha.26':
     resolution: {integrity: sha512-5QLzjFiNqkFV5AuQRCc1Q4OA3AdhcFjMTz9/9+FgrFI6L0vuEmm+V9dOOZocMeD0+SwajUqodTKyhSJ89YleOA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@unispec/core@0.20.0':
-    resolution: {integrity: sha512-StndILgjLGjugClMxxajYikw6LuvIQIl1/HAxPRrnvs8Jeq+kYYlmS/qbRzD4Ys+QKNG6GHQg/guiwFLCySsIg==}
 
   '@vitest/coverage-v8@1.6.0':
     resolution: {integrity: sha512-KvapcbMY/8GYIG0rlwwOKCVNRc0OL20rrhFkg/CHNzncV03TE2XWvO5w9uZYoxNiMEBacAJt3unSOiZ7svePew==}
@@ -3510,6 +3511,8 @@ snapshots:
 
   '@eslint/js@9.3.0': {}
 
+  '@eslint/js@9.4.0': {}
+
   '@glideapps/ts-necessities@2.2.3': {}
 
   '@graphql-tools/merge@9.0.1(graphql@16.8.1)':
@@ -4075,10 +4078,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.0.0-alpha.26
       eslint-visitor-keys: 3.4.3
-
-  '@unispec/core@0.20.0':
-    dependencies:
-      defu: 6.1.4
 
   '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.14.1)(@vitest/ui@1.6.0))':
     dependencies:
