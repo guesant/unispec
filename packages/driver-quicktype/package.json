@@ -1,7 +1,7 @@
 {
   "name": "@unispec/driver-quicktype",
   "type": "module",
-  "version": "0.26.1-next.4",
+  "version": "0.26.1-next.5",
   "sideEffects": false,
   "publishConfig": {
     "provenance": true,
