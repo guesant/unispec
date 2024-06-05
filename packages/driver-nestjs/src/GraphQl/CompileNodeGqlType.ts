@@ -6,7 +6,11 @@ export type ICompiledNodeGqlType = {
   type: void | (() => GqlTypeReference);
 };
 
-export class CompileNodeGqlType extends CompileNode {
+export type ICompileNodeGqlTypeContext = {
+  meta?: Record<string, any>;
+};
+
+export class CompileNodeGqlType extends CompileNode<ICompileNodeGqlTypeContext> {
   HandleTypeString() {
     return {
       type: () => String,
@@ -33,8 +37,8 @@ export class CompileNodeGqlType extends CompileNode {
     };
   }
 
-  HandleView(node: IUniNodeView): ICompiledNodeGqlType {
-    const ctor = this.classCompiler.CompileCtor(node);
+  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeGqlType {
+    const ctor = this.classCompiler.CompileCtor(node, null, meta);
 
     return {
       type: () => ctor,

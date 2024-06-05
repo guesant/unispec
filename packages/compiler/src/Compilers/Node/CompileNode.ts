@@ -3,7 +3,7 @@ import type { UniRepository } from "../../Repository";
 import { NodeVisitor } from "../../Visitors";
 import { CompileClass } from "../Class";
 
-export class CompileNode extends NodeVisitor {
+export class CompileNode<T = any> extends NodeVisitor<T> {
   constructor(
     readonly repository: UniRepository,
     readonly classCompiler: CompileClass = new CompileClass(),

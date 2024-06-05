@@ -45,9 +45,10 @@ export class CompileClass {
     return null;
   }
 
-  CompileCtor(node: IUniNode, parent?: string | null) {
+  CompileCtor(node: IUniNode, parent?: string | null, meta?: Record<string, any>) {
     const context = {
       node,
+      meta,
       host: this,
       repository: this.repository,
       dtoClassesMap: this.dtoClassesMap,
