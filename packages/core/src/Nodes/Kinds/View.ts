@@ -10,7 +10,6 @@ export type IUniNodeView = IUniNodeBase & {
   description: string;
   //
   type: IUniNode;
-  opaqueType?: IUniNode | null;
 };
 
 export const UniNodeView = <Target extends IUniNodeView, Options extends Partial<Target>, Output extends Target & Options>(options?: Options) => {
@@ -19,11 +18,10 @@ export const UniNodeView = <Target extends IUniNodeView, Options extends Partial
     name: "UnnamedView",
     description: "Unnamed View",
     type: UniNodeNull(),
-    opaqueType: null,
     ...options,
   } as Output;
 };
 
-export const IsUniNodeView = (node: IUniNode | any): node is IUniNodeView => node.kind === "view";
+export const IsUniNodeView = (node: IUniNode | any): node is IUniNodeView => node?.kind === "view";
 
 // ===========================================================
