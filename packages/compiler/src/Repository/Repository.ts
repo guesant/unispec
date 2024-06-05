@@ -105,18 +105,20 @@ export class UniRepository {
 
     if (referenceTargetsTo) {
       targetNode = this.FindByName(referenceTargetsTo);
-
-      if (!targetNode) {
-        throw new Error(`Can't find target for cursor '${cursor}' that targets to '${referenceTargetsTo}'.`);
-      }
     } else {
       if (typeof cursor !== "string") {
         targetNode = cursor;
       }
     }
 
+    return targetNode;
+  }
+
+  GetRealTargetStrict(cursor: IUniNode | string): IUniNode {
+    const targetNode = this.GetRealTarget(cursor);
+
     if (!targetNode) {
-      throw new Error("Invalid target for cursor " + cursor);
+      throw new Error(`Could not resolve real target of cursor ${cursor} (reference targets to ${this.GetReferenceTargetsTo(cursor)}).`);
     }
 
     return targetNode;
