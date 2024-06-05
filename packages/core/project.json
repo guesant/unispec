@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/core",
+  "name": "core",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/core/src",
   "projectType": "library",
@@ -7,7 +7,8 @@
     "build": {
       "cwd": "{projectRoot}",
       "command": "pnpm run -r --filter @unispec/core build",
-      "outputs": ["{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist"],
+      "dependsOn": ["^build"]
     },
     "test": {
       "executor": "nx:run-commands",

@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/driver-quicktype",
+  "name": "driver-quicktype",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/driver-quicktype/src",
   "projectType": "library",
@@ -7,7 +7,8 @@
     "build": {
       "cwd": "{projectRoot}",
       "command": "pnpm run -r --filter @unispec/driver-quicktype build",
-      "outputs": ["{options.outputPath}"]
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"]
     },
     "test": {
       "executor": "nx:run-commands",

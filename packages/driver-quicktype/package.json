@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/driver-nestjs",
+  "name": "@unispec/driver-quicktype",
   "type": "module",
   "version": "0.26.0",
   "sideEffects": false,
@@ -33,15 +33,9 @@
     "type-fest": "^4.19.0"
   },
   "dependencies": {
-    "@unispec/compiler": "link:../compiler",
-    "@unispec/core": "link:../core",
+    "@unispec/compiler": "workspace:^",
+    "@unispec/core": "workspace:^",
     "quicktype-core": "^23.0.170"
-  },
-  "nx": {
-    "implicitDependencies": [
-      "@unispec/compiler",
-      "@unispec/core"
-    ]
   },
   "optionalDependencies": {
     "@nestjs/graphql": "^12.1.1",

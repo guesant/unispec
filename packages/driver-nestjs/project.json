@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/driver-nestjs",
+  "name": "driver-nestjs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/driver-nestjs/src",
   "projectType": "library",
@@ -7,7 +7,8 @@
     "build": {
       "cwd": "{projectRoot}",
       "command": "pnpm run -r --filter @unispec/driver-nestjs build",
-      "outputs": ["{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist"],
+      "dependsOn": ["^build"]
     },
     "test": {
       "executor": "nx:run-commands",

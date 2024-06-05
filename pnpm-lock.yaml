@@ -102,10 +102,10 @@ importers:
   packages/driver-quicktype:
     dependencies:
       '@unispec/compiler':
-        specifier: link:../compiler
+        specifier: workspace:^
         version: link:../compiler
       '@unispec/core':
-        specifier: link:../core
+        specifier: workspace:^
         version: link:../core
       quicktype-core:
         specifier: ^23.0.170
