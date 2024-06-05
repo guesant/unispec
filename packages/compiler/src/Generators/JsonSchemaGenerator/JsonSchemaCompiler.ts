@@ -55,7 +55,14 @@ export class JsonSchemaCompiler extends NodeVisitor {
 
   override HandleTypeReference(node: IUniNodeTypeReference): JSONSchema7 {
     const token = this.resolveTokenName(node);
-    return this.HandleJsonSchemaNode(node, { $ref: token });
+
+    let pointer = "";
+
+    if (node.objectProperty) {
+      pointer = `#/properties/${node.objectProperty}`;
+    }
+
+    return this.HandleJsonSchemaNode(node, { $ref: `${token}${pointer}` });
   }
 
   override HandleTypeInteger(node: IUniNodeTypeInteger): JSONSchema7 {
@@ -67,7 +74,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
       type: "object",
       required: [],
       properties: {},
-      additionalProperties: false
+      additionalProperties: false,
     };
 
     jsonSchemaType.required ??= [];
