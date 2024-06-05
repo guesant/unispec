@@ -10,6 +10,11 @@
     "release": false
   },
   "npm": {
-    "publish": true
+    "publish": true,
+    "publishPath": "package-pack.tgz"
+  },
+  "hooks": {
+    "before:npm:release": "mv $(pnpm pack) package-pack.tgz",
+    "after:npm:release": "rm package-pack.tgz"
   }
 }
