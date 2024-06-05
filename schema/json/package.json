@@ -1,7 +1,7 @@
 {
   "name": "@unispec/schema-json",
   "private": true,
-  "version": "0.26.1-next.0",
+  "version": "0.26.1-next.1",
   "scripts": {
     "release:base": "release-it -c .release-it.json"
   }
