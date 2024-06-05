@@ -1,4 +1,4 @@
-import { type IUniNode } from "@unispec/core";
+import { IsUniNodeType, type IUniNode } from "@unispec/core";
 import { CastIterable } from "../-Helpers/CastIterable";
 import { AllNodesVisitor, type INodesEntrypoint } from "../Visitors";
 
@@ -88,11 +88,11 @@ export class UniRepository {
 
   GetReferenceTargetsTo(cursor: IUniNode | string) {
     if (typeof cursor === "string") {
-      return cursor;
+      return { targetsTo: cursor, objectProperty: null };
     }
 
     if (cursor.kind === "type" && cursor.type === "reference") {
-      return cursor.targetsTo;
+      return { targetsTo: cursor.targetsTo, objectProperty: cursor.objectProperty ?? null };
     }
 
     return null;
@@ -101,15 +101,27 @@ export class UniRepository {
   GetRealTarget(cursor: IUniNode | string): IUniNode | null {
     let targetNode: IUniNode | null = null;
 
-    const referenceTargetsTo = this.GetReferenceTargetsTo(cursor);
+    do {
+      const referenceTargetsTo = this.GetReferenceTargetsTo(cursor);
 
-    if (referenceTargetsTo) {
-      targetNode = this.FindByName(referenceTargetsTo);
-    } else {
-      if (typeof cursor !== "string") {
-        targetNode = cursor;
+      if (referenceTargetsTo) {
+        targetNode = this.FindByName(referenceTargetsTo.targetsTo);
+
+        const targetNodeType = targetNode?.type;
+
+        if (referenceTargetsTo.objectProperty) {
+          if (targetNodeType && IsUniNodeType(targetNodeType) && targetNodeType.type === "object" && Object.hasOwn(targetNodeType.properties, referenceTargetsTo.objectProperty)) {
+            targetNode = targetNodeType.properties[referenceTargetsTo.objectProperty];
+          } else {
+            throw new Error(`Cursor targets to the property "${referenceTargetsTo.objectProperty}" of "${referenceTargetsTo.targetsTo}", but it was not found.`);
+          }
+        }
+      } else {
+        if (typeof cursor !== "string") {
+          targetNode = cursor;
+        }
       }
-    }
+    } while (targetNode && this.GetReferenceTargetsTo(targetNode) !== null);
 
     return targetNode;
   }
