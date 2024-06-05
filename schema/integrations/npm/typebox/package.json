@@ -21,5 +21,5 @@
   "peerDependencies": {
     "@sinclair/typebox": "^0.32.31"
   },
-  "version": "0.26.1-next.1"
+  "version": "0.26.1-next.2"
 }
