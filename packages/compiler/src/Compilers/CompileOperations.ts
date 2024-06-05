@@ -1,10 +1,14 @@
-import { U, UniNodeTypeReference } from "@unispec/core";
+import { U, UniNodeTypeReference, type IUniNodeOperation } from "@unispec/core";
+import { CastIterable } from "../-Helpers";
 
-type ICompiledSpecification = {
+export type ICompiledSpecification = {
   operations: U.IOperation[];
+  views: U.IView[];
+
+  nodes: Iterable<U.IOperation | U.IView>;
 };
 
-const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.IOperation> {
+export const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.IOperation> {
   if (node.kind === "declarator") {
     const nodeOperations = node.operations;
 
@@ -23,7 +27,13 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
           const FindByIdOperation = U.Operation({
             name: findById.name,
 
-            description: "Find by id.",
+            description: `Operação '${findById.name}'.`,
+
+            meta: {
+              gql: {
+                kind: "query",
+              },
+            },
 
             input: {
               params: {
@@ -34,7 +44,7 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             output: {
               success: U.Reference({
                 targetsTo: findById.output,
-                description: "Output success.",
+                description: `Corpo de resposta da operação ${findById.name}.`,
               }),
             },
           });
@@ -45,19 +55,25 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const CreateOperation = U.Operation({
               name: create.name,
 
-              description: "Create.",
+              description: `Operação '${create.name}'.`,
+
+              meta: {
+                gql: {
+                  kind: "mutation",
+                },
+              },
 
               input: {
                 body: U.Reference({
                   targetsTo: create.input,
-                  description: "",
+                  description: `Corpo de entrada da operação '${create.name}'.`,
                 }),
               },
 
               output: {
                 success: U.Reference({
                   targetsTo: findById.output,
-                  description: "Created data.",
+                  description: `Corpo de resposta da operação ${create.name}.`,
                 }),
               },
             });
@@ -70,6 +86,12 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
               name: updateById.name,
 
               description: "Update operation",
+
+              meta: {
+                gql: {
+                  kind: "mutation",
+                },
+              },
 
               input: {
                 params: {
@@ -96,7 +118,13 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const DeleteByIdOperation = U.Operation({
               name: deleteById.name,
 
-              description: "Delete by ID",
+              description: `Operação '${deleteById.name}'.`,
+
+              meta: {
+                gql: {
+                  kind: "mutation",
+                },
+              },
 
               input: {
                 params: {
@@ -116,16 +144,32 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
             const ListOperation = U.Operation({
               name: list.name,
 
-              description: "List",
+              description: `Operação '${list.name}'.`,
+
+              meta: {
+                gql: {
+                  kind: "query",
+                },
+              },
 
               input: {
-                params: {},
+                params: {
+                  ...Object.fromEntries(
+                    (list.filters ?? [])?.map(([param]) => [
+                      param,
+                      U.String({
+                        description: `Filtro '${param}'`,
+                        required: false,
+                      }),
+                    ]),
+                  ),
+                },
               },
 
               output: {
                 success: U.Reference({
                   targetsTo: list.view,
-                  description: "List result",
+                  description: `Corpo de resposta da operação ${list.name}.`,
                 }),
               },
             });
@@ -138,7 +182,54 @@ const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iterable<U.
   }
 };
 
-const CompileOperations = function* (nodes: Iterable<U.INode>): Iterable<U.IOperation> {
+export const CompileOperationViews = function* (node: IUniNodeOperation) {
+  const input = node.input;
+
+  const output = node.output;
+  const outputSuccess = output?.success;
+
+  const OperationInputView = U.View({
+    name: `${node.name}OperationCombinedInput`,
+    description: `Dados de entrada combinados`,
+    type: U.Object({
+      properties: {
+        params: U.Object({ properties: input?.params ?? {} }),
+        queries: U.Object({ properties: input?.queries ?? {} }),
+        ...(input?.body
+          ? {
+              body: typeof input.body === "string" ? U.Reference({ targetsTo: input.body }) : input.body,
+            }
+          : {}),
+      },
+    }),
+  });
+
+  yield OperationInputView;
+
+  const OperationSuccessView = U.View({
+    name: `${node.name}OperationSuccessOutput`,
+    description: `Dados de saída da operação.`,
+    type: U.Object({
+      properties: {
+        ...(outputSuccess
+          ? {
+              body: typeof outputSuccess === "string" ? U.Reference({ targetsTo: outputSuccess }) : outputSuccess,
+            }
+          : {}),
+      },
+    }),
+  });
+
+  yield OperationSuccessView;
+};
+
+export const CompileOperationsViews = function* (nodes: Iterable<IUniNodeOperation>) {
+  for (const node of nodes) {
+    yield* CompileOperationViews(node);
+  }
+};
+
+export const CompileOperations = function* (nodes: Iterable<U.INode>): Iterable<U.IOperation> {
   for (const node of nodes) {
     if (node.kind === "operation") {
       yield node;
@@ -150,11 +241,21 @@ const CompileOperations = function* (nodes: Iterable<U.INode>): Iterable<U.IOper
   }
 };
 
-export const Compile = (nodes: Iterable<U.INode>) => {
-  const operations = new Set<U.IOperation>(CompileOperations(nodes));
+export const CompileSpecification = (nodes: U.INode | Iterable<U.INode>) => {
+  const operations = new Set<U.IOperation>(CompileOperations(CastIterable(nodes)));
 
   const compiled: ICompiledSpecification = {
     operations: Array.from(operations),
+    views: Array.from(CompileOperationsViews(operations)),
+
+    get nodes() {
+      function* nodesGerator() {
+        yield* compiled.operations;
+        yield* compiled.views;
+      }
+
+      return nodesGerator();
+    },
   };
 
   return compiled;

@@ -38,11 +38,12 @@ export class UniRepository {
   constructor(
     entrypoint?: IUniRepositoryEntrypoint,
     public visitAll = true,
+    public compileOperations = true,
   ) {
-    this.Add(entrypoint, visitAll);
+    this.Add(entrypoint, visitAll, compileOperations);
   }
 
-  Add(entrypoints: IUniRepositoryEntrypoint, visitAll = this.visitAll): this {
+  Add(entrypoints: IUniRepositoryEntrypoint, visitAll = this.visitAll, compileOperations = this.compileOperations): this {
     if (entrypoints) {
       const entrypointIterable = CastIterable(entrypoints);
 
@@ -52,7 +53,7 @@ export class UniRepository {
         if (IsUniRepositoryLike(entrypointNode)) {
           nodesIterable = entrypointNode.Nodes;
         } else {
-          nodesIterable = visitAll ? AllNodesVisitor.VisitAll(entrypointNode) : CastIterable(entrypointNode);
+          nodesIterable = visitAll ? AllNodesVisitor.VisitAll(entrypointNode, undefined, compileOperations) : CastIterable(entrypointNode);
         }
 
         for (const node of nodesIterable) {
