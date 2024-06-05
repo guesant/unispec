@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^11.6.4",
-    "@types/node": "^20.14.1",
+    "@types/node": "^20.14.2",
     "fs-jetpack": "^5.1.0",
     "schema2typebox": "^1.7.4",
     "tsx": "^4.11.2"
