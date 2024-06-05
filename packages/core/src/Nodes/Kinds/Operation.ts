@@ -15,6 +15,12 @@ export type IUniNodeOperation = {
   output?: {
     success?: string | IUniNodeType;
   };
+
+  meta?: {
+    gql?: {
+      kind?: "query" | "mutation" | false;
+    };
+  } & Record<string, any>;
 };
 
 export const UniNodeOperation = <Target extends IUniNodeOperation, Op extends Omit<Target, "kind">, Output extends Target & Op>(operation: Op) => {
