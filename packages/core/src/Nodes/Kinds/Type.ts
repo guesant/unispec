@@ -141,6 +141,6 @@ export const UniNodeTypeFile = <Target extends IUniNodeTypeFile, Options extends
 
 export type IUniNodeType = IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeReference | IUniNodeTypeObject | IUniNodeTypeArray | IUniNodeTypeBoolean | IUniNodeTypeFile;
 
-export const IsUniNodeType = (node: IUniNode | any): node is IUniNodeType => node.kind === "type";
+export const IsUniNodeType = (node: IUniNode | any): node is IUniNodeType => node?.kind === "type";
 
 // ===========================================================
