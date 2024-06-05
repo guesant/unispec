@@ -67,6 +67,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
       type: "object",
       required: [],
       properties: {},
+      additionalProperties: false
     };
 
     jsonSchemaType.required ??= [];
