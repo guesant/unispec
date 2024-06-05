@@ -1,4 +1,4 @@
-import { IsUniNodeType, type IUniNode } from "@unispec/core";
+import { IsUniNodeType, IsUniNodeView, type IUniNode } from "@unispec/core";
 import { CastIterable } from "../-Helpers/CastIterable";
 import { AllNodesVisitor, type INodesEntrypoint } from "../Visitors";
 
@@ -58,7 +58,9 @@ export class UniRepository {
 
         for (const node of nodesIterable) {
           if (node) {
-            this.#nodes.add(node);
+            if (!IsUniNodeView(node) || !this.FindByName(node.name)) {
+              this.#nodes.add(node);
+            }
           }
         }
       }
