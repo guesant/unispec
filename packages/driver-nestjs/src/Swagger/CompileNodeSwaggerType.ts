@@ -46,8 +46,8 @@ export class CompileNodeSwaggerType extends CompileNode {
     };
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray): ICompiledNodeSwaggerType {
-    const nested = this.Handle(node.items);
+  HandleTypeArray(node: IUniNodeTypeArray, ctx?: any): ICompiledNodeSwaggerType {
+    const nested = this.Handle(node.items, ctx);
 
     return {
       ...nested,
@@ -55,7 +55,7 @@ export class CompileNodeSwaggerType extends CompileNode {
     };
   }
 
-  Handle(node: IUniNode): ICompiledNodeSwaggerType | null {
-    return <ICompiledNodeSwaggerType | null>super.Handle(node);
+  Handle(node: IUniNode, ctx?: any): ICompiledNodeSwaggerType | null {
+    return <ICompiledNodeSwaggerType | null>super.Handle(node, ctx);
   }
 }
