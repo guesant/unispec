@@ -11,7 +11,17 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
-    "build": "nx run-many --target=build --parallel --configuration=production"
+    "w:release:base": "release-it -c .release-it.json",
+    "release:base": "bash -c 'pnpm run -r release:base $0 && pnpm run -w w:release:base $0'",
+    "release:check": "pnpm run release:base --ci --dry-run -VV",
+    "release:patch": "pnpm run release:base patch --ci",
+    "release:minor": "pnpm run release:base minor --ci",
+    "release:major": "pnpm run release:base major --ci",
+    "release:patch:pre": "pnpm run release:base patch --preRelease=pre --ci",
+    "release:minor:pre": "pnpm run release:base minor --preRelease=pre --ci",
+    "release:major:pre": "pnpm run release:base major --preRelease=pre --ci",
+    "release:next": "pnpm run release:base --preRelease=next --ci",
+    "release:main": "pnpm run release:base --ci"
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
@@ -30,5 +40,8 @@
     "vite": "^5.2.12",
     "vitest": "^1.6.0"
   },
-  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
+  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0",
+  "dependencies": {
+    "release-it": "^17.3.0"
+  }
 }

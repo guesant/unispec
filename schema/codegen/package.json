@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "release:base": "release-it -c .release-it.json",
     "start": "tsx ./src/main.ts"
   },
   "dependencies": {

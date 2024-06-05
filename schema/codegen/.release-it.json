@@ -1,0 +1,15 @@
+{
+  "git": {
+    "tag": false,
+    "push": false,
+    "commit": false,
+    "requireCleanWorkingDir": false,
+    "commitMessage": "chore(@unispec/driver-quicktype): release v${version} [skip ci]"
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": false
+  }
+}
