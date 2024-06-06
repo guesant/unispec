@@ -17,7 +17,7 @@ export const UniNodeTypeBase = UniNodeBase.shape({
     .defined()
     .default(() => ""),
 
-  default: yup.mixed(),
+  default: yup.mixed().nullable().optional(),
 });
 
 export type UniNodeTypeBase = yup.InferType<typeof UniNodeTypeBase>;
