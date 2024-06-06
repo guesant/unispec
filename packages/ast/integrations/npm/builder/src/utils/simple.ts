@@ -1,11 +1,10 @@
 import type { IUniNodeBase } from "@unispec/ast-types";
-import type { PartialDeep } from "type-fest";
 import type { AnySchema, ISchema } from "yup";
 
 export const SimpleBuilder = <T extends IUniNodeBase, S extends ISchema<any, any, any, any> = ISchema<any, any, any, any>>(schema: S) => {
-  return (data?: PartialDeep<T>): T => {
+  return <Data extends Partial<T>, Result extends T & Data>(data?: Data): Result => {
     const casted = <AnySchema>(<any>schema);
-    return <T>casted.validateSync(data);
+    return <Result>casted.validateSync(data);
   };
 };
 

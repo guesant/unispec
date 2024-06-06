@@ -8,6 +8,9 @@ export type IUniNodeTypeObjectEntityOptions = Partial<IUniNodeTypeObject> & {
   dated?: boolean;
 };
 
+/**
+ * @deprecated
+ */
 export const UniNodeTypeObjectEntity = <K extends Partial<IUniNodeTypeObjectEntityOptions> = Partial<IUniNodeTypeObjectEntityOptions>>(k: K): IUniNodeTypeObject => {
   const properties: Record<string, IUniNodeType> = {};
 
