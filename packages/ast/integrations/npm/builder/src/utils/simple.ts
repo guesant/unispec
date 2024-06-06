@@ -10,6 +10,6 @@ export const SimpleBuilder = <T extends IUniNodeBase, S extends Schema = Schema>
 
 export const SimpleCheck = <T extends IUniNodeBase, S extends Schema = Schema>(schema: S) => {
   return (data?: any): data is T => {
-    return schema.isValidSync(data);
+    return schema.isValidSync(data, { strict: true });
   };
 };
