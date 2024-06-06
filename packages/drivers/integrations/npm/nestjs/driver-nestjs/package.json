@@ -1,6 +1,6 @@
 {
   "name": "@unispec/driver-nestjs",
-  "version": "0.26.1-next.22",
+  "version": "0.26.1-next.23",
   "type": "module",
   "sideEffects": false,
   "publishConfig": {
