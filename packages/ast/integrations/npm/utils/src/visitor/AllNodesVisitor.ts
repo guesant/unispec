@@ -1,4 +1,4 @@
-import type { IUniNode, IUniNodeProvider, IUniNodeProviderContext, IUniNodeTypeArray, IUniNodeTypeObject } from "@unispec/ast-types";
+import type { IUniNode, IUniNodeModule, IUniNodeProvider, IUniNodeProviderContext, IUniNodeTypeArray, IUniNodeTypeObject } from "@unispec/ast-types";
 import { CastIterable, type MayBeIterable } from "../helpers";
 import { NodeVisitor } from "./NodeVisitor";
 
@@ -31,6 +31,12 @@ export class AllNodesVisitor extends NodeVisitor<IExtractAllNodesContext> {
 
   protected HandleTypeArray(node: IUniNodeTypeArray, context?: IExtractAllNodesContext | undefined) {
     context?.nodesToVisit.add(node.items);
+  }
+
+  protected HandleModule(node: IUniNodeModule, context?: IExtractAllNodesContext | undefined) {
+    for (const moduleNode of node.nodes) {
+      context?.nodesToVisit.add(moduleNode);
+    }
   }
 
   static createExtractAllNodesContext(): IExtractAllNodesContext {
