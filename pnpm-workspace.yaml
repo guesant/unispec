@@ -1,7 +1,3 @@
 packages:
-  - "packages/deprecated/*"
   - "packages/ast/integrations/npm/*"
   - "packages/drivers/integrations/npm/*/*"
-  - "schema/json"
-  - "schema/codegen"
-  - "schema/integrations/npm/typebox"
