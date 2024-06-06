@@ -7,5 +7,5 @@ export type IUniNodeTypeString = IUniNodeTypeBase & {
     minLength?: number | false;
     maxLength?: number | false;
     pattern?: string;
-  } & Record<`x-${string}`, any>;
+  };
 };

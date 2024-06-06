@@ -8,8 +8,8 @@ export type IUniNodeProvider = {
   fn: IUniNodeProviderFn;
 };
 
-interface IUniNodeProviderContext {
+export interface IUniNodeProviderContext {
   Add(node: IUniNode): this;
 }
 
-type IUniNodeProviderFn = (ctx: IUniNodeProviderContext) => void;
+export type IUniNodeProviderFn = (ctx: IUniNodeProviderContext) => void;
