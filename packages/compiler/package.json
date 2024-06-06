@@ -1,6 +1,6 @@
 {
   "name": "@unispec/compiler",
-  "version": "0.26.1-next.12",
+  "version": "0.26.1-next.13",
   "type": "module",
   "sideEffects": false,
   "publishConfig": {
