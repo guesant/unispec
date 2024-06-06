@@ -1,0 +1,14 @@
+{
+  "name": "ast-npm-utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ast/integrations/npm/utils/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "cwd": "{projectRoot}",
+      "command": "pnpm run -r --filter @unispec/ast-utils build",
+      "outputs": ["{projectRoot}/dist"],
+      "dependsOn": ["^build"]
+    }
+  }
+}

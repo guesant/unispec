@@ -30,8 +30,8 @@
     "README.md"
   ],
   "dependencies": {
-    "@unispec/compiler": "workspace:^",
-    "@unispec/core": "workspace:^",
+    "@unispec/compiler": "0.26.1-next.17",
+    "@unispec/core": "0.26.1-next.17",
     "tslib": "^2.6.3"
   },
   "optionalDependencies": {

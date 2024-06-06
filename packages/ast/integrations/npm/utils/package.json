@@ -1,0 +1,46 @@
+{
+  "name": "@unispec/ast-utils",
+  "version": "0.26.1-next.17",
+  "description": "Unispec AST Utils.",
+  "type": "module",
+  "sideEffects": false,
+  "publishConfig": {
+    "provenance": true,
+    "access": "public"
+  },
+  "main": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "release:base": "release-it -c .release-it.json",
+    "build": "rimraf dist && tsc -p ."
+  },
+  "dependencies": {
+    "@types/json-schema": "^7.0.15",
+    "@unispec/ast-builder": "workspace:^",
+    "@unispec/ast-types": "workspace:^",
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.7"
+  },
+  "keywords": [
+    "unispec"
+  ],
+  "license": "LGPL-2.1 license",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guesant/unispec.git"
+  },
+  "author": "Gabriel R. Antunes <gabrielrodantunes@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/guesant/unispec/issues"
+  },
+  "files": [
+    "*.md",
+    "dist/**/*.*",
+    "!**/*.tsbuildinfo",
+    "LICENSE",
+    "README.md"
+  ],
+  "homepage": "https://github.com/guesant/unispec/tree/next/packages/ast/integrations/npm/utils#readme"
+}
