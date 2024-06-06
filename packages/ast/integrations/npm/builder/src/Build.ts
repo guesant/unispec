@@ -10,6 +10,7 @@ import { BuildTypeBoolean } from "./UniNodeTypeBoolean";
 import { BuildTypeFile } from "./UniNodeTypeFile";
 import { BuildTypeInteger } from "./UniNodeTypeInteger";
 import { BuildTypeObject } from "./UniNodeTypeObject";
+import { UniNodeObjectTransformer } from "./UniNodeTypeObjectTransform";
 import { BuildTypeReference } from "./UniNodeTypeReference";
 import { BuildTypeString } from "./UniNodeTypeString";
 import { BuildView } from "./UniNodeView";
@@ -23,6 +24,7 @@ export {
   BuildModule as Module,
   BuildNull as Null,
   BuildTypeObject as Object,
+  UniNodeObjectTransformer as ObjectTransformer,
   BuildOperation as Operation,
   BuildProvider as Provider,
   BuildTypeReference as Reference,
