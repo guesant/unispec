@@ -1,5 +1,5 @@
 import { BuildOperation, BuildTypeBoolean, BuildTypeObject, BuildTypeReference, BuildTypeString, BuildView } from "@unispec/ast-builder";
-import * as U from "@unispec/ast-types";
+import { UniTypes as U } from "@unispec/ast-types";
 import { CastIterable } from "../helpers";
 
 export type ICompiledSpecification = {
@@ -183,7 +183,7 @@ export const CompileDeclaratorOperations = function* (node: U.IDeclarator): Iter
   }
 };
 
-export const CompileOperationViews = function* (node: U.IUniNodeOperation) {
+export const CompileOperationViews = function* (node: U.IOperation) {
   const input = node.input;
 
   const output = node.output;
@@ -232,7 +232,7 @@ export const CompileOperationViews = function* (node: U.IUniNodeOperation) {
   yield OperationSuccessView;
 };
 
-export const CompileOperationsViews = function* (nodes: Iterable<U.IUniNodeOperation>) {
+export const CompileOperationsViews = function* (nodes: Iterable<U.IOperation>) {
   for (const node of nodes) {
     yield* CompileOperationViews(node);
   }
