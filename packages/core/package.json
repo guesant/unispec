@@ -1,6 +1,6 @@
 {
   "name": "@unispec/core",
-  "version": "0.26.1-next.17",
+  "version": "0.26.1-next.18",
   "type": "module",
   "sideEffects": false,
   "publishConfig": {
