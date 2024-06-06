@@ -15,4 +15,4 @@ export * from "./IUniNodeTypeObject";
 export * from "./IUniNodeTypeReference";
 export * from "./IUniNodeTypeString";
 export * from "./IUniNodeView";
-export * from "./U";
+export * as UniTypes from "./U";
