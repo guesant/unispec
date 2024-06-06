@@ -1,6 +1,5 @@
 import type {
   IUniNode,
-  IUniNodeDeclarator,
   IUniNodeModule,
   IUniNodeNull,
   IUniNodeOperation,
@@ -98,10 +97,6 @@ export class NodeVisitor<Context = never> {
     return this.OnUnhandled(node, context);
   }
 
-  protected HandleDeclarator(node: IUniNodeDeclarator, context?: Context): any {
-    return this.OnUnhandled(node, context);
-  }
-
   protected HandleOperation(node: IUniNodeOperation, context?: Context): any {
     return this.OnUnhandled(node, context);
   }
@@ -126,10 +121,6 @@ export class NodeVisitor<Context = never> {
 
       case "provider": {
         return this.HandleProvider(node, context);
-      }
-
-      case "declarator": {
-        return this.HandleDeclarator(node, context);
       }
 
       case "operation": {

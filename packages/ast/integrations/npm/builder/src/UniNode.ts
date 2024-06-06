@@ -10,5 +10,5 @@ import { yupOneOf } from "./utils/yup-helpers";
 
 export const UniNode: yup.MixedSchema<IUniNode | undefined, yup.AnyObject, undefined, ""> = yupOneOf<IUniNode>(() => [UniNodeNull, UniNodeType, UniNodeOperation, UniNodeView, UniNodeModule]);
 
-export const Check = SimpleCheck<IUniNode>(UniNode);
-export const Build = SimpleBuilder<IUniNode>(UniNode);
+export const CheckNode = SimpleCheck<IUniNode>(UniNode);
+export const BuildNode = SimpleBuilder<IUniNode>(UniNode);

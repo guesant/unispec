@@ -1,5 +1,4 @@
 import { BuildBase } from "./UniNodeBase";
-import { BuildDeclarator } from "./UniNodeDeclarator";
 import { BuildModule } from "./UniNodeModule";
 import { BuildNull } from "./UniNodeNull";
 import { BuildOperation } from "./UniNodeOperation";
@@ -19,7 +18,6 @@ export {
   BuildTypeArray as Array,
   BuildBase as Base,
   BuildTypeBoolean as Boolean,
-  BuildDeclarator as Declarator,
   BuildTypeFile as File,
   BuildTypeInteger as Integer,
   BuildModule as Module,

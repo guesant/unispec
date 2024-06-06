@@ -1,7 +1,6 @@
 import {
   type IUniNode,
   type IUniNodeBase,
-  type IUniNodeDeclarator,
   type IUniNodeModule,
   type IUniNodeNull,
   type IUniNodeOperation,
@@ -24,7 +23,6 @@ export {
   type IUniNodeTypeArray as IArray,
   type IUniNodeBase as IBase,
   type IUniNodeTypeBoolean as IBoolean,
-  type IUniNodeDeclarator as IDeclarator,
   type IUniNodeTypeFile as IFile,
   type IUniNodeTypeInteger as IInteger,
   type IUniNodeModule as IModule,

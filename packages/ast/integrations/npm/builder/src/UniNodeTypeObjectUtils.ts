@@ -1,51 +1,5 @@
-import { type IUniNodeType, type IUniNodeTypeObject } from "@unispec/ast-types";
-import { BuildTypeInteger } from "./UniNodeTypeInteger";
+import { type IUniNodeTypeObject } from "@unispec/ast-types";
 import { BuildTypeObject } from "./UniNodeTypeObject";
-import { BuildTypeString } from "./UniNodeTypeString";
-
-export type IUniNodeTypeObjectEntityOptions = Partial<IUniNodeTypeObject> & {
-  id?: "numeric" | "uuid" | false;
-  dated?: boolean;
-};
-
-/**
- * @deprecated
- */
-export const UniNodeTypeObjectEntity = <K extends Partial<IUniNodeTypeObjectEntityOptions> = Partial<IUniNodeTypeObjectEntityOptions>>(k: K): IUniNodeTypeObject => {
-  const properties: Record<string, IUniNodeType> = {};
-
-  if (k) {
-    const {
-      id,
-      dated,
-      properties: { ...rest },
-    } = k;
-
-    Object.assign(properties, rest);
-
-    if (id) {
-      const description = "ID do Registro.";
-
-      if (id === "numeric") {
-        properties.id = BuildTypeInteger({ description });
-      } else if (id === "uuid") {
-        properties.id = BuildTypeString({ description, format: "uuid" });
-      }
-    }
-
-    if (dated) {
-      properties.dateCreated = BuildTypeString({ description: "Data de Criação do Registro.", format: "date-time" });
-      properties.dateUpdated = BuildTypeString({ description: "Data de Atualização do Registro.", format: "date-time" });
-      properties.dateDeleted = BuildTypeString({ description: "Data de Exclusão do Registro.", format: "date-time", nullable: true });
-    }
-  }
-
-  return BuildTypeObject({
-    type: "object",
-    ...k,
-    properties,
-  });
-};
 
 export type IUniNodeTypeObjectPickedProperties<Node extends IUniNodeTypeObject, Properties extends keyof Node["properties"]> = Omit<Node, "properties"> & {
   properties: Pick<Node["properties"], Properties>;
