@@ -1,6 +1,6 @@
-import type { UniRepository } from "@unispec/compiler";
-import { CompileClass, type ICompileClassContext } from "@unispec/compiler";
 import { pascalCase } from "change-case";
+import type { UniRepository } from "../../../../../../deprecated/compiler/dist";
+import { CompileClass, type ICompileClassContext } from "../../../../../../deprecated/compiler/dist";
 import { NestGraphQlHandler } from "./GraphQl";
 import { NestSwaggerHandler } from "./Swagger";
 

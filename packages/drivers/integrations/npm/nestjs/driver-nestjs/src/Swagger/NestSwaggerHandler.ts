@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { CompileClassHandler, type ICompileClassHandlerPropertyContext } from "@unispec/compiler";
 import { IsUniNodeType } from "@unispec/core";
+import { CompileClassHandler, type ICompileClassHandlerPropertyContext } from "../../../../../../../deprecated/compiler/dist";
 import { CompileNodeSwaggerType } from "./CompileNodeSwaggerType";
 
 export class NestSwaggerHandler extends CompileClassHandler {

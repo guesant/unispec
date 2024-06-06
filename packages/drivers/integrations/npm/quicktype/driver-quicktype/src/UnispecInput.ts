@@ -1,6 +1,6 @@
-import { UniRepository, type IUniRepositoryEntrypoint } from "@unispec/compiler";
 import { IsUniNodeView, type IUniNode } from "@unispec/core";
 import { InputData, JSONSchemaInput } from "quicktype-core";
+import { UniRepository, type IUniRepositoryEntrypoint } from "../../../../../../deprecated/compiler/dist";
 import { UnispecStore } from "./UnispecStore";
 
 export class UnispecInput extends JSONSchemaInput {

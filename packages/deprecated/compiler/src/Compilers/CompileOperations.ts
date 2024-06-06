@@ -189,12 +189,20 @@ export const CompileOperationViews = function* (node: IUniNodeOperation) {
   const outputSuccess = output?.success;
 
   const OperationInputView = U.View({
-    name: `${node.name}OperationCombinedInput`,
-    description: `Dados de entrada combinados`,
+    name: `${node.name}CombinedInput`,
+    description: `Dados de entrada combinados.`,
     type: U.Object({
       properties: {
-        params: U.Object({ properties: input?.params ?? {} }),
-        queries: U.Object({ properties: input?.queries ?? {} }),
+        ...(input?.params
+          ? {
+              params: U.Object({ properties: input?.params }),
+            }
+          : {}),
+        ...(input?.queries
+          ? {
+              queries: U.Object({ properties: input?.queries }),
+            }
+          : {}),
         ...(input?.body
           ? {
               body: typeof input.body === "string" ? U.Reference({ targetsTo: input.body }) : input.body,
@@ -207,7 +215,7 @@ export const CompileOperationViews = function* (node: IUniNodeOperation) {
   yield OperationInputView;
 
   const OperationSuccessView = U.View({
-    name: `${node.name}OperationSuccessOutput`,
+    name: `${node.name}CombinedSuccessOutput`,
     description: `Dados de saída da operação.`,
     type: U.Object({
       properties: {

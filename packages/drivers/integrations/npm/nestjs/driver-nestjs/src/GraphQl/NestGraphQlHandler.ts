@@ -1,6 +1,6 @@
 import { ArgsType, Field, InputType, ObjectType } from "@nestjs/graphql";
-import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "@unispec/compiler";
 import { IsUniNodeType } from "@unispec/core";
+import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "../../../../../../../deprecated/compiler/dist";
 import { CompileNodeGqlType } from "./CompileNodeGqlType";
 
 export class NestGraphQlHandler extends CompileClassHandler {
