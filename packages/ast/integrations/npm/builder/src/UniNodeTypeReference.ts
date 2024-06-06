@@ -1,7 +1,7 @@
 import type { IUniNodeTypeReference } from "@unispec/ast-types";
 import * as yup from "yup";
 import { UniNodeTypeBase } from "./UniNodeTypeBase";
-import { SimpleBuilder } from "./utils/simple";
+import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeReference = UniNodeTypeBase.shape({

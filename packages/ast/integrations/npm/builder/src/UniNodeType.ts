@@ -1,6 +1,6 @@
 import type { IUniNodeType } from "@unispec/ast-types";
 import * as yup from "yup";
-import { SimpleBuilder } from "./utils/simple";
+import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 
 export const UniNodeType = yup.mixed<IUniNodeType>();
 

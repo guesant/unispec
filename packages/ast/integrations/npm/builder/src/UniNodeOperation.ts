@@ -1,7 +1,7 @@
 import type { IUniNodeOperation, IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeReference, IUniNodeTypeString } from "@unispec/ast-types";
 import * as yup from "yup";
 import { UniNodeBase } from "./UniNodeBase";
-import { SimpleBuilder } from "./utils/simple";
+import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeOperation = UniNodeBase.shape({
