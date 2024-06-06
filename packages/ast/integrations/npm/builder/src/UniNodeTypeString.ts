@@ -1,6 +1,7 @@
 import type { IUniNodeTypeString } from "@unispec/ast-types";
 import * as yup from "yup";
 import { UniNodeTypeBase } from "./UniNodeTypeBase";
+import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeString = UniNodeTypeBase.shape({
@@ -18,5 +19,8 @@ export const UniNodeTypeString = UniNodeTypeBase.shape({
 });
 
 export type UniNodeTypeString = yup.InferType<typeof UniNodeTypeString>;
+
+export const CheckTypeString = SimpleCheck<IUniNodeTypeString>(UniNodeTypeString);
+export const BuildTypeString = SimpleBuilder<IUniNodeTypeString>(UniNodeTypeString);
 
 TypeAssert<TypeEqualityGuard<IUniNodeTypeString, UniNodeTypeString>>();
