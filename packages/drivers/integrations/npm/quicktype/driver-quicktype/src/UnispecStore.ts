@@ -1,6 +1,6 @@
-import type { IUniNode } from "@unispec/core";
+import type { IUniNode } from "@unispec/ast-types";
 import { JSONSchemaStore, type JSONSchema } from "quicktype-core";
-import { JsonSchemaGenerator, UniRepository } from "../../../../../../deprecated/compiler/dist";
+import { JsonSchemaGenerator, UniRepository } from "@unispec/ast-utils";
 
 export class UnispecStore extends JSONSchemaStore {
   constructor(

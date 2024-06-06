@@ -1,6 +1,6 @@
 import { Int, type GqlTypeReference } from "@nestjs/graphql";
-import type { IUniNode, IUniNodeTypeArray, IUniNodeView } from "@unispec/core";
-import { CompileNode } from "../../../../../../../deprecated/compiler/dist";
+import type { IUniNode, IUniNodeTypeArray, IUniNodeView } from "@unispec/ast-types";
+import { CompileNode } from "@unispec/ast-utils";
 
 export type ICompiledNodeGqlType = {
   type: void | (() => GqlTypeReference);

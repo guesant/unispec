@@ -98,45 +98,18 @@ importers:
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
-    devDependencies:
-      rimraf:
-        specifier: ^5.0.7
-        version: 5.0.7
-
-  packages/deprecated/compiler:
-    dependencies:
-      '@unispec/core':
-        specifier: workspace:^
-        version: link:../core
-      tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
-    devDependencies:
-      '@types/json-schema':
-        specifier: ^7.0.15
-        version: 7.0.15
-
-  packages/deprecated/core:
-    dependencies:
-      defu:
-        specifier: ^6.1.4
-        version: 6.1.4
-      reflect-metadata:
-        specifier: ^0.2.2
-        version: 0.2.2
-    devDependencies:
-      type-fest:
-        specifier: ^4.19.0
-        version: 4.19.0
 
   packages/drivers/integrations/npm/nestjs/driver-nestjs:
     dependencies:
-      '@unispec/compiler':
-        specifier: 0.26.1-next.17
-        version: 0.26.1-next.17
-      '@unispec/core':
-        specifier: 0.26.1-next.17
-        version: 0.26.1-next.17
+      '@unispec/ast-builder':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/builder
+      '@unispec/ast-types':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/types
+      '@unispec/ast-utils':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/utils
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -153,12 +126,15 @@ importers:
 
   packages/drivers/integrations/npm/quicktype/driver-quicktype:
     dependencies:
-      '@unispec/compiler':
-        specifier: 0.26.1-next.17
-        version: 0.26.1-next.17
-      '@unispec/core':
-        specifier: 0.26.1-next.17
-        version: 0.26.1-next.17
+      '@unispec/ast-builder':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/builder
+      '@unispec/ast-types':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/types
+      '@unispec/ast-utils':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/utils
       quicktype-core:
         specifier: ^23.0.170
         version: 23.0.170
@@ -1226,12 +1202,6 @@ packages:
   '@typescript-eslint/visitor-keys@8.0.0-alpha.28':
     resolution: {integrity: sha512-+ewAOeKDycydKMlnfmW8zAURTA8PR5Csyvxy6PJt4XRYjoquode9/eWaMt9Sp4Rz1FGMSVU9KxDRR83ASH/xkQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@unispec/compiler@0.26.1-next.17':
-    resolution: {integrity: sha512-R4pdNo/VVmrQhIoJErJicQLjGMCiE6tdx4MxkYcO2NmUcWbYzXqKhUYH4lyHUWE2J5L+HOwyq0CvyUnGzKbFXg==}
-
-  '@unispec/core@0.26.1-next.17':
-    resolution: {integrity: sha512-hfcAItZ1GQuVCxxjJQ7ERSsEnEFE8lQQ1fnBIBUPrrpEOOo5bpGxYI8fAEitRzRFet0TE8Ylx/Tk9odKrReTqg==}
 
   '@vitest/coverage-v8@1.6.0':
     resolution: {integrity: sha512-KvapcbMY/8GYIG0rlwwOKCVNRc0OL20rrhFkg/CHNzncV03TE2XWvO5w9uZYoxNiMEBacAJt3unSOiZ7svePew==}
@@ -5011,16 +4981,6 @@ snapshots:
       '@typescript-eslint/types': 8.0.0-alpha.28
       eslint-visitor-keys: 3.4.3
 
-  '@unispec/compiler@0.26.1-next.17':
-    dependencies:
-      '@unispec/core': 0.26.1-next.17
-      tslib: 2.6.3
-
-  '@unispec/core@0.26.1-next.17':
-    dependencies:
-      defu: 6.1.4
-      reflect-metadata: 0.2.2
-
   '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.14.1)(@vitest/ui@1.6.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
@@ -7393,7 +7353,8 @@ snapshots:
     dependencies:
       resolve: 1.22.8
 
-  reflect-metadata@0.2.2: {}
+  reflect-metadata@0.2.2:
+    optional: true
 
   regexp.prototype.flags@1.5.2:
     dependencies:

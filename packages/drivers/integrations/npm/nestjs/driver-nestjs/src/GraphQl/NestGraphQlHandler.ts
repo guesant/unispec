@@ -1,6 +1,6 @@
 import { ArgsType, Field, InputType, ObjectType } from "@nestjs/graphql";
-import { IsUniNodeType } from "@unispec/core";
-import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "../../../../../../../deprecated/compiler/dist";
+import { CheckType } from "@unispec/ast-builder";
+import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "@unispec/ast-utils";
 import { CompileNodeGqlType } from "./CompileNodeGqlType";
 
 export class NestGraphQlHandler extends CompileClassHandler {
@@ -34,7 +34,7 @@ export class NestGraphQlHandler extends CompileClassHandler {
     if (type) {
       const propertyNode = context.propertyNode;
 
-      if (IsUniNodeType(propertyNode)) {
+      if (CheckType(propertyNode)) {
         return [
           Field(type, {
             nullable: propertyNode.nullable || !propertyNode.required,
