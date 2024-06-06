@@ -1,0 +1,20 @@
+{
+  "git": {
+    "tag": false,
+    "push": false,
+    "commit": false,
+    "requireCleanWorkingDir": false,
+    "commitMessage": "chore(@unispec/ast-utils): release v${version} [skip ci]"
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": true,
+    "publishPath": "package-pack.tgz"
+  },
+  "hooks": {
+    "before:npm:release": "mv $(pnpm pack) package-pack.tgz",
+    "after:npm:release": "rm package-pack.tgz"
+  }
+}

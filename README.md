@@ -8,6 +8,11 @@ The objective of **Uni**fied **Spec**ification is to provide the simplest way to
 
 Unispec not the first and not the last project that tries to do this purpose, and probably doesn't fit your needs.
 
+## Deprecated
+
+- @unispec/core
+- @unispec/compiler
+
 ## Ecosystem
 
 | Project                     | Badges                                                                                                                                                                                                                                                                                                                                                                               |
