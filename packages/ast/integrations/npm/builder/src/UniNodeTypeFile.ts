@@ -5,7 +5,7 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeFile = UniNodeTypeBase.shape({
-  type: yup.string().oneOf(["file"]).required(),
+  type: yup.string().oneOf(["file"]).required().default("file"),
   mimeTypes: yup.array(yup.string().required()).required(),
 });
 

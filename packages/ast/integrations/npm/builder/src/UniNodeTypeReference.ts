@@ -5,7 +5,7 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeReference = UniNodeTypeBase.shape({
-  type: yup.string().oneOf(["reference"]).required(),
+  type: yup.string().oneOf(["reference"]).required().default("reference"),
   targetsTo: yup.string().required(),
   objectProperty: yup
     .string()

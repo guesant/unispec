@@ -5,7 +5,7 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeNull = UniNodeBase.shape({
-  kind: yup.string().oneOf(["null"]).required(),
+  kind: yup.string().oneOf(["null"]).required().default("null"),
 });
 
 export type UniNodeNull = yup.InferType<typeof UniNodeNull>;

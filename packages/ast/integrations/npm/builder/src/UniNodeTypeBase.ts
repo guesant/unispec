@@ -5,11 +5,18 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeBase = UniNodeBase.shape({
-  kind: yup.string().oneOf(["type"]).required(),
+  kind: yup.string().oneOf(["type"]).required().default("type"),
+
   type: yup.string().required(),
-  nullable: yup.boolean().required(),
-  required: yup.boolean().required(),
-  description: yup.string().required(),
+
+  nullable: yup.boolean().required().default(false),
+  required: yup.boolean().required().default(true),
+
+  description: yup
+    .string()
+    .defined()
+    .default(() => ""),
+
   default: yup.mixed(),
 });
 

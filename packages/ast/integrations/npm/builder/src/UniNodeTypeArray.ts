@@ -6,7 +6,7 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeArray = UniNodeTypeBase.shape({
-  type: yup.string().oneOf(["array"]).required(),
+  type: yup.string().oneOf(["array"]).required().default("array"),
   items: UniNodeType.required(),
 });
 

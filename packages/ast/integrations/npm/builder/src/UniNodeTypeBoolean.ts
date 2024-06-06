@@ -5,7 +5,7 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeTypeBoolean = UniNodeTypeBase.shape({
-  type: yup.string().oneOf(["boolean"]).required(),
+  type: yup.string().oneOf(["boolean"]).required().default("boolean"),
 });
 
 export type UniNodeTypeBoolean = yup.InferType<typeof UniNodeTypeBoolean>;

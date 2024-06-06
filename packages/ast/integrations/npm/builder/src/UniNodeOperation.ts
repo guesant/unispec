@@ -5,10 +5,10 @@ import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeOperation = UniNodeBase.shape({
-  kind: yup.string().oneOf(["operation"]).required(),
+  kind: yup.string().oneOf(["operation"]).required().default("operation"),
 
   name: yup.string().required(),
-  description: yup.string().required(),
+  description: yup.string().defined(),
 
   meta: yup
     .object({
