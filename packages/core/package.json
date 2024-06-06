@@ -15,14 +15,27 @@
   "keywords": [
     "unispec"
   ],
+  "description": "Unispec AST Nodes Core.",
+  "author": "Gabriel R. Antunes <gabrielrodantunes@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/guesant/unispec/issues"
+  },
+  "files": [
+    "*.md",
+    "dist/**/*.*",
+    "!**/*.tsbuildinfo",
+    "LICENSE",
+    "README.md"
+  ],
+  "homepage": "https://github.com/guesant/unispec/tree/next/packages/core#readme",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
@@ -33,27 +46,15 @@
     "build": "unbuild"
   },
   "dependencies": {
-    "defu": "^6.1.4"
+    "defu": "^6.1.4",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "type-fest": "^4.19.0"
   },
   "unbuild": {
     "externals": [
       "type-fest"
     ]
-  },
-  "files": [
-    "*.md",
-    "dist/**/*.*",
-    "!**/*.tsbuildinfo",
-    "LICENSE",
-    "README.md"
-  ],
-  "description": "Unispec AST Nodes Core.",
-  "author": "Gabriel R. Antunes <gabrielrodantunes@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/guesant/unispec/issues"
-  },
-  "homepage": "https://github.com/guesant/unispec/tree/next/packages/core#readme",
-  "devDependencies": {
-    "type-fest": "^4.19.0"
   }
 }

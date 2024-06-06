@@ -1,5 +1,6 @@
 packages:
   - "packages/*"
+  - "packages/ast/integrations/npm/*"
   - "schema/json"
   - "schema/codegen"
   - "schema/integrations/npm/typebox"

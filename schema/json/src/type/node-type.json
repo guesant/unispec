@@ -1,6 +1,0 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "name": "UniNodeType",
-  "$id": "UniNodeType",
-  "oneOf": [{ "$ref": "./node-type-string.json" }, { "$ref": "./node-type-boolean.json" }]
-}
