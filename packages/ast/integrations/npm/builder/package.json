@@ -46,7 +46,7 @@
     "build": "unbuild"
   },
   "dependencies": {
-    "@unispec/ast-types": "link:../types",
+    "@unispec/ast-types": "workspace:^",
     "defu": "^6.1.4",
     "yup": "^1.4.0"
   },
