@@ -12,7 +12,7 @@ export const UniNodeView = UniNodeBase.shape({
   title: yup.string().optional(),
   description: yup.string().optional(),
 
-  type: UniNode.required(),
+  type: yup.lazy(() => UniNode.required()),
 });
 
 export type UniNodeView = yup.InferType<typeof UniNodeView>;

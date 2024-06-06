@@ -7,7 +7,7 @@ import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
 export const UniNodeModule = UniNodeBase.shape({
   kind: yup.string().oneOf(["module"]).required().default("module"),
-  nodes: yup.array(UniNode.required()).required(),
+  nodes: yup.array(yup.lazy(() => UniNode.required())).required(),
 });
 
 export type UniNodeModule = yup.InferType<typeof UniNodeModule>;
