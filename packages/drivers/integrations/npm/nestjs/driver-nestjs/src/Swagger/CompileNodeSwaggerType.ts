@@ -5,7 +5,6 @@ import { CompileNode } from "@unispec/ast-utils";
 export type ICompiledNodeSwaggerType =
   | SchemaObject
   | {
-      // eslint-disable @typescript-eslint/ban-types
       type?: any | [any] | string;
       isArray?: boolean;
     };

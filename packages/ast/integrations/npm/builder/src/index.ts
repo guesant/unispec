@@ -1,3 +1,4 @@
+export * as BuildType from "./BuildType";
 export * from "./UniExtends";
 export * from "./UniNode";
 export * from "./UniNodeBase";
