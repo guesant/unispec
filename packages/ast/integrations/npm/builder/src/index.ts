@@ -2,6 +2,7 @@ export * as Build from "./Build";
 export * from "./UniExtends";
 export * from "./UniNode";
 export * from "./UniNodeBase";
+export * from "./UniNodeNamedBase";
 export * from "./UniNodeModule";
 export * from "./UniNodeNull";
 export * from "./UniNodeOperation";
