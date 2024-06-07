@@ -1,5 +1,6 @@
 import { BuildBase } from "./UniNodeBase";
 import { BuildModule } from "./UniNodeModule";
+import { BuildNamedBase } from "./UniNodeNamedBase";
 import { BuildNull } from "./UniNodeNull";
 import { BuildOperation } from "./UniNodeOperation";
 import { BuildProvider } from "./UniNodeProvider";
@@ -22,6 +23,7 @@ export {
   BuildTypeFile as File,
   BuildTypeInteger as Integer,
   BuildModule as Module,
+  BuildNamedBase as NamedBase,
   BuildNull as Null,
   BuildTypeObject as Object,
   UniNodeObjectTransformer as ObjectTransformer,

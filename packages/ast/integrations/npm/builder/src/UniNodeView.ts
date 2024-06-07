@@ -1,11 +1,11 @@
 import type { IUniNodeView } from "@unispec/ast-types";
 import * as yup from "yup";
 import { UniNode } from "./UniNode";
-import { UniNodeBase } from "./UniNodeBase";
+import { UniNodeNamedBase } from "./UniNodeNamedBase";
 import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
-export const UniNodeView = UniNodeBase.shape({
+export const UniNodeView = UniNodeNamedBase.shape({
   kind: yup.string().oneOf(["view"]).required().default("view"),
 
   name: yup.string().required(),

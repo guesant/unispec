@@ -1,10 +1,10 @@
 import type { IUniNodeOperation, IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeReference, IUniNodeTypeString } from "@unispec/ast-types";
 import * as yup from "yup";
-import { UniNodeBase } from "./UniNodeBase";
+import { UniNodeNamedBase } from "./UniNodeNamedBase";
 import { SimpleBuilder, SimpleCheck } from "./utils/simple";
 import { TypeAssert, type TypeEqualityGuard } from "./utils/type-assert";
 
-export const UniNodeOperation = UniNodeBase.shape({
+export const UniNodeOperation = UniNodeNamedBase.shape({
   kind: yup.string().oneOf(["operation"]).required().default("operation"),
 
   name: yup.string().required(),
