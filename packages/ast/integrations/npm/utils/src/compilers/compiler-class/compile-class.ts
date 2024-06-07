@@ -1,4 +1,4 @@
-import { CheckView } from "@unispec/ast-builder";
+import { CheckNamedBase } from "@unispec/ast-builder";
 import { type IUniNode } from "@unispec/ast-types";
 import { __decorate, __metadata } from "tslib";
 import { UniRepository } from "../../repository";
@@ -37,7 +37,7 @@ export class CompileClass {
   }
 
   GetNodeName(context: ICompileClassContext) {
-    if (CheckView(context.node)) {
+    if (CheckNamedBase(context.node)) {
       return context.node.name;
     }
 

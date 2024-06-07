@@ -1,4 +1,4 @@
-import { CheckType, CheckTypeReference, CheckView } from "@unispec/ast-builder";
+import { CheckNamedBase, CheckType, CheckTypeReference } from "@unispec/ast-builder";
 import type { IUniNode } from "@unispec/ast-types";
 
 export type IResolveTokenName = (node: IUniNode) => string;
@@ -27,7 +27,7 @@ export const CreateResolveTokenName = (options?: ICreateResolveTokenNameOptions)
     const prefix = locResolve(node, options?.prefix);
     const suffix = locResolve(node, options?.suffix);
 
-    if (CheckView(node)) {
+    if (CheckNamedBase(node)) {
       return `${prefix}${node.name}${suffix}`;
     }
 

@@ -1,4 +1,4 @@
-import { CheckTypeObject, CheckView } from "@unispec/ast-builder";
+import { CheckNamedBase, CheckTypeObject } from "@unispec/ast-builder";
 import { type IUniNode } from "@unispec/ast-types";
 import { CastIterable } from "../helpers/CastIterable";
 import { AllNodesVisitor, type INodesEntrypoint } from "../visitor";
@@ -58,7 +58,7 @@ export class UniRepository {
 
         for (const node of nodesIterable) {
           if (node) {
-            if (!CheckView(node) || !this.FindByName(node.name)) {
+            if (!CheckNamedBase(node) || !this.FindByName(node.name)) {
               this.#nodes.add(node);
             }
           }
@@ -81,7 +81,7 @@ export class UniRepository {
 
   FindByName(name: string) {
     for (const node of this.Nodes) {
-      if (node.kind === "view" && node.name === name) {
+      if (CheckNamedBase(node) && node.name === name) {
         return node;
       }
     }
