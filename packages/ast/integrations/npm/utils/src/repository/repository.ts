@@ -1,4 +1,4 @@
-import { CheckNamedBase, CheckTypeObject } from "@unispec/ast-builder";
+import { CheckNamedBase, CheckTypeObject, CheckView } from "@unispec/ast-builder";
 import { type IUniNode } from "@unispec/ast-types";
 import { CastIterable } from "../helpers/CastIterable";
 import { AllNodesVisitor, type INodesEntrypoint } from "../visitor";
@@ -110,9 +110,13 @@ export class UniRepository {
       if (referenceTargetsTo) {
         targetNode = this.FindByName(referenceTargetsTo.targetsTo);
 
-        const targetNodeType = targetNode?.type;
-
         if (referenceTargetsTo.objectProperty) {
+          if (!CheckView(targetNode)) {
+            throw new Error(`Node is not a view: ${referenceTargetsTo.targetsTo}.`);
+          }
+
+          const targetNodeType = targetNode?.type;
+
           if (CheckTypeObject(targetNodeType) && Object.hasOwn(targetNodeType.properties, referenceTargetsTo.objectProperty)) {
             targetNode = targetNodeType.properties[referenceTargetsTo.objectProperty];
           } else {
