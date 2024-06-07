@@ -22,8 +22,10 @@ export class NestImpl extends CompileClass {
       if (!dtoClassName.toLocaleLowerCase().includes("dto")) {
         dtoClassName = `${dtoClassName}Dto`;
       }
+
+      return dtoClassName;
     }
 
-    return null;
+    return baseName;
   }
 }
