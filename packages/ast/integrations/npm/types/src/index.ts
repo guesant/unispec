@@ -1,6 +1,7 @@
 export * from "./IUniNode";
 export * from "./IUniNodeBase";
 export * from "./IUniNodeModule";
+export * from "./IUniNodeNamedBase";
 export * from "./IUniNodeNull";
 export * from "./IUniNodeOperation";
 export * from "./IUniNodeProvider";

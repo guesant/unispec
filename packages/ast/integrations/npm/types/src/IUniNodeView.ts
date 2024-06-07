@@ -1,7 +1,7 @@
 import type { IUniNode } from "./IUniNode";
-import type { IUniNodeBase } from "./IUniNodeBase";
+import type { IUniNodeNamedBase } from "./IUniNodeNamedBase";
 
-export type IUniNodeView = IUniNodeBase & {
+export type IUniNodeView = IUniNodeNamedBase & {
   kind: "view";
   name: string;
   title?: string;
