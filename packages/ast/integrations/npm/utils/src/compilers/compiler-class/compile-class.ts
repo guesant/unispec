@@ -1,4 +1,4 @@
-import { CheckNamedBase } from "@unispec/ast-builder";
+import { CheckNamedBase, CheckTypeObject, CheckView } from "@unispec/ast-builder";
 import { type IUniNode } from "@unispec/ast-types";
 import { __decorate, __metadata } from "tslib";
 import { UniRepository } from "../../repository";
@@ -82,30 +82,36 @@ export class CompileClass {
       }
     }
 
-    if (node.kind === "type" && node.type === "object") {
-      for (const propertyKey in node.properties) {
-        const propertyNode = node.properties[propertyKey];
+    if (CheckView(node)) {
+      const type = node.type;
 
-        const propertyContext = Object.freeze({
-          ...context,
-          parent,
-          propertyKey,
-          propertyNode,
-          className: dtoClassName,
-        });
+      const typeRealTarget = type && this.repository.GetRealTarget(type);
 
-        const compiledProperty = this.CompileProperty(propertyContext, parent);
+      if (CheckTypeObject(typeRealTarget)) {
+        for (const propertyKey in typeRealTarget.properties) {
+          const propertyNode = typeRealTarget.properties[propertyKey];
 
-        if (compiledProperty !== null) {
-          const name = compiledProperty.name;
+          const propertyContext = Object.freeze({
+            ...context,
+            parent,
+            propertyKey,
+            propertyNode,
+            className: dtoClassName,
+          });
 
-          const propertyDecorators = [
-            //
-            ...compiledProperty.propertyDecorators,
-            __metadata("design:type", compiledProperty.designType),
-          ];
+          const compiledProperty = this.CompileProperty(propertyContext, parent);
 
-          __decorate(propertyDecorators, CompiledClassCtor.prototype, name, void 0);
+          if (compiledProperty !== null) {
+            const name = compiledProperty.name;
+
+            const propertyDecorators = [
+              //
+              ...compiledProperty.propertyDecorators,
+              __metadata("design:type", compiledProperty.designType),
+            ];
+
+            __decorate(propertyDecorators, CompiledClassCtor.prototype, name, void 0);
+          }
         }
       }
     }
