@@ -1,6 +1,6 @@
 {
   "name": "@unispec/ast-builder",
-  "version": "0.26.1-next.31",
+  "version": "0.26.1-next.32",
   "description": "Unispec AST Builder",
   "type": "module",
   "sideEffects": false,
