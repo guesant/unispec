@@ -65,6 +65,8 @@ export class CompileClass {
 
     function CompiledClassCtor() {}
 
+    context.dtoClassesMap?.set(dtoClassName, CompiledClassCtor);
+
     const classDecorators = [];
 
     const handleContext = Object.freeze({
