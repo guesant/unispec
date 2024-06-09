@@ -1,6 +1,6 @@
 {
   "name": "@unispec/source",
-  "version": "0.26.1-next.33",
+  "version": "0.26.1-next.34",
   "private": true,
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
