@@ -1,4 +1,4 @@
-import type { IUniNodeOperation, IUniNodeType, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeReference, IUniNodeTypeString } from "@unispec/ast-types";
+import type { IUniNodeOperation, IUniNodeType } from "@unispec/ast-types";
 import * as yup from "yup";
 import { UniNodeNamedBase } from "./UniNodeNamedBase";
 import { SimpleBuilder, SimpleCheck } from "./utils/simple";
@@ -23,8 +23,8 @@ export const UniNodeOperation = UniNodeNamedBase.shape({
   input: yup
     .object({
       body: yup.mixed<string | IUniNodeType>().optional(),
-      params: yup.mixed<Record<any, IUniNodeTypeReference | IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>>().optional(),
-      queries: yup.mixed<Record<any, IUniNodeTypeReference | IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>>().optional(),
+      params: yup.mixed<Record<any, IUniNodeType>>().optional(),
+      queries: yup.mixed<Record<any, IUniNodeType>>().optional(),
     })
     .optional(),
 

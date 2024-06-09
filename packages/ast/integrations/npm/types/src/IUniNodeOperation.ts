@@ -1,9 +1,5 @@
 import type { IUniNodeNamedBase } from "./IUniNodeNamedBase";
 import type { IUniNodeType } from "./IUniNodeType";
-import type { IUniNodeTypeBoolean } from "./IUniNodeTypeBoolean";
-import type { IUniNodeTypeInteger } from "./IUniNodeTypeInteger";
-import type { IUniNodeTypeReference } from "./IUniNodeTypeReference";
-import type { IUniNodeTypeString } from "./IUniNodeTypeString";
 
 export type IUniNodeOperation = IUniNodeNamedBase & {
   kind: "operation";
@@ -19,9 +15,8 @@ export type IUniNodeOperation = IUniNodeNamedBase & {
 
   input?: {
     body?: string | IUniNodeType;
-
-    params?: Record<any, IUniNodeTypeReference | IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
-    queries?: Record<any, IUniNodeTypeReference | IUniNodeTypeString | IUniNodeTypeInteger | IUniNodeTypeBoolean>;
+    params?: Record<any, IUniNodeType>;
+    queries?: Record<any, IUniNodeType>;
   };
 
   output?: {
