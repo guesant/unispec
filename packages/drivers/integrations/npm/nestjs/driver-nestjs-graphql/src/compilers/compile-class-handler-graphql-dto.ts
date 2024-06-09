@@ -3,7 +3,7 @@ import { CheckType } from "@unispec/ast-builder";
 import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "@unispec/ast-utils";
 import { CompileNodeGqlRepresentation } from "./compile-node-graphql-representation";
 
-export class CompileClassGraphQlDto extends CompileClassHandler {
+export class CompileClassHandlerGraphQlDto extends CompileClassHandler {
   constructor() {
     super();
   }

@@ -3,7 +3,7 @@ import { CheckType } from "@unispec/ast-builder";
 import { CompileClassHandler, type ICompileClassHandlerPropertyContext } from "@unispec/ast-utils";
 import { CompileNodeSwaggerRepresentation } from "./compile-node-swagger-representation";
 
-export class CompileClassSwaggerDto extends CompileClassHandler {
+export class CompileClassHandlerSwaggerDto extends CompileClassHandler {
   GetCompileNodeSwaggerRepresentation(context: ICompileClassHandlerPropertyContext) {
     return new CompileNodeSwaggerRepresentation(context.host.repository, context.host);
   }
