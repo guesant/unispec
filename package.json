@@ -21,7 +21,8 @@
     "release:minor:pre": "pnpm run release:base minor --preRelease=pre --ci",
     "release:major:pre": "pnpm run release:base major --preRelease=pre --ci",
     "release:next": "pnpm run release:base --preRelease=next --ci",
-    "release:main": "pnpm run release:base --ci"
+    "release:main": "pnpm run release:base --ci",
+    "build": "nx run-many --target=build --parallel"
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",

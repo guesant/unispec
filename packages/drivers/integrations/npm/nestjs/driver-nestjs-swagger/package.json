@@ -1,5 +1,5 @@
 {
-  "name": "@unispec/driver-nestjs",
+  "name": "@unispec/driver-nestjs-swagger",
   "version": "0.26.1-next.34",
   "type": "module",
   "sideEffects": false,
@@ -30,12 +30,22 @@
     "README.md"
   ],
   "dependencies": {
+    "@nestjs/swagger": "^7.3.1",
     "@unispec/ast-builder": "workspace:^",
     "@unispec/ast-types": "workspace:^",
-    "@unispec/ast-utils": "workspace:^",
-    "change-case": "^5.4.4"
+    "@unispec/ast-utils": "workspace:^"
   },
-  "description": "Unispec Driver for NestJS.",
+  "peerDependencies": {
+    "@nestjs/swagger": "^7.3.1"
+  },
+  "unbuild": {
+    "externals": [
+      "@nestjs/graphql",
+      "@nestjs/swagger",
+      "change-case"
+    ]
+  },
+  "description": "Unispec Driver for NestJS Swagger.",
   "repository": {
     "type": "git",
     "url": "https://github.com/guesant/unispec.git"
@@ -48,5 +58,5 @@
   "bugs": {
     "url": "https://github.com/guesant/unispec/issues"
   },
-  "homepage": "https://github.com/guesant/unispec/tree/next/packages/driver-nestjs#readme"
+  "homepage": "https://github.com/guesant/unispec/tree/next/packages/driver-nestjs-swagger#readme"
 }

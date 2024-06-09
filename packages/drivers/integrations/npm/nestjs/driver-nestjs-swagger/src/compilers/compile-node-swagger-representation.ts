@@ -3,7 +3,7 @@ import { CheckType, CheckView } from "@unispec/ast-builder";
 import type { IUniNode, IUniNodeType, IUniNodeTypeArray, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
 import { CompileNode } from "@unispec/ast-utils";
 
-export type ICompiledNodeSwaggerType =
+export type ICompiledNodeSwaggerRepresentation =
   | SchemaObject
   | {
       type?: any | [any] | string;
@@ -11,8 +11,8 @@ export type ICompiledNodeSwaggerType =
     }
   | any;
 
-export class CompileNodeSwaggerType extends CompileNode {
-  HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerType {
+export class CompileNodeSwaggerRepresentation extends CompileNode {
+  HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerRepresentation {
     const type = "string";
 
     switch (node.format) {
@@ -35,19 +35,19 @@ export class CompileNodeSwaggerType extends CompileNode {
     }
   }
 
-  HandleTypeInteger(): ICompiledNodeSwaggerType {
+  HandleTypeInteger(): ICompiledNodeSwaggerRepresentation {
     return {
       type: "integer",
     };
   }
 
-  HandleTypeBoolean(): ICompiledNodeSwaggerType {
+  HandleTypeBoolean(): ICompiledNodeSwaggerRepresentation {
     return {
       type: "boolean",
     };
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray, ctx?: any): ICompiledNodeSwaggerType {
+  HandleTypeArray(node: IUniNodeTypeArray, ctx?: any): ICompiledNodeSwaggerRepresentation {
     const nested = this.Handle(node.items, ctx);
 
     return {
@@ -91,7 +91,7 @@ export class CompileNodeSwaggerType extends CompileNode {
     return this.OnUnhandled();
   }
 
-  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeSwaggerType {
+  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeSwaggerRepresentation {
     const ctor = this.classCompiler.CompileCtor(node, null, meta);
 
     return {
@@ -99,7 +99,7 @@ export class CompileNodeSwaggerType extends CompileNode {
     };
   }
 
-  Handle(node: IUniNode, ctx?: any): ICompiledNodeSwaggerType | null {
-    return <ICompiledNodeSwaggerType | null>super.Handle(node, ctx);
+  Handle(node: IUniNode, ctx?: any): ICompiledNodeSwaggerRepresentation | null {
+    return <ICompiledNodeSwaggerRepresentation | null>super.Handle(node, ctx);
   }
 }

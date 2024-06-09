@@ -110,19 +110,39 @@ importers:
       '@unispec/ast-utils':
         specifier: workspace:^
         version: link:../../../../../ast/integrations/npm/utils
-      tslib:
-        specifier: ^2.6.3
-        version: 2.6.3
-    optionalDependencies:
-      '@nestjs/graphql':
-        specifier: ^12.1.1
-        version: 12.1.1(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1))(graphql@16.8.1)(reflect-metadata@0.2.2)
-      '@nestjs/swagger':
-        specifier: ^7.3.1
-        version: 7.3.1(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
+
+  packages/drivers/integrations/npm/nestjs/driver-nestjs-graphql:
+    dependencies:
+      '@nestjs/graphql':
+        specifier: ^12.1.1
+        version: 12.1.1(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1))(graphql@16.8.1)(reflect-metadata@0.2.2)
+      '@unispec/ast-builder':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/builder
+      '@unispec/ast-types':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/types
+      '@unispec/ast-utils':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/utils
+
+  packages/drivers/integrations/npm/nestjs/driver-nestjs-swagger:
+    dependencies:
+      '@nestjs/swagger':
+        specifier: ^7.3.1
+        version: 7.3.1(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)
+      '@unispec/ast-builder':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/builder
+      '@unispec/ast-types':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/types
+      '@unispec/ast-utils':
+        specifier: workspace:^
+        version: link:../../../../../ast/integrations/npm/utils
 
   packages/drivers/integrations/npm/quicktype/driver-quicktype:
     dependencies:
@@ -4371,7 +4391,6 @@ snapshots:
       '@graphql-tools/utils': 10.0.13(graphql@16.8.1)
       graphql: 16.8.1
       tslib: 2.6.3
-    optional: true
 
   '@graphql-tools/schema@10.0.2(graphql@16.8.1)':
     dependencies:
@@ -4380,7 +4399,6 @@ snapshots:
       graphql: 16.8.1
       tslib: 2.6.3
       value-or-promise: 1.0.12
-    optional: true
 
   '@graphql-tools/utils@10.0.13(graphql@16.8.1)':
     dependencies:
@@ -4389,12 +4407,10 @@ snapshots:
       dset: 3.1.3
       graphql: 16.8.1
       tslib: 2.6.3
-    optional: true
 
   '@graphql-typed-document-node/core@3.2.0(graphql@16.8.1)':
     dependencies:
       graphql: 16.8.1
-    optional: true
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
@@ -4440,11 +4456,9 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
 
-  '@lukeed/csprng@1.1.0':
-    optional: true
+  '@lukeed/csprng@1.1.0': {}
 
-  '@microsoft/tsdoc@0.14.2':
-    optional: true
+  '@microsoft/tsdoc@0.14.2': {}
 
   '@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1)':
     dependencies:
@@ -4453,7 +4467,6 @@ snapshots:
       rxjs: 7.8.1
       tslib: 2.6.2
       uid: 2.0.2
-    optional: true
 
   '@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1)':
     dependencies:
@@ -4468,7 +4481,6 @@ snapshots:
       uid: 2.0.2
     transitivePeerDependencies:
       - encoding
-    optional: true
 
   '@nestjs/graphql@12.1.1(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1))(graphql@16.8.1)(reflect-metadata@0.2.2)':
     dependencies:
@@ -4493,13 +4505,11 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-    optional: true
 
   '@nestjs/mapped-types@2.0.5(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)':
     dependencies:
       '@nestjs/common': 10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1)
       reflect-metadata: 0.2.2
-    optional: true
 
   '@nestjs/swagger@7.3.1(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.9(@nestjs/common@10.3.9(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)':
     dependencies:
@@ -4512,7 +4522,6 @@ snapshots:
       path-to-regexp: 3.2.0
       reflect-metadata: 0.2.2
       swagger-ui-dist: 5.11.2
-    optional: true
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -4556,7 +4565,6 @@ snapshots:
       node-fetch: 2.7.0
     transitivePeerDependencies:
       - encoding
-    optional: true
 
   '@nx/devkit@19.2.1(nx@19.2.1(@swc-node/register@1.9.1(@swc/core@1.5.24)(typescript@5.4.5))(@swc/core@1.5.24))':
     dependencies:
@@ -5108,7 +5116,6 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
       picomatch: 2.3.1
-    optional: true
 
   argparse@1.0.10:
     dependencies:
@@ -5179,8 +5186,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  backo2@1.0.2:
-    optional: true
+  backo2@1.0.2: {}
 
   balanced-match@1.0.2: {}
 
@@ -5190,8 +5196,7 @@ snapshots:
 
   before-after-hook@2.2.3: {}
 
-  binary-extensions@2.3.0:
-    optional: true
+  binary-extensions@2.3.0: {}
 
   bl@4.1.0:
     dependencies:
@@ -5311,8 +5316,7 @@ snapshots:
 
   chalk@5.3.0: {}
 
-  change-case@5.4.4:
-    optional: true
+  change-case@5.4.4: {}
 
   chardet@0.7.0: {}
 
@@ -5331,7 +5335,6 @@ snapshots:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.3
-    optional: true
 
   ci-info@3.9.0: {}
 
@@ -5413,8 +5416,7 @@ snapshots:
       write-file-atomic: 3.0.3
       xdg-basedir: 5.1.0
 
-  consola@2.15.3:
-    optional: true
+  consola@2.15.3: {}
 
   consola@3.2.3: {}
 
@@ -5438,7 +5440,6 @@ snapshots:
   cross-inspect@1.0.0:
     dependencies:
       tslib: 2.6.3
-    optional: true
 
   cross-spawn@7.0.3:
     dependencies:
@@ -5637,8 +5638,7 @@ snapshots:
 
   dotenv@16.3.2: {}
 
-  dset@3.1.3:
-    optional: true
+  dset@3.1.3: {}
 
   duplexer@0.1.2: {}
 
@@ -5901,8 +5901,7 @@ snapshots:
 
   event-target-shim@5.0.1: {}
 
-  eventemitter3@3.1.2:
-    optional: true
+  eventemitter3@3.1.2: {}
 
   eventemitter3@5.0.1: {}
 
@@ -5952,8 +5951,7 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-safe-stringify@2.1.1:
-    optional: true
+  fast-safe-stringify@2.1.1: {}
 
   fastq@1.17.1:
     dependencies:
@@ -6207,15 +6205,12 @@ snapshots:
     dependencies:
       graphql: 16.8.1
       tslib: 2.6.3
-    optional: true
 
   graphql-ws@5.14.3(graphql@16.8.1):
     dependencies:
       graphql: 16.8.1
-    optional: true
 
-  graphql@16.8.1:
-    optional: true
+  graphql@16.8.1: {}
 
   has-bigints@1.0.2: {}
 
@@ -6348,7 +6343,6 @@ snapshots:
   is-binary-path@2.1.0:
     dependencies:
       binary-extensions: 2.3.0
-    optional: true
 
   is-boolean-object@1.1.2:
     dependencies:
@@ -6518,11 +6512,9 @@ snapshots:
       html-escaper: 2.0.2
       istanbul-lib-report: 3.0.1
 
-  iterall@1.3.0:
-    optional: true
+  iterall@1.3.0: {}
 
-  iterare@1.2.1:
-    optional: true
+  iterare@1.2.1: {}
 
   iterate-iterator@1.0.2: {}
 
@@ -6818,8 +6810,7 @@ snapshots:
 
   node-releases@2.0.14: {}
 
-  normalize-path@3.0.0:
-    optional: true
+  normalize-path@3.0.0: {}
 
   normalize-range@0.1.2: {}
 
@@ -7053,8 +7044,7 @@ snapshots:
       lru-cache: 10.2.2
       minipass: 7.1.2
 
-  path-to-regexp@3.2.0:
-    optional: true
+  path-to-regexp@3.2.0: {}
 
   path-type@4.0.0: {}
 
@@ -7347,14 +7337,12 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
-    optional: true
 
   rechoir@0.6.2:
     dependencies:
       resolve: 1.22.8
 
-  reflect-metadata@0.2.2:
-    optional: true
+  reflect-metadata@0.2.2: {}
 
   regexp.prototype.flags@1.5.2:
     dependencies:
@@ -7704,7 +7692,6 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-    optional: true
 
   supports-color@5.5.0:
     dependencies:
@@ -7726,11 +7713,9 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.0.1
 
-  swagger-ui-dist@5.11.2:
-    optional: true
+  swagger-ui-dist@5.11.2: {}
 
-  symbol-observable@1.2.0:
-    optional: true
+  symbol-observable@1.2.0: {}
 
   tar-stream@2.2.0:
     dependencies:
@@ -7788,8 +7773,7 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tslib@2.6.2:
-    optional: true
+  tslib@2.6.2: {}
 
   tslib@2.6.3: {}
 
@@ -7861,7 +7845,6 @@ snapshots:
   uid@2.0.2:
     dependencies:
       '@lukeed/csprng': 1.1.0
-    optional: true
 
   unbox-primitive@1.0.2:
     dependencies:
@@ -7969,11 +7952,9 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  uuid@9.0.1:
-    optional: true
+  uuid@9.0.1: {}
 
-  value-or-promise@1.0.12:
-    optional: true
+  value-or-promise@1.0.12: {}
 
   vite-node@1.6.0(@types/node@20.14.1):
     dependencies:
@@ -8120,11 +8101,9 @@ snapshots:
       signal-exit: 3.0.7
       typedarray-to-buffer: 3.1.5
 
-  ws@7.5.9:
-    optional: true
+  ws@7.5.9: {}
 
-  ws@8.16.0:
-    optional: true
+  ws@8.16.0: {}
 
   xdg-basedir@5.1.0: {}
 

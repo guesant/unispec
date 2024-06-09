@@ -1,9 +1,9 @@
 import { ArgsType, Field, InputType, ObjectType } from "@nestjs/graphql";
 import { CheckType } from "@unispec/ast-builder";
 import { CompileClassHandler, type ICompileClassHandlerCtorContext, type ICompileClassHandlerPropertyContext } from "@unispec/ast-utils";
-import { CompileNodeGqlType } from "./CompileNodeGqlType";
+import { CompileNodeGqlRepresentation } from "./compile-node-graphql-representation";
 
-export class NestGraphQlHandler extends CompileClassHandler {
+export class CompileClassGraphQlDto extends CompileClassHandler {
   constructor() {
     super();
   }
@@ -25,7 +25,7 @@ export class NestGraphQlHandler extends CompileClassHandler {
   compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): any[] | null;
 
   compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): any[] | null {
-    const compileNodeGqlType = new CompileNodeGqlType(context.host.repository, context.host);
+    const compileNodeGqlType = new CompileNodeGqlRepresentation(context.host.repository, context.host);
 
     const gql = compileNodeGqlType.Handle(context.propertyNode);
 

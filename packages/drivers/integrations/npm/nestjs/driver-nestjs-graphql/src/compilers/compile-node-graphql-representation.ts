@@ -2,34 +2,34 @@ import { Int, type GqlTypeReference } from "@nestjs/graphql";
 import type { IUniNode, IUniNodeTypeArray, IUniNodeView } from "@unispec/ast-types";
 import { CompileNode } from "@unispec/ast-utils";
 
-export type ICompiledNodeGqlType = {
+export type ICompiledNodeGqlRepresentation = {
   type: void | (() => GqlTypeReference);
 };
 
-export type ICompileNodeGqlTypeContext = {
+export type ICompileNodeGqlRepresentationContext = {
   meta?: Record<string, any>;
 };
 
-export class CompileNodeGqlType extends CompileNode<ICompileNodeGqlTypeContext> {
+export class CompileNodeGqlRepresentation extends CompileNode<ICompileNodeGqlRepresentationContext> {
   HandleTypeString() {
     return {
       type: () => String,
     };
   }
 
-  HandleTypeInteger(): ICompiledNodeGqlType {
+  HandleTypeInteger(): ICompiledNodeGqlRepresentation {
     return {
       type: () => Int,
     };
   }
 
-  HandleTypeBoolean(): ICompiledNodeGqlType {
+  HandleTypeBoolean(): ICompiledNodeGqlRepresentation {
     return {
       type: () => Boolean,
     };
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray): ICompiledNodeGqlType {
+  HandleTypeArray(node: IUniNodeTypeArray): ICompiledNodeGqlRepresentation {
     const nested = this.Handle(node.items);
 
     return {
@@ -37,7 +37,7 @@ export class CompileNodeGqlType extends CompileNode<ICompileNodeGqlTypeContext> 
     };
   }
 
-  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeGqlType {
+  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeGqlRepresentation {
     const ctor = this.classCompiler.CompileCtor(node, null, meta);
 
     return {
@@ -45,8 +45,8 @@ export class CompileNodeGqlType extends CompileNode<ICompileNodeGqlTypeContext> 
     };
   }
 
-  Handle(node: IUniNode): ICompiledNodeGqlType {
-    const dt = <ICompiledNodeGqlType | null>super.Handle(node);
+  Handle(node: IUniNode): ICompiledNodeGqlRepresentation {
+    const dt = <ICompiledNodeGqlRepresentation | null>super.Handle(node);
 
     if (dt) {
       return dt;
