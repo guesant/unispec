@@ -12,7 +12,7 @@ export type ICompiledNodeSwaggerRepresentation =
   | any;
 
 export class CompileNodeSwaggerRepresentation extends CompileNode {
-  HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerRepresentation {
+  protected HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerRepresentation {
     const type = "string";
 
     switch (node.format) {
@@ -35,20 +35,20 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
     }
   }
 
-  HandleTypeInteger(): ICompiledNodeSwaggerRepresentation {
+  protected HandleTypeInteger(): ICompiledNodeSwaggerRepresentation {
     return {
       type: "integer",
     };
   }
 
-  HandleTypeBoolean(): ICompiledNodeSwaggerRepresentation {
+  protected HandleTypeBoolean(): ICompiledNodeSwaggerRepresentation {
     return {
       type: "boolean",
     };
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray, ctx?: any): ICompiledNodeSwaggerRepresentation {
-    const nested = this.Handle(node.items, ctx);
+  protected HandleTypeArray(node: IUniNodeTypeArray, context?: any): ICompiledNodeSwaggerRepresentation {
+    const nested = this.Handle(node.items, context);
 
     return {
       ...nested,
@@ -56,7 +56,7 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
     };
   }
 
-  HandleTypeReference(node: IUniNodeType, context?: any) {
+  protected HandleTypeReference(node: IUniNodeType, context?: any) {
     const dereferenced = this.repository.GetRealTarget(node);
 
     if (dereferenced) {
@@ -88,11 +88,11 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
       }
     }
 
-    return this.OnUnhandled();
+    return this.OnUnhandled(node, context);
   }
 
-  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeSwaggerRepresentation {
-    const ctor = this.classCompiler.CompileCtor(node, null, meta);
+  protected HandleView(node: IUniNodeView, context?: Record<string, any>): ICompiledNodeSwaggerRepresentation {
+    const ctor = this.classCompiler.CompileCtor(node, null, context);
 
     return {
       type: () => ctor,

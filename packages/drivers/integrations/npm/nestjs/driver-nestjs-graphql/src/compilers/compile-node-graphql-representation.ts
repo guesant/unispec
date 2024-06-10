@@ -2,51 +2,51 @@ import { Int, type GqlTypeReference } from "@nestjs/graphql";
 import type { IUniNode, IUniNodeTypeArray, IUniNodeView } from "@unispec/ast-types";
 import { CompileNode } from "@unispec/ast-utils";
 
-export type ICompiledNodeGqlRepresentation = {
+export type ICompiledNodeGraphQlRepresentation = {
   type: void | (() => GqlTypeReference);
 };
 
-export type ICompileNodeGqlRepresentationContext = {
+export type ICompileNodeGraphQlRepresentationContext = {
   meta?: Record<string, any>;
 };
 
-export class CompileNodeGqlRepresentation extends CompileNode<ICompileNodeGqlRepresentationContext> {
-  HandleTypeString() {
+export class CompileNodeGraphQlRepresentation extends CompileNode<ICompileNodeGraphQlRepresentationContext> {
+  protected HandleTypeString() {
     return {
       type: () => String,
     };
   }
 
-  HandleTypeInteger(): ICompiledNodeGqlRepresentation {
+  protected HandleTypeInteger(): ICompiledNodeGraphQlRepresentation {
     return {
       type: () => Int,
     };
   }
 
-  HandleTypeBoolean(): ICompiledNodeGqlRepresentation {
+  protected HandleTypeBoolean(): ICompiledNodeGraphQlRepresentation {
     return {
       type: () => Boolean,
     };
   }
 
-  HandleTypeArray(node: IUniNodeTypeArray): ICompiledNodeGqlRepresentation {
-    const nested = this.Handle(node.items);
+  protected HandleTypeArray(node: IUniNodeTypeArray, context?: ICompileNodeGraphQlRepresentationContext): ICompiledNodeGraphQlRepresentation {
+    const nested = this.Handle(node.items, context);
 
     return {
       type: () => [nested.type],
     };
   }
 
-  HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeGqlRepresentation {
-    const ctor = this.classCompiler.CompileCtor(node, null, meta);
+  protected HandleView(node: IUniNodeView, context?: Record<string, any>): ICompiledNodeGraphQlRepresentation {
+    const ctor = this.classCompiler.CompileCtor(node, null, context);
 
     return {
       type: () => ctor,
     };
   }
 
-  Handle(node: IUniNode): ICompiledNodeGqlRepresentation {
-    const dt = <ICompiledNodeGqlRepresentation | null>super.Handle(node);
+  Handle(node: IUniNode, context?: ICompileNodeGraphQlRepresentationContext): ICompiledNodeGraphQlRepresentation {
+    const dt = <ICompiledNodeGraphQlRepresentation | null>super.Handle(node, context);
 
     if (dt) {
       return dt;

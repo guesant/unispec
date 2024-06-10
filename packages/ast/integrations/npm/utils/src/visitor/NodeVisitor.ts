@@ -17,9 +17,9 @@ import type {
 export class NodeVisitor<Context = never> {
   constructor(readonly throwOnUnhandled: boolean = true) {}
 
-  OnUnhandled(node: IUniNode, context?: Context): any;
+  protected OnUnhandled(node: IUniNode, context?: Context): any;
 
-  OnUnhandled(node: IUniNode) {
+  protected OnUnhandled(node: IUniNode) {
     if (this.throwOnUnhandled) {
       throw new Error(`Unhandled ${JSON.stringify(node, null, 2)}.`);
     }
