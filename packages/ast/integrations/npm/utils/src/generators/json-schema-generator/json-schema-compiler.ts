@@ -3,6 +3,7 @@ import {
   type IUniNode,
   type IUniNodeTypeArray,
   type IUniNodeTypeBoolean,
+  type IUniNodeTypeFile,
   type IUniNodeTypeInteger,
   type IUniNodeTypeObject,
   type IUniNodeTypeReference,
@@ -18,7 +19,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     super();
   }
 
-  protected HandleJsonSchemaNode(node: IUniNode, type: JSONSchema7): JSONSchema7 {
+  protected HandleJsonSchemaNode(node: IUniNode, type: JSONSchema7, _context?: any): JSONSchema7 {
     let jsonSchemaType = type;
 
     if (CheckView(node)) {
@@ -44,15 +45,19 @@ export class JsonSchemaCompiler extends NodeVisitor {
     return jsonSchemaType;
   }
 
-  override HandleTypeBoolean(node: IUniNodeTypeBoolean): JSONSchema7 {
-    return this.HandleJsonSchemaNode(node, { type: "boolean" });
+  protected override HandleTypeFile(node: IUniNodeTypeFile, context?: undefined) {
+    return this.HandleJsonSchemaNode(node, { type: "string", format: "binary" }, context);
   }
 
-  override HandleTypeArray(node: IUniNodeTypeArray): JSONSchema7 {
-    return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items) });
+  override HandleTypeBoolean(node: IUniNodeTypeBoolean, context?: any): JSONSchema7 {
+    return this.HandleJsonSchemaNode(node, { type: "boolean" }, context);
   }
 
-  override HandleTypeReference(node: IUniNodeTypeReference): JSONSchema7 {
+  override HandleTypeArray(node: IUniNodeTypeArray, context?: any): JSONSchema7 {
+    return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items) }, context);
+  }
+
+  override HandleTypeReference(node: IUniNodeTypeReference, context?: any): JSONSchema7 {
     const token = this.resolveTokenName(node);
 
     let pointer = "";
@@ -61,14 +66,14 @@ export class JsonSchemaCompiler extends NodeVisitor {
       pointer = `#/properties/${node.objectProperty}`;
     }
 
-    return this.HandleJsonSchemaNode(node, { $ref: `${token}${pointer}` });
+    return this.HandleJsonSchemaNode(node, { $ref: `${token}${pointer}` }, context);
   }
 
-  override HandleTypeInteger(node: IUniNodeTypeInteger): JSONSchema7 {
-    return this.HandleJsonSchemaNode(node, { type: "integer" });
+  override HandleTypeInteger(node: IUniNodeTypeInteger, context?: any): JSONSchema7 {
+    return this.HandleJsonSchemaNode(node, { type: "integer" }, context);
   }
 
-  override HandleTypeObject(node: IUniNodeTypeObject): JSONSchema7 {
+  override HandleTypeObject(node: IUniNodeTypeObject, context?: any): JSONSchema7 {
     const jsonSchemaType: JSONSchema7 = {
       type: "object",
       required: [],
@@ -80,7 +85,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     jsonSchemaType.properties ??= {};
 
     for (const [propertyKey, propertyNode] of Object.entries(node.properties)) {
-      jsonSchemaType.properties[propertyKey] = this.Handle(propertyNode);
+      jsonSchemaType.properties[propertyKey] = this.Handle(propertyNode, context);
 
       if (propertyNode.required) {
         jsonSchemaType.required.push(propertyKey);
@@ -90,7 +95,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
     return jsonSchemaType;
   }
 
-  override HandleTypeString(node: IUniNodeTypeString): JSONSchema7 {
+  override HandleTypeString(node: IUniNodeTypeString, context?: any): JSONSchema7 {
     const jsonSchemaType: JSONSchema7 = {
       type: "string",
     };
@@ -110,24 +115,28 @@ export class JsonSchemaCompiler extends NodeVisitor {
       }
     }
 
-    return this.HandleJsonSchemaNode(node, jsonSchemaType);
+    return this.HandleJsonSchemaNode(node, jsonSchemaType, context);
   }
 
-  override HandleView(node: IUniNodeView): JSONSchema7 {
+  override HandleView(node: IUniNodeView, context?: any): JSONSchema7 {
     const nodeMeta = {
       description: node.description,
     };
 
     const token = this.resolveTokenName(node);
 
-    return this.HandleJsonSchemaNode(node, {
-      $id: token,
-      ...this.Handle(node.type),
-      ...nodeMeta,
-    });
+    return this.HandleJsonSchemaNode(
+      node,
+      {
+        $id: token,
+        ...this.Handle(node.type),
+        ...nodeMeta,
+      },
+      context,
+    );
   }
 
-  override Handle(node: IUniNode, ctx?: undefined): JSONSchema7 {
-    return super.Handle(node, ctx);
+  override Handle(node: IUniNode, context?: any): JSONSchema7 {
+    return super.Handle(node, context);
   }
 }
