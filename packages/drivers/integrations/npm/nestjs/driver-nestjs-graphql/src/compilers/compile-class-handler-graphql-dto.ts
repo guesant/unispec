@@ -14,9 +14,9 @@ export class CompileClassHandlerGraphQlDto extends CompileClassHandler {
     if (context.meta?.gqlStrategy === "args-type") {
       classDecorators.push(ArgsType());
     } else if (context.meta?.mode === "input") {
-      classDecorators.push(InputType(context.meta?.className));
+      classDecorators.push(InputType(context.className));
     } else if (context.meta?.mode === "output" || context.meta?.mode === "simple") {
-      classDecorators.push(ObjectType(context.meta?.className));
+      classDecorators.push(ObjectType(context.className));
     }
 
     return classDecorators;
@@ -27,7 +27,7 @@ export class CompileClassHandlerGraphQlDto extends CompileClassHandler {
   compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): any[] | null {
     const compileNodeGqlType = new CompileNodeGraphQlRepresentation(context.host.repository, context.host);
 
-    const gql = compileNodeGqlType.Handle(context.propertyNode, context);
+    const gql = compileNodeGqlType.Handle(context.propertyNode, context.meta);
 
     const type = gql?.type;
 
