@@ -1,6 +1,6 @@
 import type { SchemaObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 import { CheckType, CheckView } from "@unispec/ast-builder";
-import type { IUniNode, IUniNodeType, IUniNodeTypeArray, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
+import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeReference, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
 import { CompileNode } from "@unispec/ast-utils";
 
 export type ICompiledNodeSwaggerRepresentation =
@@ -56,7 +56,7 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
     };
   }
 
-  protected HandleTypeReference(node: IUniNodeType, context?: any) {
+  protected HandleTypeReference(node: IUniNodeTypeReference, context?: any) {
     const dereferenced = this.repository.GetRealTarget(node);
 
     if (dereferenced) {

@@ -54,7 +54,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
   }
 
   override HandleTypeArray(node: IUniNodeTypeArray, context?: any): JSONSchema7 {
-    return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items) }, context);
+    return this.HandleJsonSchemaNode(node, { type: "array", items: this.Handle(node.items, context) }, context);
   }
 
   override HandleTypeReference(node: IUniNodeTypeReference, context?: any): JSONSchema7 {
@@ -129,7 +129,7 @@ export class JsonSchemaCompiler extends NodeVisitor {
       node,
       {
         $id: token,
-        ...this.Handle(node.type),
+        ...this.Handle(node.type, context),
         ...nodeMeta,
       },
       context,

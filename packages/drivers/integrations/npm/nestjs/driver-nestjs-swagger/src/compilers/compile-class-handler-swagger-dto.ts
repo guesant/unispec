@@ -11,7 +11,7 @@ export class CompileClassHandlerSwaggerDto extends CompileClassHandler {
   compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): any[] | null {
     const compileNodeSwaggerRepresentation = this.GetCompileNodeSwaggerRepresentation(context);
 
-    const swaggerRepresentation = compileNodeSwaggerRepresentation.Handle(context.propertyNode);
+    const swaggerRepresentation = compileNodeSwaggerRepresentation.Handle(context.propertyNode, context);
 
     if (swaggerRepresentation) {
       const propertyNode = context.propertyNode;
