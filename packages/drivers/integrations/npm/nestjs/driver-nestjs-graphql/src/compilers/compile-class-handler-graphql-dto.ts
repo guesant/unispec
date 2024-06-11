@@ -27,7 +27,7 @@ export class CompileClassHandlerGraphQlDto extends CompileClassHandler {
   compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): any[] | null {
     const compileNodeGqlType = new CompileNodeGraphQlRepresentation(context.host.repository, context.host);
 
-    const gql = compileNodeGqlType.Handle(context.propertyNode);
+    const gql = compileNodeGqlType.Handle(context.propertyNode, context);
 
     const type = gql?.type;
 
