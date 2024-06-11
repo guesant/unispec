@@ -28,7 +28,15 @@ export class CompileNodeGraphQlRepresentation extends CompileNode<ICompileNodeGr
   }
 
   protected HandleTypeString(node: IUniNodeTypeString, context?: any): ICompiledNodeGraphQlRepresentation {
-    return this.HandleGenericType(node, context, { type: () => String });
+    switch (node.format) {
+      case "date-time": {
+        return this.HandleGenericType(node, context, { type: () => Date });
+      }
+
+      default: {
+        return this.HandleGenericType(node, context, { type: () => String });
+      }
+    }
   }
 
   protected HandleTypeInteger(node: IUniNodeTypeInteger, context?: any): ICompiledNodeGraphQlRepresentation {
