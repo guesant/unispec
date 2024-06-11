@@ -1,6 +1,6 @@
 {
   "name": "@unispec/ast-types",
-  "version": "0.26.1-next.39",
+  "version": "0.26.1-next.40",
   "description": "Unispec AST TypeScript definitions.",
   "type": "module",
   "sideEffects": false,
