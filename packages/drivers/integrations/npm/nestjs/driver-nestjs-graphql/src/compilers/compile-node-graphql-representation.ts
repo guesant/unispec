@@ -1,6 +1,6 @@
 import { Int, type GqlTypeReference } from "@nestjs/graphql";
 import { CheckType, CheckView } from "@unispec/ast-builder";
-import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeReference, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
+import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeBoolean, IUniNodeTypeInteger, IUniNodeTypeObject, IUniNodeTypeReference, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
 import { CompileNode } from "@unispec/ast-utils";
 
 export type ICompiledNodeGraphQlRepresentation = {
@@ -49,7 +49,13 @@ export class CompileNodeGraphQlRepresentation extends CompileNode<ICompileNodeGr
 
   protected HandleTypeArray(node: IUniNodeTypeArray, context?: ICompileNodeGraphQlRepresentationContext): ICompiledNodeGraphQlRepresentation {
     const nested = this.Handle(node.items, context);
-    return this.HandleGenericType(node, context, { type: () => [nested.type] });
+    const nestedType = nested.type;
+
+    if (nestedType) {
+      return this.HandleGenericType(node, context, { type: () => [nestedType()] });
+    }
+
+    return this.HandleGenericType(node, context, { type: void 0 });
   }
 
   protected HandleTypeReference(node: IUniNodeTypeReference, context?: any): ICompiledNodeGraphQlRepresentation {
@@ -64,6 +70,18 @@ export class CompileNodeGraphQlRepresentation extends CompileNode<ICompileNodeGr
     }
 
     return this.OnUnhandled(node, context);
+  }
+
+  protected HandleTypeObject(node: IUniNodeTypeObject, context?: ICompileNodeGraphQlRepresentationContext | undefined) {
+    const partialOf = node.partialOf;
+
+    const partialOfTarget = partialOf ? this.repository.GetRealTarget(partialOf) : null;
+
+    if (partialOfTarget) {
+      return super.Handle(partialOfTarget, context);
+    }
+
+    return super.HandleTypeObject(node, context);
   }
 
   protected HandleView(node: IUniNodeView, context?: Record<string, any>): ICompiledNodeGraphQlRepresentation {
