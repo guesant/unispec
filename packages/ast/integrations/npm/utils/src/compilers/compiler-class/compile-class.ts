@@ -115,10 +115,6 @@ export class CompileClass {
     context.dtoClassesMap?.set(dtoClassName, CompiledClassCtor);
 
     for (const handler of this.#handlers) {
-      handler.HandleCtor(context);
-    }
-
-    for (const handler of this.#handlers) {
       handler.HandleCtor(context, parent);
     }
 

@@ -72,12 +72,8 @@ export class CompileClassHandlerGraphQlDto extends CompileClassHandler {
                 description: propertyNode.description,
               }),
             );
-
-            return;
           } else {
             context.AddPropertyDecorator(propertyKey, Field(gqlTypeFn));
-
-            return;
           }
         }
       }
