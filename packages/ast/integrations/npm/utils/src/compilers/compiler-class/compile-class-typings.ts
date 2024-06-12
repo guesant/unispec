@@ -25,15 +25,6 @@ export interface ICompileClassContext {
   SetPropertyDesignType(property: string, designType: any): this;
 }
 
-export interface ICompileClassHandlerCtorContext extends ICompileClassContext {
-  className: string;
-}
-
-export interface ICompileClassHandlerPropertyContext extends ICompileClassHandlerCtorContext, ICompileClassContext {
-  propertyNode: IUniNode;
-  propertyKey: string;
-}
-
 export interface ICompileClassHandler {
   HandleCtor(context: ICompileClassContext): void;
 }

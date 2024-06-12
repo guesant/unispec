@@ -118,55 +118,6 @@ export class CompileClass {
       handler.HandleCtor(context);
     }
 
-    const handleContext = Object.freeze({
-      ...context,
-      className: dtoClassName,
-    });
-
-    // for (const handle of this.#handlers) {
-    //   const handlerClassDecorators = handle.compileCtorDecorators(handleContext);
-
-    //   if (handlerClassDecorators) {
-    //     for (const handlerClassDecorator of handlerClassDecorators) {
-    //       context.ctorDecorators.push(handlerClassDecorator);
-    //     }
-    //   }
-    // }
-
-    // if (CheckView(node)) {
-    //   const type = node.type;
-
-    //   const typeRealTarget = type && this.repository.GetRealTarget(type);
-
-    //   if (CheckTypeObject(typeRealTarget)) {
-    //     for (const propertyKey in typeRealTarget.properties) {
-    //       const propertyNode = typeRealTarget.properties[propertyKey];
-
-    //       const propertyContext = Object.freeze({
-    //         ...context,
-    //         parent,
-    //         propertyKey,
-    //         propertyNode,
-    //         className: dtoClassName,
-    //       });
-
-    //       const compiledProperty = this.CompileProperty(propertyContext, parent);
-
-    //       if (compiledProperty !== null) {
-    //         const name = compiledProperty.name;
-
-    //         const propertyDecorators = [
-    //           //
-    //           ...compiledProperty.propertyDecorators,
-    //           __metadata("design:type", compiledProperty.designType),
-    //         ];
-
-    //         __decorate(propertyDecorators, CompiledClassCtor.prototype, name, void 0);
-    //       }
-    //     }
-    //   }
-    // }
-
     for (const handler of this.#handlers) {
       handler.HandleCtor(context, parent);
     }
@@ -187,26 +138,4 @@ export class CompileClass {
 
     return decoratedClass;
   }
-
-  // CompileProperty(context: ICompileClassHandlerPropertyContext, parent?: string | null) {
-  //   const propertyDecorators = [];
-
-  //   const propertyContext = Object.freeze({ ...context });
-
-  //   for (const handle of this.#handlers) {
-  //     const handlePropertyDecorators = handle.compilePropertyDecorators(propertyContext, parent ? `${parent}.${propertyContext.propertyKey}` : parent);
-
-  //     if (handlePropertyDecorators) {
-  //       for (const handlerClassDecorator of handlePropertyDecorators) {
-  //         propertyDecorators.push(handlerClassDecorator);
-  //       }
-  //     }
-  //   }
-
-  //   return {
-  //     propertyDecorators,
-  //     designType: Object,
-  //     name: context.propertyKey,
-  //   };
-  // }
 }

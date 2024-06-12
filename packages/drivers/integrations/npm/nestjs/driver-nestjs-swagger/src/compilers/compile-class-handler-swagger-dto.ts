@@ -1,35 +1,59 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { CheckType } from "@unispec/ast-builder";
-import { CompileClassHandler, type ICompileClassHandlerPropertyContext } from "@unispec/ast-utils";
+import { CheckType, CheckTypeObject, CheckView } from "@unispec/ast-builder";
+import type { IUniNode } from "@unispec/ast-types";
+import { CompileClassHandler, type ICompileClassContext } from "@unispec/ast-utils";
 import { CompileNodeSwaggerRepresentation } from "./compile-node-swagger-representation";
 
 export class CompileClassHandlerSwaggerDto extends CompileClassHandler {
-  GetCompileNodeSwaggerRepresentation(context: ICompileClassHandlerPropertyContext) {
+  GetCompileNodeSwaggerRepresentation(context: ICompileClassContext) {
     return new CompileNodeSwaggerRepresentation(context.host.repository, context.host);
   }
 
-  compilePropertyDecorators(context: ICompileClassHandlerPropertyContext): any[] | null {
+  GetNodeName(context: ICompileClassContext) {
+    return context.host.GetNodeName(context);
+  }
+
+  HandleCtor(context: ICompileClassContext, parent?: string | null | undefined): void {
+    this.HandleCtorProperties(context, parent);
+  }
+
+  HandleCtorProperties(context: ICompileClassContext, parent?: string | null | undefined) {
     const compileNodeSwaggerRepresentation = this.GetCompileNodeSwaggerRepresentation(context);
 
-    const swaggerRepresentation = compileNodeSwaggerRepresentation.Handle(context.propertyNode, context.meta);
+    const contextNode = context.node;
 
-    if (swaggerRepresentation) {
-      const propertyNode = context.propertyNode;
+    let targetNode: IUniNode | null = null;
 
-      if (CheckType(propertyNode)) {
-        return [
-          ApiProperty({
-            ...swaggerRepresentation,
-            required: propertyNode.required,
-            nullable: propertyNode.nullable,
-            description: propertyNode.description,
-          }),
-        ];
-      } else {
-        return [ApiProperty(swaggerRepresentation)];
+    if (CheckView(contextNode)) {
+      const contextNodeViewTypeRealTarget = context.repository.GetRealTarget(contextNode.type);
+
+      if (CheckTypeObject(contextNodeViewTypeRealTarget)) {
+        targetNode = contextNodeViewTypeRealTarget;
       }
     }
 
-    return [];
+    //
+
+    if (CheckTypeObject(targetNode)) {
+      for (const [propertyKey, propertyNode] of Object.entries(targetNode.properties)) {
+        const swaggerRepresentation = compileNodeSwaggerRepresentation.Handle(propertyNode, context.meta);
+
+        if (swaggerRepresentation) {
+          if (CheckType(propertyNode)) {
+            context.AddPropertyDecorator(
+              propertyKey,
+              ApiProperty({
+                ...swaggerRepresentation,
+                required: propertyNode.required,
+                nullable: propertyNode.nullable,
+                description: propertyNode.description,
+              }),
+            );
+          } else {
+            context.AddPropertyDecorator(propertyKey, ApiProperty(swaggerRepresentation));
+          }
+        }
+      }
+    }
   }
 }
