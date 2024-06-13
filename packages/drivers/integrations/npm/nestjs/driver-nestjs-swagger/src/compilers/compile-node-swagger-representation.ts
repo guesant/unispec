@@ -11,7 +11,9 @@ export type ICompiledNodeSwaggerRepresentation =
     }
   | any;
 
-export class CompileNodeSwaggerRepresentation extends CompileNode {
+type Meta = Record<string, any>
+
+export class CompileNodeSwaggerRepresentation extends CompileNode<Meta> {
   protected HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerRepresentation {
     const type = "string";
 
@@ -47,8 +49,8 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
     };
   }
 
-  protected HandleTypeArray(node: IUniNodeTypeArray, context?: any): ICompiledNodeSwaggerRepresentation {
-    const nested = this.Handle(node.items, context);
+  protected HandleTypeArray(node: IUniNodeTypeArray, meta?: Meta): ICompiledNodeSwaggerRepresentation {
+    const nested = this.Handle(node.items, meta);
 
     return {
       ...nested,
@@ -56,7 +58,7 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
     };
   }
 
-  protected HandleTypeReference(node: IUniNodeTypeReference, context?: any) {
+  protected HandleTypeReference(node: IUniNodeTypeReference, meta?: Meta) {
     const dereferenced = this.repository.GetRealTarget(node);
 
     if (dereferenced) {
@@ -68,7 +70,7 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
             nullable: node.nullable,
             description: node.description,
           },
-          context,
+          meta,
         );
       } else if (CheckView(dereferenced) && CheckType(dereferenced.type)) {
         return this.Handle(
@@ -81,25 +83,25 @@ export class CompileNodeSwaggerRepresentation extends CompileNode {
               description: node.description,
             },
           },
-          context,
+          meta,
         );
       } else {
-        return this.Handle(dereferenced, context);
+        return this.Handle(dereferenced, meta);
       }
     }
 
-    return this.OnUnhandled(node, context);
+    return this.OnUnhandled(node, meta);
   }
 
-  protected HandleView(node: IUniNodeView, context?: Record<string, any>): ICompiledNodeSwaggerRepresentation {
-    const ctor = this.classCompiler.CompileCtor(node, null, context);
+  protected HandleView(node: IUniNodeView, meta?: Record<string, any>): ICompiledNodeSwaggerRepresentation {
+    const ctor = this.classCompiler.CompileCtor(node, null, meta);
 
     return {
       type: () => ctor,
     };
   }
 
-  Handle(node: IUniNode, ctx?: any): ICompiledNodeSwaggerRepresentation | null {
-    return <ICompiledNodeSwaggerRepresentation | null>super.Handle(node, ctx);
+  Handle(node: IUniNode, meta?: Meta): ICompiledNodeSwaggerRepresentation | null {
+    return <ICompiledNodeSwaggerRepresentation | null>super.Handle(node, meta);
   }
 }
