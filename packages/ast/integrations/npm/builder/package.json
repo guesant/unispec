@@ -51,7 +51,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "type-fest": "^4.20.0"
+    "type-fest": "^4.20.1"
   },
   "unbuild": {
     "externals": [
