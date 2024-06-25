@@ -1,6 +1,6 @@
 {
   "name": "@unispec/driver-nestjs-graphql",
-  "version": "0.26.1-next.43",
+  "version": "0.26.1-next.44",
   "type": "module",
   "sideEffects": false,
   "publishConfig": {
