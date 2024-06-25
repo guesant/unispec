@@ -1,6 +1,6 @@
 {
   "name": "@unispec/ast-utils",
-  "version": "0.26.1-next.45",
+  "version": "0.26.1-next.46",
   "description": "Unispec AST Utils.",
   "type": "module",
   "sideEffects": false,
