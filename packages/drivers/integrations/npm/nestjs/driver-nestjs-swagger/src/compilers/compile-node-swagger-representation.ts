@@ -1,6 +1,6 @@
 import type { SchemaObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 import { CheckType, CheckView } from "@unispec/ast-builder";
-import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeReference, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
+import type { IUniNode, IUniNodeTypeArray, IUniNodeTypeFile, IUniNodeTypeReference, IUniNodeTypeString, IUniNodeView } from "@unispec/ast-types";
 import { CompileNode } from "@unispec/ast-utils";
 
 export type ICompiledNodeSwaggerRepresentation =
@@ -11,7 +11,7 @@ export type ICompiledNodeSwaggerRepresentation =
     }
   | any;
 
-type Meta = Record<string, any>
+type Meta = Record<string, any>;
 
 export class CompileNodeSwaggerRepresentation extends CompileNode<Meta> {
   protected HandleTypeString(node: IUniNodeTypeString): ICompiledNodeSwaggerRepresentation {
@@ -35,6 +35,13 @@ export class CompileNodeSwaggerRepresentation extends CompileNode<Meta> {
         };
       }
     }
+  }
+
+  protected HandleTypeFile(_: IUniNodeTypeFile) {
+    return {
+      type: "string",
+      format: "binary",
+    };
   }
 
   protected HandleTypeInteger(): ICompiledNodeSwaggerRepresentation {
