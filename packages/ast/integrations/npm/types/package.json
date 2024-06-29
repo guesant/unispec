@@ -14,9 +14,6 @@
     "release:base": "./scripts/smart-release.sh",
     "build": "unbuild"
   },
-  "devDependencies": {
-    "unbuild": "3.0.0-rc.2"
-  },
   "dependencies": {
     "@types/json-schema": "^7.0.15"
   },

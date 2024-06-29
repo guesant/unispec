@@ -28,7 +28,6 @@
     "@unispec/ast-types": "workspace:^",
     "tslib": "^2.6.3"
   },
-  "devDependencies": {},
   "unbuild": {
     "externals": [
       "json-schema"
