@@ -3,7 +3,7 @@
 PATH_WS_ROOT=../../../../..
 source ${PATH_WS_ROOT}/scripts/smart-release.sh 
 
-PATTERN=^packages/ast/integrations/npm/builder
+PATTERN=^packages/ast/integrations/npm/types
 HAS_CHANGES="$(has_changes_desired_since_last_tag ${PATTERN})"
 
 if [[ "${HAS_CHANGES}" == "true" ]]; then

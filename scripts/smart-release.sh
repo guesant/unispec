@@ -52,30 +52,30 @@ function has_changes_desired_since_last_tag {
   fi
 }
 
-function smart_exec {
-  SMART_EXEC_DESIRED=$1
+# function smart_exec {
+#   SMART_EXEC_DESIRED=$1
 
-  if [[ "$(has_changes_desired_since_last_tag ${SMART_EXEC_DESIRED})" == "true" ]]; then
-    echo "yes"
-  else
-    echo "no"
-  fi
-}
+#   if [[ "$(has_changes_desired_since_last_tag ${SMART_EXEC_DESIRED})" == "true" ]]; then
+#     echo "yes"
+#   else
+#     echo "no"
+#   fi
+# }
 
-function do_run_release_base {
-  if [[ ! ${SMART_RELEASE_DRY_RUN} == "false" ]]; then
-    echo [do-run-release-base::dry] \# pnpm run -r release:base $0
-    echo [do-run-release-base::dry] \# pnpm run -w w:release:base $0
-  else
-    pnpm run -r release:base $0
-    pnpm run -w w:release:base $0
-  fi
-}
+# function do_run_release_base {
+#   if [[ ! ${SMART_RELEASE_DRY_RUN} == "false" ]]; then
+#     echo [do-run-release-base::dry] \# pnpm run -r release:base $0
+#     echo [do-run-release-base::dry] \# pnpm run -w w:release:base $0
+#   else
+#     pnpm run -r release:base $0
+#     pnpm run -w w:release:base $0
+#   fi
+# }
 
-function hello {
-  DESIRED="^$"
-  smart_exec ${DESIRED}
-}
+# function hello {
+#   DESIRED="^$"
+#   smart_exec ${DESIRED}
+# }
 
 # case $1 in
 

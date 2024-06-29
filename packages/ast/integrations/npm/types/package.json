@@ -11,7 +11,7 @@
   "main": "./dist/index.d.ts",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "release:base": "release-it -c .release-it.json",
+    "release:base": "./scripts/smart-release.sh",
     "build": "rimraf dist && tsc -p ."
   },
   "dependencies": {

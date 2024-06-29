@@ -16,7 +16,7 @@
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "release:base": "release-it -c .release-it.json",
+    "release:base": "./scripts/smart-release.sh",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
