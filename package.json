@@ -12,7 +12,7 @@
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
     "w:release:base": "release-it -c .release-it.json",
-    "release:base": "bash -c 'pnpm run -r release:base $0 && pnpm run -w w:release:base $0'",
+    "release:base": "./scripts/smart-release/smart-release.sh",
     "release:check": "pnpm run release:base --ci --dry-run -VV",
     "release:patch": "pnpm run release:base patch --ci",
     "release:minor": "pnpm run release:base minor --ci",
