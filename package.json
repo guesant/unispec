@@ -3,6 +3,7 @@
   "version": "0.26.1-next.47",
   "private": true,
   "scripts": {
+    "w:smart-exec": "cd ./scripts/smart-exec; ./smart-exec.sh",
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
     "format:check": "prettier --end-of-line lf --check \"packages/*/{src,test}/**/*.ts\"",
@@ -12,7 +13,7 @@
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
     "w:release:base": "release-it -c .release-it.json",
-    "release:base": "bash -c 'pnpm run -r release:base $0 && pnpm run -w w:release:base $0'",
+    "release:base": "./scripts/smart-release/smart-release.sh",
     "release:check": "pnpm run release:base --ci --dry-run -VV",
     "release:patch": "pnpm run release:base patch --ci",
     "release:minor": "pnpm run release:base minor --ci",
@@ -23,6 +24,9 @@
     "release:next": "pnpm run release:base --preRelease=next --ci",
     "release:main": "pnpm run release:base --ci",
     "build": "nx run-many --target=build --parallel"
+  },
+  "dependencies": {
+    "release-it": "^17.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
@@ -41,8 +45,5 @@
     "vite": "^5.3.1",
     "vitest": "^1.6.0"
   },
-  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0",
-  "dependencies": {
-    "release-it": "^17.4.0"
-  }
+  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
 }
