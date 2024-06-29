@@ -19,7 +19,7 @@
   "scripts": {
     "lint:check": "eslint -c eslint.config.mjs",
     "lint:fix": "eslint -c eslint.config.mjs --fix",
-    "release:base": "release-it -c .release-it.json",
+    "release:base": "./scripts/smart-release.sh",
     "build": "unbuild"
   },
   "dependencies": {
