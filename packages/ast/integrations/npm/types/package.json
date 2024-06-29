@@ -12,13 +12,13 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "release:base": "./scripts/smart-release.sh",
-    "build": "rimraf dist && tsc -p ."
+    "build": "unbuild"
+  },
+  "devDependencies": {
+    "unbuild": "3.0.0-rc.2"
   },
   "dependencies": {
     "@types/json-schema": "^7.0.15"
-  },
-  "devDependencies": {
-    "rimraf": "^5.0.7"
   },
   "keywords": [
     "unispec"
@@ -37,7 +37,8 @@
     "dist/**/*.*",
     "!**/*.tsbuildinfo",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "homepage": "https://github.com/guesant/unispec/tree/next/packages/ast/integrations/npm/types#readme"
 }
