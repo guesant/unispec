@@ -25,7 +25,7 @@
     "build": "nx run-many --target=build --parallel"
   },
   "dependencies": {
-    "release-it": "^17.4.0"
+    "release-it": "^17.4.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
