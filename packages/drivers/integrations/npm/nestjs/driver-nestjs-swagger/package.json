@@ -30,13 +30,13 @@
     "README.md"
   ],
   "dependencies": {
-    "@nestjs/swagger": "^7.3.1",
+    "@nestjs/swagger": "^7.4.0",
     "@unispec/ast-builder": "workspace:^",
     "@unispec/ast-types": "workspace:^",
     "@unispec/ast-utils": "workspace:^"
   },
   "peerDependencies": {
-    "@nestjs/swagger": "^7.3.1"
+    "@nestjs/swagger": "^7.4.0"
   },
   "unbuild": {
     "externals": [

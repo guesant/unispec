@@ -40,7 +40,7 @@
   },
   "optionalDependencies": {
     "@nestjs/graphql": "^12.1.1",
-    "@nestjs/swagger": "^7.3.1",
+    "@nestjs/swagger": "^7.4.0",
     "change-case": "^5.4.4"
   },
   "description": "Unispec Driver for QuickType.",
