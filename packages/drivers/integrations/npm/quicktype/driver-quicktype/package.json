@@ -39,7 +39,7 @@
     "quicktype-core": "^23.0.170"
   },
   "optionalDependencies": {
-    "@nestjs/graphql": "^12.1.1",
+    "@nestjs/graphql": "^12.2.0",
     "@nestjs/swagger": "^7.4.0",
     "change-case": "^5.4.4"
   },
