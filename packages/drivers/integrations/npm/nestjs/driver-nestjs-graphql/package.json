@@ -30,13 +30,13 @@
     "README.md"
   ],
   "dependencies": {
-    "@nestjs/graphql": "^12.1.1",
+    "@nestjs/graphql": "^12.2.0",
     "@unispec/ast-builder": "workspace:^",
     "@unispec/ast-types": "workspace:^",
     "@unispec/ast-utils": "workspace:^"
   },
   "peerDependencies": {
-    "@nestjs/graphql": "^12.1.1"
+    "@nestjs/graphql": "^12.2.0"
   },
   "description": "Unispec Driver for NestJS GraphQl.",
   "repository": {
