@@ -27,7 +27,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "type-fest": "^4.21.0",
+    "type-fest": "^4.22.0",
     "unbuild": "3.0.0-rc.6"
   },
   "unbuild": {
