@@ -1,6 +1,6 @@
 {
   "name": "@unispec/ast-builder",
-  "version": "0.26.1-next.49",
+  "version": "0.26.1-next.50",
   "description": "Unispec AST Builder",
   "scripts": {
     "release:base": "./scripts/smart-release.sh",
