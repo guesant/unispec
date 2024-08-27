@@ -33,7 +33,7 @@
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
     "defu": "^6.1.4",
-    "eslint": "~9.9.0",
+    "eslint": "~9.9.1",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
     "nx": "19.6.3",
