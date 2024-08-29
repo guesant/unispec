@@ -30,7 +30,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "type-fest": "^4.25.0"
+    "type-fest": "^4.26.0"
   },
   "dependencies": {
     "@unispec/ast-builder": "workspace:^",
